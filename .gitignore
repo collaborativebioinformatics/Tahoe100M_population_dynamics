@@ -1,0 +1,71 @@
+# ---------------------------------------------------------------------------
+# Tahoe-100M public UI — keep ALL data, caches, secrets, and envs out of git.
+# Only small curated files under data/demo/ are allowed (see the un-ignore
+# rules at the bottom of this file).
+# ---------------------------------------------------------------------------
+
+# --- Virtual environments / interpreters ---
+venv/
+.venv/
+env/
+ENV/
+*.pyenv
+
+# --- Python caches / build ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+.pytest_cache/
+.ipynb_checkpoints/
+.streamlit/secrets.toml
+
+# --- Raw data & large artifacts (NEVER commit) ---
+*.h5ad
+*.parquet
+*.duckdb
+*.duckdb.wal
+*.arrow
+*.feather
+*.csv
+*.tsv
+*.zarr
+*.loom
+*.mtx
+*.h5
+*.hdf5
+
+# --- Project data roots (TAHOE_ROOT outputs live outside the repo anyway) ---
+source/
+web_data/
+hf_cache/
+tmp/
+work/
+data/raw/
+
+# --- Secrets / tokens (never expose HF / GitHub / DNAnexus credentials) ---
+*.env
+.env*
+*token*
+*secret*
+*credential*
+.hf_token
+.huggingface/
+*.pem
+*.key
+
+# --- OS / editor noise ---
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# ---------------------------------------------------------------------------
+# EXCEPTION: allow only the small committed demo dataset.
+# These override the *.parquet rule above so the app runs with no download.
+# ---------------------------------------------------------------------------
+!data/demo/
+!data/demo/**
+!data/demo/*.parquet

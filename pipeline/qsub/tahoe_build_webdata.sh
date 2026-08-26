@@ -5,9 +5,13 @@
 #$ -M xwu76@uiowa.edu
 #$ -m beas
 #$ -j Y
-#$ -pe smp 8
-#$ -l h_vmem=8G
+#$ -pe smp 4
+#$ -l h_vmem=32G
 #$ -l h_rt=48:0:0
+# NOTE: h_vmem raised 8G->32G and slots 8->4 after an OOM kill. The holistic
+# median() over ~9,600 conditions x ~62k genes needs address-space headroom;
+# DuckDB is capped to 10 GB and spills to $TAHOE_ROOT/tmp/duckdb so its RSS
+# stays well under the job limit.
 # ---------------------------------------------------------------------------
 # Build the compact web tables (plates 6 & 14) from the full pseudobulk DE
 # directory using DuckDB, then copy the four small metadata tables into
@@ -36,8 +40,8 @@ python "$REPO/pipeline/build_web_tables.py" \
   --out "$OUT" \
   --plates 6,14 \
   --top-n 25 \
-  --threads 8 \
-  --mem 6GB \
+  --threads 2 \
+  --mem 8GB \
   --tmp "$TAHOE_ROOT/tmp/duckdb"
 
 echo "=== copying the 4 small metadata tables into web_data ==="

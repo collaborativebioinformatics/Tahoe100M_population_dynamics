@@ -84,15 +84,17 @@ def main(argv=None) -> int:
 
     con = connect(args.threads, args.mem, args.tmp)
 
-    # read_parquet over the shard list; plate filter is pushed down.
-    # DuckDB cannot bind parameters inside CREATE VIEW, so the file list and
-    # plate list are inlined as SQL literals (paths are our own, no quoting risk).
+    # Read via a directory glob (NOT a 1026-element file list with
+    # union_by_name): union_by_name unifies schemas across every file upfront
+    # and, with a long list, spikes memory to tens of GB during the scan. All
+    # shards share one schema, so a plain glob streams file-by-file with bounded
+    # reader buffers. The plate filter is pushed down.
     plate_list = ", ".join(f"'{p}'" for p in plates)
-    shard_list = ", ".join("'" + s.replace("'", "''") + "'" for s in shards)
+    source_glob = os.path.join(args.source, "*.parquet").replace("'", "''")
     con.execute(
         f"""
         CREATE OR REPLACE VIEW de AS
-        SELECT * FROM read_parquet([{shard_list}], union_by_name=true)
+        SELECT * FROM read_parquet('{source_glob}')
         WHERE plate IN ({plate_list})
         """
     )
@@ -139,7 +141,12 @@ def main(argv=None) -> int:
                 count(*) FILTER (padj <= {args.sig_padj})                          AS n_sig,
                 count(*) FILTER (padj <= {args.sig_padj} AND log2FoldChange > 0)    AS n_up,
                 count(*) FILTER (padj <= {args.sig_padj} AND log2FoldChange < 0)    AS n_down,
-                median(abs(log2FoldChange)) FILTER (padj <= {args.sig_padj})        AS median_abs_sig_log2fc,
+                -- approx_quantile (t-digest) instead of exact median(): the exact
+                -- holistic median buffers every value per group in RAM and does
+                -- not spill, which OOM-kills the full build. The t-digest state is
+                -- tiny and spillable; the approximation is negligible for a
+                -- summary of thousands of per-gene effect sizes.
+                approx_quantile(abs(log2FoldChange), 0.5) FILTER (padj <= {args.sig_padj}) AS median_abs_sig_log2fc,
                 max(abs(log2FoldChange))    FILTER (padj <= {args.sig_padj})        AS max_abs_sig_log2fc
             FROM de
             GROUP BY plate, cell_line, cellosaurus_id, depmap_id, drug, concentration

@@ -1,5 +1,9 @@
 # Tahoe-100M Hackathon — Working Summary
 
+<p align="center">
+  <img src="img/logo.jpg" alt="Tahoe-100M Population Dynamics" width="600">
+</p>
+
 **Event window:** Tue 2026-08-25 → Thu 2026-08-27 (3-day hackathon)
 **Last updated:** 2026-08-25 (Day 1)
 
@@ -21,7 +25,17 @@
 
 ---
 
-## 2. Dataset: Tahoe-100M
+## 2. What we're building
+
+Tahoe-100M reports, for each drug/dose/cell-line condition, how far the *average* cell moved relative to DMSO controls. But population averages hide heterogeneity: a "weak" mean response can conceal a strong response in most cells plus a residual, control-like subpopulation that didn't respond at all.
+
+We're building a **replicate-tested response-completeness screen**: for each drug × dose × cell line, we measure not just *how strongly* the treated population moved away from plate-matched DMSO, but *how completely* it moved — i.e., what fraction of cells remain control-like. The scoring rule is calibrated on one plate and frozen before being tested, unchanged, on an independent biological replicate plate.
+
+> *"Tahoe tells us how far the average cell moved. We measure how completely the population moved, show that the pattern repeats, and flag what the average left behind."*
+
+This is **not** pitched as the first analysis to look beyond pseudobulk — other work (including the Tahoe-100M paper itself) already discusses responder/non-responder mixtures qualitatively. The gap we're targeting is a **quantitative, uncertainty-aware, replicate-validated** completeness metric, evaluated systematically across conditions.
+
+## 3. Dataset: Tahoe-100M
 
 - Full resource: **100.6M single-cell transcriptomes (95.6M passing full filters), 50 cancer cell lines, >1,100 small-molecule perturbations**, generated on the **Mosaic platform** using "cell village" co-culture spheroids + Parse GigaLab combinatorial barcoding scRNA-seq, sequenced by Ultima Genomics.
 - Analysis-ready subset used in the paper's own downstream analyses (and the one this project targets): **47 cell lines** (13 organs; TP53/KRAS/CDKN2A altered in ~half), **379 drugs** (180 mapped to 25 mechanisms of action), **1,135 drug-dose combinations**, **52,886 unique cell line-drug-dose conditions**, median ~1,287 cells/condition. This matches the "47 lines / ~390 drugs" figure from Huddle 1 closely enough to treat as the same subset — ✅ resolved, no longer an open question.
@@ -36,7 +50,7 @@
 
 ---
 
-## 3. Scientific direction
+## 4. Scientific direction
 
 ### Core question (converged framing — treat as current best framing pending team confirmation)
 For each **drug × dose × cell line**, measure both:
@@ -66,7 +80,7 @@ This explicitly moves beyond pseudo-bulk/mean-expression analysis, which masks p
 
 ---
 
-## 4. Action items (as of Huddle 1)
+## 5. Action items (as of Huddle 1)
 
 | Owner | Task | Status |
 |---|---|---|
@@ -80,7 +94,7 @@ This explicitly moves beyond pseudo-bulk/mean-expression analysis, which masks p
 
 ---
 
-## 5. Open questions / things to confirm at next huddle
+## 6. Open questions / things to confirm at next huddle
 
 - Which exact dataset subset are we analyzing (47 lines/390 drugs vs. full ~50 lines/~1,100 compounds)? Needed before README/slides.
 - Confirm ownership of the response-completeness module is Anna's alone, or whether it should be split (she offered to coordinate if someone else already started).
@@ -91,7 +105,7 @@ This explicitly moves beyond pseudo-bulk/mean-expression analysis, which masks p
 
 ---
 
-## 6. Day-by-day log
+## 7. Day-by-day log
 
 ### Day 1 — Tue 2026-08-25
 - Huddle 1: team intros, dataset overview, initial direction (trajectory/branching + PCA + population completeness), action items assigned.

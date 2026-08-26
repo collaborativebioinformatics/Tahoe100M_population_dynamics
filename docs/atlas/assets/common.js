@@ -45,7 +45,10 @@ function animateNumber(node,value){
 // active nav link
 document.addEventListener('DOMContentLoaded',()=>{
   const p=(location.pathname.split('/').pop()||'index.html');
-  document.querySelectorAll('header.top nav a').forEach(a=>{ if(a.getAttribute('href')===p) a.classList.add('active'); });
+  const extensionPages=new Set(['mutation.html','celllevel.html','dose.html']);
+  document.querySelectorAll('header.top nav a').forEach(a=>{
+    if(a.getAttribute('href')===p||(extensionPages.has(p)&&a.getAttribute('href')==='extensions.html')) a.classList.add('active');
+  });
   const header=document.querySelector('header.top');
   if(header){
     const themeButton=el('button',{class:'theme-toggle',type:'button','aria-label':'Toggle light and dark theme',title:'Toggle theme'},[]);

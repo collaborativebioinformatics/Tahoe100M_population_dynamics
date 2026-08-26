@@ -13,6 +13,7 @@
     <a href="ranking.html">Response Ranking</a>
     <a href="compare.html">Compare</a>
     <a href="search.html">Signature Search</a>
+    <a href="extensions.html">Context &amp; Dose</a>
     <a href="downloads.html">Data</a>
   </nav>
 </header>
@@ -21,27 +22,46 @@
   <p class="sub">All tables are the validated outputs of a read-only atlas run; each download carries a SHA-256 checksum. <code>is_demo = false</code> throughout.</p>
   <div class="note"><b>What is hosted here:</b> compact, reusable derived tables needed for downstream work. The original Tahoe-100M matrices remain at <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M">the official dataset repository</a>; this project does not redistribute the 100-million-cell matrix.</div>
 
-  <h2>Downloads</h2>
+  <h2>Base atlas downloads</h2>
   <div class="scroll"><table id="dl"><thead><tr><th>File</th><th>Description</th><th class="num">Size</th><th>SHA-256</th></tr></thead><tbody></tbody></table></div>
 
-  <h2>Methods</h2>
+  <h2>Context, cell-level &amp; dose downloads <span class="evidence-badge real">v0.2</span></h2>
+  <p class="muted">Eleven additional checksummed Parquet tables. These contain derived summaries only—no raw single-cell expression.</p>
+  <div class="scroll"><table id="extDl"><thead><tr><th>File</th><th>Module</th><th class="num">Size</th><th>SHA-256</th></tr></thead><tbody></tbody></table></div>
+
+  <h2>Base atlas methods</h2>
   <pre class="panel" id="methods" style="white-space:pre-wrap"></pre>
-  <h2>Limitations</h2>
+  <h2>Base atlas limitations</h2>
   <pre class="panel" id="limits" style="white-space:pre-wrap"></pre>
-  <h2>Data dictionary</h2>
+  <h2>Base atlas data dictionary</h2>
   <pre class="panel" id="dict" style="white-space:pre-wrap"></pre>
+  <h2>Extension methods</h2>
+  <pre class="panel" id="extMethods" style="white-space:pre-wrap"></pre>
+  <h2>Extension limitations</h2>
+  <pre class="panel" id="extLimits" style="white-space:pre-wrap"></pre>
+  <h2>Extension data dictionary</h2>
+  <pre class="panel" id="extDict" style="white-space:pre-wrap"></pre>
 </main>
 <footer><a href="../">Project home</a> · <a href="https://doi.org/10.1101/2025.02.20.639398">Original paper</a> · <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M">Original data</a> · <span data-release>Loading version…</span></footer>
 <script src="assets/common.js"></script>
 <script>
 function human(b){ const u=['B','KB','MB','GB']; let i=0; while(b>=1024&&i<3){b/=1024;i++;} return b.toFixed(i?1:0)+' '+u[i]; }
 (async ()=>{
-  const m=await loadJSON('downloads_manifest.json'); const tb=document.querySelector('#dl tbody');
+  const [m,extension]=await Promise.all([loadJSON('downloads_manifest.json'),loadJSON('extensions/release_manifest.json')]);
+  const tb=document.querySelector('#dl tbody');
   m.files.forEach(f=>{ const a=el('a',{href:'data/downloads/'+f.file,download:''},[f.file]);
     tb.appendChild(el('tr',{},[el('td',{},[a]),el('td',{},[f.description||'']),
       el('td',{class:'num'},[human(f.bytes)]),el('td',{class:'muted',title:f.sha256},[f.sha256.slice(0,16)+'…'])])); });
+  const modules={driver_context_catalog:'Mutation context',mutation_response_associations:'Mutation context',mutation_pathway_associations:'Mutation context',pathway_condition_summary:'Pathway context',cell_response_scores_summary:'Cell-level pilot',control_like_fraction:'Cell-level pilot',control_like_threshold_sensitivity:'Cell-level pilot',cell_level_validation:'Cell-level pilot',dose_response_pseudobulk_full:'Dose response',dose_trend_summary:'Dose response',dose_response_cell_level_pilot:'Dose response'};
+  const extBody=document.querySelector('#extDl tbody');
+  extension.downloads.forEach(f=>{ const file=f.file.split('/').pop(); const a=el('a',{href:'data/extensions/downloads/'+file,download:''},[file]);
+    extBody.appendChild(el('tr',{},[el('td',{},[a]),el('td',{},[modules[f.name]||'Extension']),
+      el('td',{class:'num'},[human(f.bytes)]),el('td',{class:'muted',title:f.sha256},[f.sha256.slice(0,16)+'…'])])); });
   for(const [id,fn] of [['methods','METHODS.md'],['limits','LIMITATIONS.md'],['dict','DATA_DICTIONARY.md']]){
     try{ const r=await fetch('data/'+fn); document.getElementById(id).textContent=await r.text(); }catch(e){ document.getElementById(id).textContent='(unavailable)'; }
+  }
+  for(const [id,fn] of [['extMethods','METHODS.md'],['extLimits','LIMITATIONS.md'],['extDict','DATA_DICTIONARY.md']]){
+    try{ const r=await fetch('data/extensions/'+fn); document.getElementById(id).textContent=await r.text(); }catch(e){ document.getElementById(id).textContent='(unavailable)'; }
   }
 })().catch(e=>{
   const body=document.querySelector('#dl tbody'); body.textContent='';

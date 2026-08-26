@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore organ-adjusted mutation-associated Tahoe-100M transcriptional response and Hallmark pathway context.">
+<title>Mutation Context — Tahoe-100M Atlas</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/app.css">
+</head><body>
+<header class="top"><a class="brand" href="../">Tahoe-100M Atlas</a><nav>
+  <a href="../">Project Home</a><a href="index.html">Overview</a><a href="ranking.html">Response Ranking</a>
+  <a href="compare.html">Compare</a><a href="search.html">Signature Search</a><a href="extensions.html">Context &amp; Dose</a><a href="downloads.html">Data</a>
+</nav></header>
+<main>
+  <nav class="extension-tabs" aria-label="Context and dose modules"><a href="extensions.html">Overview</a><a href="mutation.html">Mutation context</a><a href="celllevel.html">Cell-level pilot</a><a href="dose.html">Dose response</a></nav>
+  <div class="page-heading"><div><span class="evidence-badge real">FULL ATLAS · EXPLORATORY</span><h1>Pathway × mutation context</h1><p class="sub">Organ-adjusted associations across 50 cancer cell lines. These are response-context signals—not causal dependencies, biomarkers, or treatment recommendations.</p></div></div>
+
+  <div class="controls panel compact-controls">
+    <div class="field"><label>Driver gene</label><select id="driver"></select></div>
+    <div class="field"><label>Minimum |Cliff's δ|</label><select id="effect"><option value="0">Any retained hit</option><option value="0.2">≥ 0.20</option><option value="0.33">≥ 0.33</option><option value="0.5">≥ 0.50</option></select></div>
+  </div>
+
+  <div class="grid cards driver-stats" id="driverStats"></div>
+  <div class="note" id="driverInfo"></div>
+
+  <section class="viz-panel">
+    <div class="viz-title"><div><span class="section-kicker">Effect landscape</span><h2>Largest retained drug-response associations</h2></div><span class="muted">Cliff's δ · left lower, right higher in driver-altered lines</span></div>
+    <div id="effectChart" class="effect-chart" aria-live="polite"></div>
+  </section>
+
+  <h2>Association details</h2>
+  <p class="muted">Browser JSON contains the 200 highest-effect per-driver BH-FDR hits. Download the full 35,092-test table for complete results.</p>
+  <div class="scroll"><table id="mutationTable"><thead><tr><th>Drug</th><th>Dose</th><th class="num">n altered</th><th class="num">n reference</th><th class="num">Median Δ</th><th class="num">Cliff's δ</th><th class="num">Hedges g</th><th class="num">HC3 p</th><th class="num">Per-driver FDR</th><th class="num">Global FDR</th><th>Plate-14 check</th></tr></thead><tbody></tbody></table></div>
+
+  <section class="viz-panel pathway-panel">
+    <div class="viz-title"><div><span class="section-kicker">Biological program</span><h2>Hallmark pathway associations</h2></div><span class="muted">ORA over truncated top-N DE; not GSEA</span></div>
+    <div id="pathwayChart" class="effect-chart"></div>
+  </section>
+  <div class="note"><b>Interpretation boundary:</b> “not_annotated_as_driver” is not verified wild type because a complete CCLE/DepMap mutation matrix was not joined. Per-driver FDR yields 653 hits, dominated by KRAS; only two pass global BH-FDR in the full table. Association does not establish causality.</div>
+</main>
+<footer><a href="../">Project home</a> · <a href="https://doi.org/10.1101/2025.02.20.639398">Original paper</a> · <a href="downloads.html">Methods &amp; downloads</a> · <span data-release>Loading version…</span></footer>
+<script src="assets/common.js"></script><script src="assets/extensions.js"></script><script src="assets/mutation.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body></html>

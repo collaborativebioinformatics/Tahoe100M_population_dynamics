@@ -1,0 +1,39 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Trace Tahoe-100M response magnitude across three measured pseudobulk doses and inspect available real-DMSO plate-14 pilot points.">
+<title>Dose Response — Tahoe-100M Atlas</title><link rel="icon" href="../assets/favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="assets/app.css">
+</head><body>
+<header class="top"><a class="brand" href="../">Tahoe-100M Atlas</a><nav>
+  <a href="../">Project Home</a><a href="index.html">Overview</a><a href="ranking.html">Response Ranking</a>
+  <a href="compare.html">Compare</a><a href="search.html">Signature Search</a><a href="extensions.html">Context &amp; Dose</a><a href="downloads.html">Data</a>
+</nav></header>
+<main>
+  <nav class="extension-tabs" aria-label="Context and dose modules"><a href="extensions.html">Overview</a><a href="mutation.html">Mutation context</a><a href="celllevel.html">Cell-level pilot</a><a href="dose.html">Dose response</a></nav>
+  <div class="page-heading"><div><span class="evidence-badge real">18,927 COMPLETE PSEUDOBULK TRAJECTORIES</span><h1>Measured dose-response explorer</h1><p class="sub">Trace three observed non-zero doses. The DMSO baseline is analytical and derived from measured plate-matched controls—it is not a measured zero-dose point or the synthetic latent-space origin.</p></div></div>
+
+  <div class="controls panel compact-controls">
+    <div class="field grow"><label>Cell line × drug</label><select id="doseCondition"></select></div>
+    <button id="randomDose" class="ghost" type="button">Surprise me ✦</button>
+  </div>
+  <p class="muted">The interactive selector contains the 96 curves linked to a real plate-14 cell-level pilot point. The complete 18,927-trajectory pseudobulk table is available under <a href="downloads.html">Data</a>.</p>
+
+  <section class="dose-layout">
+    <div class="viz-panel dose-viz">
+      <div class="viz-title"><div><span class="section-kicker">Population-level response</span><h2 id="doseTitle">Pseudobulk magnitude</h2></div><span class="muted" id="doseTrend"></span></div>
+      <svg id="doseChart" class="dose-chart" viewBox="0 0 640 330" role="img" aria-labelledby="doseChartTitle doseChartDesc"><title id="doseChartTitle">Dose response magnitude</title><desc id="doseChartDesc">Three measured dose points connected by a descriptive line.</desc></svg>
+      <div id="dosePlates" class="dose-plates"></div>
+    </div>
+    <aside class="dose-side" id="doseSide"></aside>
+  </section>
+
+  <div class="baseline-key">
+    <div><span class="key-line measured"></span><b>Measured dose</b><small>0.05, 0.5, and 5.0 µM pseudobulk points</small></div>
+    <div><span class="key-line baseline"></span><b>Analytical DMSO baseline</b><small>Derived from measured plate-matched DMSO; no fake x=0 observation</small></div>
+    <div><span class="key-line unavailable"></span><b>Not estimated</b><small>No EC50, IC50, Emax, or Hill fit</small></div>
+  </div>
+  <div class="note"><b>Scope:</b> pseudobulk curves span three measured doses but may involve different plates, so cross-plate batch remains possible. The cell-level panel contains one measured plate-14 dose per condition; a multi-dose single-cell curve was not assembled. Descriptive trend only.</div>
+</main>
+<footer><a href="../">Project home</a> · <a href="https://doi.org/10.1101/2025.02.20.639398">Original paper</a> · <a href="downloads.html">Methods &amp; downloads</a> · <span data-release>Loading version…</span></footer>
+<script src="assets/common.js"></script><script src="assets/extensions.js"></script><script src="assets/dose.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body></html>

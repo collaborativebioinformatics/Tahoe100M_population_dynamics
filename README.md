@@ -89,6 +89,25 @@ Team-facing files are documented in the [`docs/data` integration guide](docs/dat
 - [ ] Connect production PCA, trajectory, and population-statistics outputs
 - [ ] Validate all displayed results against the final analysis pipeline
 
+## Sources, citation, and downloads
+
+| Resource | Link |
+|---|---|
+| Original Tahoe-100M paper | [Zhang et al., bioRxiv 2025](https://doi.org/10.1101/2025.02.20.639398) |
+| Public expression data and metadata | [Tahoe-100M on Hugging Face](https://huggingface.co/datasets/tahoebio/Tahoe-100M) |
+| Official h5ad / AnnData access | [Arc Virtual Cell Atlas](https://github.com/ArcInstitute/arc-virtual-cell-atlas/tree/main/tahoe-100M) |
+| DNAnexus dataset and notebook guide | [DNAnexus Academy](https://academy.dnanexus.com/public-datasets-on-the-dnanexus-platform/single-cell/tahoe-100m) |
+| Downloadable citation | [`docs/tahoe100m-citations.bib`](docs/tahoe100m-citations.bib) |
+| Demo integration artifacts | [Catalog](docs/data/catalog.json) · [Example result](docs/data/results/a549-trametinib-1-mapk-population.json) · [Workflow SVG](docs/group6-workflow.svg) |
+
+The Tahoe-100M data are distributed under [**CC0 1.0**](https://creativecommons.org/publicdomain/zero/1.0/); this repository's code is under the [**MIT License**](LICENSE). Please cite the original Tahoe-100M paper when using the dataset. Current website downloads are demo/integration artifacts, not validated scientific findings.
+
+## Acknowledgements
+
+This Group 6 prototype was developed during the [8th Pan-Structural Variation Hackathon in the Cloud](https://fritzsedlazeck.github.io/blog/2026/hackathon-2026/), held August 25–28, 2026. The event was hosted by Baylor College of Medicine and Rice University in collaboration with the GREGoR and SMAHT consortia.
+
+We acknowledge the Tahoe-100M authors and the teams at Tahoe Bio/Tahoe Therapeutics, Parse Biosciences, and Ultima Genomics for generating the atlas; Arc Institute and Hugging Face for public data access; and DNAnexus for public-dataset and notebook resources used by hackathon participants. Organization names identify provenance and do not imply validation or endorsement of this prototype's scientific results.
+
 ## Group 6
 
 | Team member | Current focus |
@@ -98,7 +117,7 @@ Team-facing files are documented in the [`docs/data` integration guide](docs/dat
 | Anna Sokolova | Response-completeness scoring, DMSO calibration, QC checks, and plate 6/14 validation |
 | Cecilia Mathó | PCA tool |
 | Tuneer R. Mallick | Trajectory tool |
-| Xia (Candice) Wu | Dataset user interface |
+| Xia (Candice) Wu | Interface and website design |
 | Gerald McCollum | Writing and documentation |
 
 ## Run locally

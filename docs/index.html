@@ -1,11 +1,19 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="A public, dose-aware interface prototype for exploring Tahoe-100M single-cell perturbation responses.">
     <meta name="theme-color" content="#07111f">
+    <meta name="robots" content="index, follow">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tahoe-100M Perturbation Explorer">
+    <meta property="og:description" content="A public, dose-aware interface prototype for population-level single-cell perturbation modeling.">
+    <meta property="og:url" content="https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/">
+    <meta property="og:image" content="https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/assets/dashboard-preview.png">
+    <meta name="twitter:card" content="summary_large_image">
     <title>Tahoe-100M Perturbation Explorer</title>
+    <link rel="canonical" href="https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/">
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="assets/styles.css">
     <script src="assets/app.js" defer></script>
@@ -27,6 +35,7 @@
       <nav class="site-nav" aria-label="Primary navigation">
         <a href="#explorer">Explorer</a>
         <a href="#workflow">Workflow</a>
+        <a href="#resources">Resources</a>
         <a href="#team">Team</a>
         <a class="nav-cta" href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics" target="_blank" rel="noreferrer">View GitHub <span aria-hidden="true">↗</span></a>
       </nav>
@@ -42,14 +51,14 @@
             <a class="button button-primary" href="#explorer">Open the explorer <span aria-hidden="true">↓</span></a>
             <a class="button button-secondary" href="#workflow">How the system works</a>
           </div>
-          <ul class="hero-points" aria-label="Product principles">
+          <ul class="hero-points">
             <li><span>01</span> Dose-aware</li>
             <li><span>02</span> Population-level</li>
             <li><span>03</span> Analysis-ready</li>
           </ul>
         </div>
 
-        <div class="hero-visual" aria-label="Illustration of a dose-response signal across cell populations">
+        <div class="hero-visual">
           <div class="visual-topline">
             <span>Population response</span>
             <span class="live-chip"><i></i> illustrative</span>
@@ -163,7 +172,7 @@
               <fieldset>
                 <legend>Analysis module</legend>
                 <div class="analysis-options">
-                  <label><input type="radio" name="analysis" value="population" checked><span><i class="module-icon">P</i><b>Population</b><small>Effect & heterogeneity</small></span></label>
+                  <label><input type="radio" name="analysis" value="population" checked><span><i class="module-icon">P</i><b>Population</b><small>Effect &amp; heterogeneity</small></span></label>
                   <label><input type="radio" name="analysis" value="pca"><span><i class="module-icon">PCA</i><b>PCA</b><small>State-space view</small></span></label>
                   <label><input type="radio" name="analysis" value="trajectory"><span><i class="module-icon">T</i><b>Trajectory</b><small>Dose progression</small></span></label>
                 </div>
@@ -189,9 +198,9 @@
             </div>
 
             <div class="view-tabs" role="tablist" aria-label="Analysis view">
-              <button role="tab" aria-selected="true" data-view="trajectory">Dose response</button>
-              <button role="tab" aria-selected="false" data-view="population">Population</button>
-              <button role="tab" aria-selected="false" data-view="pca">PCA space</button>
+              <button type="button" role="tab" aria-selected="true" data-view="trajectory">Dose response</button>
+              <button type="button" role="tab" aria-selected="false" data-view="population">Population</button>
+              <button type="button" role="tab" aria-selected="false" data-view="pca">PCA space</button>
             </div>
 
             <div class="metric-grid">
@@ -279,17 +288,118 @@
         </div>
       </section>
 
+      <section class="section resources-section" id="resources">
+        <div class="section-heading compact-heading">
+          <div>
+            <span class="section-kicker">Sources, citation &amp; downloads</span>
+            <h2>Trace every result back to its source</h2>
+            <p>Read the original study, access the public data, download reusable project artifacts, and see exactly what is—and is not—represented in this prototype.</p>
+          </div>
+          <aside class="resource-status" aria-label="Current scientific status"><span></span><div><strong>Current release</strong><small>Interface demo · not validated findings</small></div></aside>
+        </div>
+
+        <div class="resource-grid">
+          <article class="resource-card resource-paper">
+            <div class="resource-card-top"><span class="resource-icon" aria-hidden="true">P</span><small>Primary paper</small></div>
+            <h3>Tahoe-100M study</h3>
+            <p>Read the atlas design, experimental workflow, quality control, and original analyses.</p>
+            <a href="https://doi.org/10.1101/2025.02.20.639398" target="_blank" rel="noreferrer">Open bioRxiv paper <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="resource-card resource-data">
+            <div class="resource-card-top"><span class="resource-icon" aria-hidden="true">D</span><small>Original data</small></div>
+            <h3>Hugging Face dataset</h3>
+            <p>Browse or download expression data, metadata, annotations, and pseudobulk DE tables.</p>
+            <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M" target="_blank" rel="noreferrer">Browse Tahoe-100M <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="resource-card resource-anndata">
+            <div class="resource-card-top"><span class="resource-icon" aria-hidden="true">A</span><small>AnnData access</small></div>
+            <h3>Arc Virtual Cell Atlas</h3>
+            <p>Access the official h5ad count matrices and associated cell-level metadata documentation.</p>
+            <a href="https://github.com/ArcInstitute/arc-virtual-cell-atlas/tree/main/tahoe-100M" target="_blank" rel="noreferrer">Open Arc documentation <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="resource-card resource-cloud">
+            <div class="resource-card-top"><span class="resource-icon" aria-hidden="true">N</span><small>Cloud notebooks</small></div>
+            <h3>DNAnexus data guide</h3>
+            <p>Find the public dataset layout, notebook options, and platform-specific setup guidance.</p>
+            <a href="https://academy.dnanexus.com/public-datasets-on-the-dnanexus-platform/single-cell/tahoe-100m" target="_blank" rel="noreferrer">Open DNAnexus guide <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="resource-card resource-code">
+            <div class="resource-card-top"><span class="resource-icon" aria-hidden="true">&lt;/&gt;</span><small>Open source</small></div>
+            <h3>Code and methods</h3>
+            <p>Inspect the interface, schemas, analysis utilities, tests, and reproducible workflow.</p>
+            <a href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics" target="_blank" rel="noreferrer">View repository <span aria-hidden="true">↗</span></a>
+          </article>
+
+          <article class="resource-card resource-event">
+            <div class="resource-card-top"><span class="resource-icon" aria-hidden="true">H</span><small>Hackathon</small></div>
+            <h3>2026 event</h3>
+            <p>Learn about the 8th Pan-Structural Variation Hackathon in the Cloud and its organizers.</p>
+            <a href="https://fritzsedlazeck.github.io/blog/2026/hackathon-2026/" target="_blank" rel="noreferrer">Open event page <span aria-hidden="true">↗</span></a>
+          </article>
+        </div>
+
+        <div class="resource-detail-grid">
+          <article class="citation-panel">
+            <span class="section-kicker">How to cite the dataset</span>
+            <h3>Credit the original Tahoe-100M authors</h3>
+            <blockquote>Zhang J, Ubas AA, de Borja R, et al. <em>Tahoe-100M: A Giga-Scale Single-Cell Perturbation Atlas for Context-Dependent Gene Function and Cellular Modeling.</em> bioRxiv. 2025. doi:10.1101/2025.02.20.639398.</blockquote>
+            <div class="resource-actions">
+              <a class="button button-primary" href="https://doi.org/10.1101/2025.02.20.639398" target="_blank" rel="noreferrer">Open paper <span aria-hidden="true">↗</span></a>
+              <a class="button button-light" href="tahoe100m-citations.bib" download>Download BibTeX <span aria-hidden="true">↓</span></a>
+            </div>
+          </article>
+
+          <article class="download-panel" id="downloads">
+            <span class="section-kicker">Download center</span>
+            <h3>Small, reusable project artifacts</h3>
+            <ul class="download-list">
+              <li><a href="data/catalog.json" download><span><strong>Demo query catalog</strong><small>JSON · selector and metadata contract</small></span><b aria-hidden="true">↓</b></a></li>
+              <li><a href="data/results/a549-trametinib-1-mapk-population.json" download><span><strong>Example result</strong><small>JSON · illustrative standardized response</small></span><b aria-hidden="true">↓</b></a></li>
+              <li><a href="group6-workflow.svg" download><span><strong>System workflow</strong><small>SVG · scalable architecture diagram</small></span><b aria-hidden="true">↓</b></a></li>
+              <li><a href="group6-workflow.png" download><span><strong>Presentation workflow</strong><small>PNG · slide-ready export</small></span><b aria-hidden="true">↓</b></a></li>
+              <li><a href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics/archive/refs/heads/main.zip"><span><strong>Project source</strong><small>ZIP · current main branch</small></span><b aria-hidden="true">↓</b></a></li>
+            </ul>
+            <p class="download-note">These are demo and integration artifacts. Validated scientific-result downloads will be added only after the analysis pipeline is complete.</p>
+          </article>
+        </div>
+
+        <div class="responsible-use-grid">
+          <article><span>01</span><h3>Clear provenance</h3><p>Every production result must record its source, method, parameters, and demo status before publication.</p></article>
+          <article><span>02</span><h3>Separate licenses</h3><p>Project code uses the <a href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics/blob/main/LICENSE" target="_blank" rel="noreferrer">MIT License</a>. Tahoe-100M data use <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noreferrer">CC0 1.0</a>; the original study should still be cited.</p></article>
+          <article><span>03</span><h3>Research use only</h3><p>This prototype is not a diagnostic or clinical decision-support tool. Current displayed values are illustrative.</p></article>
+        </div>
+      </section>
+
       <section class="section team-section" id="team">
         <div class="section-heading compact-heading">
           <div><span class="section-kicker">Group 6</span><h2>Built across disciplines</h2><p>Interface, statistics, trajectory, PCA, data access, and scientific communication come together in one public system.</p></div>
         </div>
         <div class="team-grid">
-          <article class="team-lead"><div class="avatar">DB</div><div><h3>Don Baldwin <span>Lead</span></h3><p>Sequence-data access & coordination</p></div></article>
+          <article class="team-lead"><div class="avatar">DB</div><div><h3>Don Baldwin <span>Lead</span></h3><p>Sequence-data access &amp; coordination</p></div></article>
           <article><div class="avatar">CM</div><div><h3>Cecilia Mathó</h3><p>PCA tool</p></div></article>
           <article><div class="avatar">TM</div><div><h3>Tuneer R. Mallick</h3><p>Trajectory tool</p></div></article>
           <article><div class="avatar">AS</div><div><h3>Abolaji Shiwoku</h3><p>Population dynamics statistics</p></div></article>
-          <article class="team-interface"><div class="avatar">XW</div><div><h3>Xia (Candice) Wu <span>Interface</span></h3><p>Dataset user interface</p></div></article>
-          <article><div class="avatar">GM</div><div><h3>Gerald McCollum</h3><p>Writing & documentation</p></div></article>
+          <article><div class="avatar">AS</div><div><h3>Anna Sokolova</h3><p>Response completeness &amp; QC</p></div></article>
+          <article class="team-interface"><div class="avatar">XW</div><div><h3>Xia (Candice) Wu <span>Interface</span></h3><p>Interface &amp; website design</p></div></article>
+          <article><div class="avatar">GM</div><div><h3>Gerald McCollum</h3><p>Writing &amp; documentation</p></div></article>
+        </div>
+      </section>
+
+      <section class="section acknowledgements-section" id="acknowledgements">
+        <div class="acknowledgements-card">
+          <div>
+            <span class="section-kicker">Acknowledgements</span>
+            <h2>Built through open science and shared infrastructure</h2>
+          </div>
+          <div class="acknowledgements-copy">
+            <p>This Group 6 prototype was developed during the <a href="https://fritzsedlazeck.github.io/blog/2026/hackathon-2026/" target="_blank" rel="noreferrer">8th Pan-Structural Variation Hackathon in the Cloud</a>, held August 25–28, 2026. The event was hosted by Baylor College of Medicine and Rice University in collaboration with the GREGoR and SMAHT consortia.</p>
+            <p>We acknowledge the Tahoe-100M authors and the teams at Tahoe Bio/Tahoe Therapeutics, Parse Biosciences, and Ultima Genomics for generating the atlas; Arc Institute and Hugging Face for public data access; and DNAnexus for public-dataset and notebook resources used by hackathon participants.</p>
+            <p class="acknowledgements-note">Organization names describe project and data provenance and do not imply validation or endorsement of the prototype's scientific results.</p>
+          </div>
         </div>
       </section>
     </main>
@@ -297,7 +407,12 @@
     <footer>
       <div class="footer-brand"><span class="brand-mark small" aria-hidden="true"><span></span><span></span><span></span></span><div><strong>Tahoe-100M Perturbation Explorer</strong><small>Group 6 · Hackathon prototype</small></div></div>
       <p>Demo values are illustrative and are not scientific findings.</p>
-      <a href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics" target="_blank" rel="noreferrer">Source on GitHub ↗</a>
+      <nav class="footer-links" aria-label="Project resources">
+        <a href="https://doi.org/10.1101/2025.02.20.639398" target="_blank" rel="noreferrer">Paper ↗</a>
+        <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M" target="_blank" rel="noreferrer">Data ↗</a>
+        <a href="tahoe100m-citations.bib" download>Citation ↓</a>
+        <a href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics/issues" target="_blank" rel="noreferrer">Report issue ↗</a>
+      </nav>
     </footer>
   </body>
 </html>

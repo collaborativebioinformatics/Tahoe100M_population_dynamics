@@ -26,10 +26,10 @@
 - Full resource: **100.6M single-cell transcriptomes (95.6M passing full filters), 50 cancer cell lines, >1,100 small-molecule perturbations**, generated on the **Mosaic platform** using "cell village" co-culture spheroids + Parse GigaLab combinatorial barcoding scRNA-seq, sequenced by Ultima Genomics.
 - Analysis-ready subset used in the paper's own downstream analyses (and the one this project targets): **47 cell lines** (13 organs; TP53/KRAS/CDKN2A altered in ~half), **379 drugs** (180 mapped to 25 mechanisms of action), **1,135 drug-dose combinations**, **52,886 unique cell line-drug-dose conditions**, median ~1,287 cells/condition. This matches the "47 lines / ~390 drugs" figure from Huddle 1 closely enough to treat as the same subset — ✅ resolved, no longer an open question.
 - 14 total 96-well plates; **Plate 14 is confirmed in the paper as the designated biological replicate of Plate 6** (pseudobulk Pearson correlation: matched treatment/cell-line q25–q75 0.97–0.98, vs. 0.89–0.93 unmatched) — strong independent support for the team's plate 6 (dev) → plate 14 (validation) plan.
-- Paper explicitly documents the heterogeneity/subpopulation angle qualitatively (cell-cycle-state variation across drug classes, RAS/RAF-dependent transcriptomic shifts, biomarker potential) but does **not** appear to implement a quantitative, replicate-validated response-completeness/residual-fraction metric — this is consistent with Sokolova's read that there's a real gap to fill, not a "first ever" claim.
+- Paper explicitly documents the heterogeneity/subpopulation angle qualitatively (cell-cycle-state variation across drug classes, RAS/RAF-dependent transcriptomic shifts, biomarker potential) but does **not** appear to implement a quantitative, replicate-validated response-completeness/residual-fraction metric — this is consistent with the claim that there's a real gap.
 - Single-cell RNA profiling at **24 hours post-treatment**, via Ultima Genomics. Data format: AnnData/H5AD (paper itself trained on 1,685 `.h5ad` sublibrary files) + annotations.
 - Available: metadata + expression counts. **Not available:** raw sequence data (FASTQ/BAM) — needed for splicing, allele-specific expression, variant calling. Don is attempting to get access via DNA Nexus / Tahoe-100M team.
-- Access point: **HuggingFace** — confirmed by the team ("Facehugger" in the raw meeting notes was a mishearing/mis-transcription of HuggingFace). DNA Nexus is Don's separate track for raw FASTQ/BAM access, not the expression-matrix source.
+- Access point: **HuggingFace** — confirmed by the team. DNA Nexus is Don's separate track for raw FASTQ/BAM access, not the expression-matrix source.
 - Both plate 6 and plate 14 have two DMSO control samples each, used for dev (plate 6) / validation (plate 14) split.
 - Practical constraint: full dataset too large to load into Seurat at once (Tuneer) — start with plates 6/14 or use batch processing.
 - Culture conditions caveat: RPMI + bovine serum is non-physiological; co-culture setup introduces uncertainty about cross-cell-line signaling/crosstalk.
@@ -38,16 +38,16 @@
 
 ## 3. Scientific direction
 
-### Core question (converged framing, per Sokolova's async writeup — treat as current best framing pending team confirmation)
+### Core question (converged framing — treat as current best framing pending team confirmation)
 For each **drug × dose × cell line**, measure both:
 1. **How strongly** the treated population moved away from plate-matched DMSO (magnitude), and
 2. **How completely** the population moved — i.e., what fraction remains "control-like" (a residual/non-responder subpopulation).
 
 Framed as: *"Tahoe tells us how far the average cell moved. We measure how completely the population moved, show the pattern repeats [plate 6 → plate 14], and flag what the average left behind."*
 
-This explicitly moves beyond pseudo-bulk/mean-expression analysis, which masks population heterogeneity — but should **not** be pitched as "the first analysis beyond pseudobulk" (Sokolova flags that other work, incl. a recent Tahoe paper, already discusses responder/non-responder mixtures). The actual gap/novelty is: **a replicate-tested (plate 6 → plate 14) response-completeness screen across the dataset**, with calibrated uncertainty.
+This explicitly moves beyond pseudo-bulk/mean-expression analysis, which masks population heterogeneity — but should **not** be pitched as "the first analysis beyond pseudobulk". The actual gap/novelty is: **a replicate-tested (plate 6 → plate 14) response-completeness screen across the dataset**, with calibrated uncertainty.
 
-### Method notes / guardrails (important — from Sokolova, incorporate into methods)
+### Method notes / guardrails
 - **Evidence ladder:** calibrate scoring rule on plate 6, freeze it, then test unchanged on plate 14 (pre-registration-style discipline — no peeking at plate 14 while tuning).
 - **Don't hard-threshold "2 std devs from median" as final method** — useful as a quick baseline only. Treatment/DMSO distributions can be asymmetric and naturally overlapping.
 - **Calibrate against DMSO-vs-DMSO comparisons** to establish the baseline rate of apparent non-response/separation between controls.
@@ -56,7 +56,7 @@ This explicitly moves beyond pseudo-bulk/mean-expression analysis, which masks p
 - **Trajectory/branching language:** Tahoe is a single 24h endpoint, not a time course or lineage-traced experiment. Prefer **"state-space branching," "multimodality," or "response geometry"** over "trajectory" (which implies an observed path). Similarly avoid "resistant"/"persister" labels — prefer **"control-like residual population"** or **"candidate incomplete-response state."**
 - Consider also measuring **change in dispersion** (does treatment widen/compress/split the population, not just shift it).
 
-### Proposed deliverables (priority order per Sokolova's suggested scope)
+### Proposed deliverables (priority order)
 1. **Core (Day 1–2 priority):** One ranked response-completeness table across conditions.
 2. One **plate-14-replicated example** where the mean hides a residual/split response (mean vs. distribution story).
 3. One **testable follow-up compound hypothesis**, chosen because its Tahoe signature opposes the residual expression program in the same cell line — explicitly framed as a *hypothesis for a future combination experiment*, not evidence of synergy.

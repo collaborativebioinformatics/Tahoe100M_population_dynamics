@@ -1,3 +1,7 @@
+<h1>Tahoe 100M Data	Group 6</h1>
+
+
+```mermaid
 graph TD;
     A[User Interface
 
@@ -18,3 +22,4 @@ graph TD;
 	either call a tool or run compute
 
 	return a plot];
+```

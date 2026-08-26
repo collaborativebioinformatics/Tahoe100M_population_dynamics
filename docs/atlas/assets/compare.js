@@ -27,6 +27,12 @@ async function wireSide(prefix, initialIndex){
   cell.addEventListener('change',()=>fillDrug().catch(showError));
   drug.addEventListener('change',fillDose); dose.addEventListener('change',fillPlate);
   await fillDrug();
+  return {randomize:async()=>{
+    cell.selectedIndex=Math.floor(Math.random()*cell.options.length); await fillDrug();
+    drug.selectedIndex=Math.floor(Math.random()*drug.options.length); fillDose();
+    dose.selectedIndex=Math.floor(Math.random()*dose.options.length); fillPlate();
+    plate.selectedIndex=Math.floor(Math.random()*plate.options.length);
+  }};
 }
 function findCond(sh, drug, dose, plate){
   const dz=parseFloat(dose);
@@ -88,6 +94,12 @@ document.getElementById('go').addEventListener('click', run);
 function showError(e){ document.getElementById('status').textContent=e.message; }
 (async ()=>{
   CAT=await loadJSON('catalog.json');
-  await Promise.all([wireSide('a',0),wireSide('b',1)]);
+  const sides=await Promise.all([wireSide('a',0),wireSide('b',1)]);
+  document.getElementById('surprise').addEventListener('click',async()=>{
+    const button=document.getElementById('surprise'); button.disabled=true;
+    document.getElementById('status').textContent='finding an unexpected pair…';
+    try{ await Promise.all(sides.map(side=>side.randomize())); await run(); }
+    finally{ button.disabled=false; }
+  });
   document.getElementById('status').textContent='ready';
 })().catch(showError);

@@ -1,10 +1,10 @@
 <p align="center">
-  <img src="logo.jpg" alt="Tahoe-100M Population Dynamics" width="600">
+  <img src="img/logo.jpg" alt="Tahoe-100M Population Dynamics" width="600">
 </p>
 
 **Group 6 — BCM Hackathon 2026** (Tue 2026-08-25 – Thu 2026-08-27)
 
-> 🚧 Hackathon in progress. Scope and workflow below reflect Day 1 planning and are still in flux — see [`PROJECT_SUMMARY.md`](./PROJECT_SUMMARY.md) for the living, day-by-day project log.
+> 🚧 Hackathon scope and workflow reflect Day 1 planning and are still in flux — see [`PROJECT_SUMMARY.md`](./PROJECT_SUMMARY.md) for the day-by-day project log.
 
 ## Background: the Tahoe-100M dataset
 
@@ -26,7 +26,7 @@ We're building a **replicate-tested response-completeness screen**: for each dru
 
 This is **not** pitched as the first analysis to look beyond pseudobulk — other work (including the Tahoe-100M paper itself) already discusses responder/non-responder mixtures qualitatively. The gap we're targeting is a **quantitative, uncertainty-aware, replicate-validated** completeness metric, evaluated systematically across conditions.
 
-## Method: what "response completeness" means here
+## Method: what "response completeness" means
 
 For each **drug × dose × cell line** condition, relative to its plate-matched DMSO control, we aim to measure:
 
@@ -34,7 +34,7 @@ For each **drug × dose × cell line** condition, relative to its plate-matched 
 2. **Response coverage / completeness** — what fraction of the population still looks control-like (a residual, unmoved subpopulation), reported as a **condition-level fraction with uncertainty**, not a per-cell hard label.
 3. **Distribution shape change** — whether treatment shifts, widens, compresses, or *splits* the population into a bimodal/multimodal state.
 
-### Validation discipline ("evidence ladder")
+### Validation
 
 1. Develop and calibrate the scoring rule on **Plate 6** only.
 2. **Freeze the rule** before looking at Plate 14.

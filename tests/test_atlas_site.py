@@ -85,9 +85,51 @@ class AtlasSiteTests(unittest.TestCase):
             self.assertEqual(len(content), record["bytes"])
             self.assertEqual(hashlib.sha256(content).hexdigest(), record["sha256"])
 
+        extension = read_json(DATA / "extensions" / "release_manifest.json")
+        self.assertIs(extension["is_demo"], False)
+        self.assertTrue(extension["no_raw_single_cell_in_package"])
+        self.assertEqual(len(extension["downloads"]), 11)
+        for record in extension["downloads"]:
+            relative = Path(record["file"]).relative_to("data")
+            path = DATA / "extensions" / relative
+            content = path.read_bytes()
+            self.assertEqual(len(content), record["bytes"])
+            self.assertEqual(hashlib.sha256(content).hexdigest(), record["sha256"])
+
+    def test_extension_scientific_contracts(self):
+        mutation = read_json(DATA / "extensions" / "mutation_context.json")
+        cells = read_json(DATA / "extensions" / "cell_level.json")
+        dose = read_json(DATA / "extensions" / "dose_response.json")
+        self.assertIs(mutation["is_demo"], False)
+        self.assertIs(cells["is_demo"], False)
+        self.assertIs(dose["is_demo"], False)
+        self.assertEqual(len(mutation["drivers"]), 33)
+        self.assertEqual(mutation["n_response_tests"], 35_092)
+        self.assertEqual(mutation["n_response_sig"], 653)
+        self.assertEqual(mutation["n_pathway_sig"], 4)
+        self.assertIn("HC3", mutation["method"])
+        self.assertTrue(all("hc3_p" in row for row in mutation["top_response_associations"]))
+
+        self.assertEqual(cells["n_real"], 96)
+        keys = [(row["cell_line"], row["drug"], row["concentration"]) for row in cells["conditions"]]
+        self.assertEqual(len(keys), len(set(keys)))
+        for row in cells["conditions"]:
+            for key in ("control_like_frac_p90", "control_like_frac_p95", "control_like_frac_p99"):
+                self.assertGreaterEqual(row[key], 0)
+                self.assertLessEqual(row[key], 1)
+
+        self.assertEqual(dose["n_full_3dose_pseudobulk"], 18_927)
+        self.assertEqual(len(dose["pilot_dose_curves"]), 96)
+        self.assertEqual(len(dose["cell_level_pilot"]), 96)
+        for curve in dose["pilot_dose_curves"]:
+            self.assertEqual(len(curve["doses_uM"]), 3)
+            for observed, expected in zip(sorted(curve["doses_uM"]), (0.05, 0.5, 5.0)):
+                self.assertAlmostEqual(observed, expected, places=6)
+        self.assertTrue(dose["ec50"].lower().startswith("not"))
+
     def test_pages_resolve_local_assets_and_show_provenance(self):
         pages = sorted(ATLAS.glob("*.html"))
-        self.assertEqual(len(pages), 5)
+        self.assertEqual(len(pages), 9)
         for page in pages:
             text = page.read_text(encoding="utf-8")
             self.assertIn("static.cloudflareinsights.com/beacon.min.js", text)
@@ -103,10 +145,14 @@ class AtlasSiteTests(unittest.TestCase):
     def test_release_and_github_size_guard(self):
         release = read_json(DATA / "release.json")
         self.assertIs(release["is_demo"], False)
-        self.assertEqual(release["release"], "v0.1.0")
+        self.assertEqual(release["release"], "v0.2.0")
         self.assertEqual(
-            release["site_archive_sha256"],
+            release["base_site_archive_sha256"],
             "f709360677d8ffaf1ea88dff347c115a573b17f255aef6edd6b27e5b7f55f264",
+        )
+        self.assertEqual(
+            release["extension_source_archive_sha256"],
+            "2b60e9d618161fabf84b302a6a7553bdcb0abddac84718231b1fcbd4ff40e207",
         )
         oversized = [path for path in ATLAS.rglob("*") if path.is_file() and path.stat().st_size >= 100_000_000]
         self.assertEqual(oversized, [])

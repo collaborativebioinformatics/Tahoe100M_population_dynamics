@@ -1,0 +1,84 @@
+{
+ "is_demo": false,
+ "version": "ctx-cell-dose-v1",
+ "generated": "2026-08-26",
+ "git_sha": "95c5a54",
+ "source_run": "/nfsscratch/Users/xwu76/tahoe/runs/full_atlas_20260826_113218",
+ "source_verified": "SHA-256 vs release_manifest.json (see logs/manifest_verification.json)",
+ "source_archive_sha256": "2b60e9d618161fabf84b302a6a7553bdcb0abddac84718231b1fcbd4ff40e207",
+ "integration_note": "Website methods text reconciled to the final HPC report and shipped hc3_p/beta_altered fields: organ-adjusted OLS with HC3 robust SE, not permutation.",
+ "modules": {
+  "A_mutation_context": "REAL",
+  "B_cell_level_pilot": "REAL (plate14 pilot)",
+  "C_dose": "pseudobulk REAL + cell-level pilot"
+ },
+ "no_raw_single_cell_in_package": true,
+ "downloads": [
+  {
+   "name": "driver_context_catalog",
+   "file": "data/downloads/driver_context_catalog.parquet",
+   "bytes": 7735,
+   "sha256": "dea2de315d08a62b465c8e4ced3f0c96fe0d5042406497badaddf52a98640a95"
+  },
+  {
+   "name": "mutation_response_associations",
+   "file": "data/downloads/mutation_response_associations.parquet",
+   "bytes": 2227949,
+   "sha256": "998ca411b0fd92279ed17e388513b6a28ec37cecd305e9a2866c90cf5cb4a4e1"
+  },
+  {
+   "name": "mutation_pathway_associations",
+   "file": "data/downloads/mutation_pathway_associations.parquet",
+   "bytes": 78093,
+   "sha256": "be84fe3829a8f0697100b6089664a8e6732aa270affd366719ba19fc1b87ccc7"
+  },
+  {
+   "name": "pathway_condition_summary",
+   "file": "data/downloads/pathway_condition_summary.parquet",
+   "bytes": 2931880,
+   "sha256": "1519cebc9850dbb02e8b527a236314fb33a4f0efb6a45072105c9e4eb8c0ef5a"
+  },
+  {
+   "name": "cell_response_scores_summary",
+   "file": "data/downloads/cell_response_scores_summary.parquet",
+   "bytes": 20818,
+   "sha256": "57dd3029fef9b755701e32f8b2a2382baa1d46cb42c34b753448dad62a8df651"
+  },
+  {
+   "name": "control_like_fraction",
+   "file": "data/downloads/control_like_fraction.parquet",
+   "bytes": 12674,
+   "sha256": "2cb37c6051674310bc993b58f97ce8ed769cfb09c3fad78c937431051e426a1d"
+  },
+  {
+   "name": "control_like_threshold_sensitivity",
+   "file": "data/downloads/control_like_threshold_sensitivity.parquet",
+   "bytes": 10152,
+   "sha256": "b5c4f0e163e770caacbf79830fe2f395c340ff3855064819fac0771df1b86bce"
+  },
+  {
+   "name": "cell_level_validation",
+   "file": "data/downloads/cell_level_validation.parquet",
+   "bytes": 8794,
+   "sha256": "88e2157fe821c4a1a8b8125474e5652398c4d6c9bc3670103fdd22351f22b7f3"
+  },
+  {
+   "name": "dose_response_pseudobulk_full",
+   "file": "data/downloads/dose_response_pseudobulk_full.parquet",
+   "bytes": 587572,
+   "sha256": "56ceeafaa03f6ec8aab99cfc2b6e56dd26d3dfaadf39a604d6582c346696bdd8"
+  },
+  {
+   "name": "dose_trend_summary",
+   "file": "data/downloads/dose_trend_summary.parquet",
+   "bytes": 1085822,
+   "sha256": "98fb4f275d4cfdc672df655158b75728be72f462d047c8ea6d1852254800193a"
+  },
+  {
+   "name": "dose_response_cell_level_pilot",
+   "file": "data/downloads/dose_response_cell_level_pilot.parquet",
+   "bytes": 14013,
+   "sha256": "ef2c6dfe244027d66cc6e4fdb3e29b4546178324b7f23c106de55b3929d2a097"
+  }
+ ]
+}

@@ -1,0 +1,57 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore Tahoe-100M mutation-associated response, a real plate-14 cell-level pilot, and measured three-dose pseudobulk trajectories.">
+<title>Context &amp; Dose — Tahoe-100M Atlas</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/app.css">
+</head><body>
+<header class="top">
+  <a class="brand" href="../">Tahoe-100M Atlas</a>
+  <nav>
+    <a href="../">Project Home</a><a href="index.html">Overview</a><a href="ranking.html">Response Ranking</a>
+    <a href="compare.html">Compare</a><a href="search.html">Signature Search</a>
+    <a href="extensions.html">Context &amp; Dose</a><a href="downloads.html">Data</a>
+  </nav>
+</header>
+<main>
+  <section class="extension-hero">
+    <div>
+      <div class="hero-kicker">Atlas extension · real derived results</div>
+      <h1>Connect response to context, cells, and dose.</h1>
+      <p>Move from population-level signatures to driver-associated response, a held-out cell-level pilot, and measured three-dose trajectories.</p>
+      <div class="hero-actions">
+        <a class="hero-action primary" href="mutation.html">Explore mutation context →</a>
+        <a class="hero-action" href="dose.html">Trace a dose curve</a>
+      </div>
+    </div>
+    <div class="extension-flow" aria-label="Three connected analysis modules">
+      <a href="mutation.html"><span>A</span><b>Driver context</b><small>33 genes · full atlas</small></a>
+      <i aria-hidden="true">→</i>
+      <a href="celllevel.html"><span>B</span><b>Cell populations</b><small>96 conditions · pilot</small></a>
+      <i aria-hidden="true">→</i>
+      <a href="dose.html"><span>C</span><b>Dose response</b><small>18,927 trajectories</small></a>
+    </div>
+  </section>
+
+  <nav class="extension-tabs" aria-label="Context and dose modules">
+    <a href="extensions.html">Overview</a><a href="mutation.html">Mutation context</a>
+    <a href="celllevel.html">Cell-level pilot</a><a href="dose.html">Dose response</a>
+  </nav>
+
+  <div class="grid cards extension-stats" id="extensionStats"></div>
+
+  <section class="module-grid">
+    <a class="module-card" href="mutation.html"><span class="module-letter">A</span><div><span class="evidence-badge real">FULL ATLAS</span><h2>Which driver contexts shift drug response?</h2><p>Explore organ-adjusted, mutation-associated effects and Hallmark ORA context.</p></div><b aria-hidden="true">↗</b></a>
+    <a class="module-card" href="celllevel.html"><span class="module-letter">B</span><div><span class="evidence-badge pilot">PLATE 14 PILOT</span><h2>How much of a treated population remains control-like?</h2><p>Inspect real cells scored against matched DMSO with a held-out signature.</p></div><b aria-hidden="true">↗</b></a>
+    <a class="module-card" href="dose.html"><span class="module-letter">C</span><div><span class="evidence-badge real">3 MEASURED DOSES</span><h2>How does response magnitude change with dose?</h2><p>Trace descriptive pseudobulk curves and connect available plate-14 pilot points.</p></div><b aria-hidden="true">↗</b></a>
+  </section>
+
+  <div class="provenance-grid">
+    <div class="note"><b>Scientific boundary.</b> Mutation results are associations, not causal biomarkers. “Not annotated as driver” is not verified wild type. The cell-level module is a single-plate pilot with cell-sampling—not biological-replicate—uncertainty. No EC50 is reported.</div>
+    <div class="note" id="extensionProvenance">Loading extension provenance…</div>
+  </div>
+</main>
+<footer><a href="../">Project home</a> · <a href="https://doi.org/10.1101/2025.02.20.639398">Original paper</a> · <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M">Original data</a> · <a href="downloads.html">Downloads</a> · <span data-release>Loading version…</span></footer>
+<script src="assets/common.js"></script><script src="assets/extensions.js"></script><script src="assets/extension-overview.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body></html>

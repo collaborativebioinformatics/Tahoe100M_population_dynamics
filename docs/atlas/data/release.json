@@ -1,10 +1,13 @@
 {
-  "release": "v0.1.0",
+  "release": "v0.2.0",
   "updated": "August 26, 2026",
   "generated_at": "2026-08-26T14:29:43-05:00",
   "source_run": "full_atlas_20260826_113218",
-  "site_build": "site_build_20260826_142943",
+  "site_build": "github_v02_integration_20260826",
   "analysis_git_sha": "95c5a54",
-  "site_archive_sha256": "f709360677d8ffaf1ea88dff347c115a573b17f255aef6edd6b27e5b7f55f264",
+  "base_release": "v0.1.0",
+  "base_site_archive_sha256": "f709360677d8ffaf1ea88dff347c115a573b17f255aef6edd6b27e5b7f55f264",
+  "extension_release": "ctx-cell-dose-v1",
+  "extension_source_archive_sha256": "2b60e9d618161fabf84b302a6a7553bdcb0abddac84718231b1fcbd4ff40e207",
   "is_demo": false
 }

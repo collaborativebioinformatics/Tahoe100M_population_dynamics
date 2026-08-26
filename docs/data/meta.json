@@ -1,0 +1,60 @@
+{
+  "data_version": "1.0.0",
+  "generated_utc": "2026-08-26T21:33:06Z",
+  "source": "Tahoe-100M pseudobulk differential expression (1026 shards)",
+  "n_conditions": 65218,
+  "n_cell_lines": 50,
+  "n_drugs": 379,
+  "n_plates": 14,
+  "plates": [
+    "1",
+    "10",
+    "11",
+    "12",
+    "13",
+    "14",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9"
+  ],
+  "doses_uM": [
+    0.05000000074505806,
+    0.5,
+    5.0
+  ],
+  "de_direction": "treated - matched DMSO (positive log2FC = up in drug); confirmed via Bortezomib heat-shock/proteasome signature",
+  "response_metric": "rms_log2fc_robust = sqrt(mean(winsor(log2FC)^2)) over finite genes; winsor cap from global 99.5th pct of |log2FC|",
+  "web_index_topk_per_direction": 100,
+  "signature_truncated_for_web_index": true,
+  "validation": {
+    "seed": 42,
+    "n_sampled": 200,
+    "n_eligible": 62526,
+    "min_genes_per_direction": 15,
+    "n_conditions": 65218,
+    "n_genes_index": 39654,
+    "recall_at_1": 1.0,
+    "recall_at_10": 1.0,
+    "recall_at_50": 1.0,
+    "reversal_recall_at_1": 1.0,
+    "reversal_recall_at_10": 1.0,
+    "reversal_recall_at_50": 1.0,
+    "replicate_median_topk_cosine": 0.09574937549930719,
+    "replicate_median_shared_spearman": 0.7583055458055459,
+    "random_median_topk_cosine": 0.0018693326754241684,
+    "replicate_topk_cosine_pct": {
+      "0.25": 0.010686101771897915,
+      "0.5": 0.09574937549930719,
+      "0.75": 0.16805768174668584,
+      "0.9": 0.23866708385557495
+    },
+    "replicate_gt_random_mannwhitney_p": 0.0,
+    "n_random_pairs": 5000
+  },
+  "is_demo": false
+}

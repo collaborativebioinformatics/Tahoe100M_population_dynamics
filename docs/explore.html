@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Rank cell lines by transcriptional response to a drug and dose, or rank drugs within a cell line — real Tahoe-100M pseudobulk DE.">
+  <title>Explore · Tahoe-100M response ranking</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/tools.css">
+  <script src="assets/config.js"></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/layout.js" defer></script>
+  <script src="assets/explore.js" defer></script>
+</head>
+<body>
+  <div id="app-header"></div>
+  <main id="main-content" class="tool-main">
+    <section class="tool-hero">
+      <div class="eyebrow"><span class="status-dot"></span> Module 1 · Drug × Cell line</div>
+      <h1>Transcriptional response ranking</h1>
+      <p>Pick a drug and a real measured dose to rank cell lines by <b>transcriptional response strength</b>, or pick a cell line to rank drugs. Response strength is the robust magnitude of the pseudobulk differential-expression signature (treated vs. matched DMSO). It is <b>not</b> drug sensitivity, viability, killing, or clinical efficacy.</p>
+    </section>
+
+    <div class="data-banner">
+      <span class="real-chip">real data</span>
+      <span>Data version <b data-meta-version>…</b> · generated <b data-meta-date>…</b></span>
+      <span><b data-meta-nconditions>…</b> conditions · <b data-meta-ndrugs>…</b> drugs · <b data-meta-ncells>…</b> cell lines</span>
+    </div>
+
+    <div class="tool-grid with-side">
+      <aside class="panel" aria-label="Ranking controls">
+        <h2>Build a ranking</h2>
+        <div class="field">
+          <label>Ranking mode</label>
+          <div class="chip-toggle" role="group" aria-label="Ranking mode">
+            <button type="button" id="mode-drug" aria-pressed="true">Drug → cell lines</button>
+            <button type="button" id="mode-cell" aria-pressed="false">Cell line → drugs</button>
+          </div>
+        </div>
+        <div class="field" id="anchor-field">
+          <label for="anchor-select" id="anchor-label">Drug</label>
+          <select id="anchor-select"></select>
+          <span class="hint" id="anchor-hint"></span>
+        </div>
+        <div class="field">
+          <label for="dose-select">Dose</label>
+          <select id="dose-select"></select>
+          <span class="hint">Doses are the real concentrations measured on each plate.</span>
+        </div>
+        <div class="field">
+          <label><input type="checkbox" id="best-dose"> Best observed dose per target</label>
+          <span class="hint">Ranks each target by its strongest response across any measured dose (labelled <i>best observed</i> — doses differ).</span>
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn secondary" id="share-btn" type="button">Share link</button>
+          <button class="btn secondary" id="csv-btn" type="button">Download CSV</button>
+        </div>
+      </aside>
+
+      <div>
+        <div class="metric-row" id="summary-metrics"></div>
+        <div class="panel">
+          <div style="display:flex; justify-content:space-between; align-items:center; gap:12px; flex-wrap:wrap;">
+            <h3 id="rank-title" style="margin:0;">Ranking</h3>
+            <span class="hint" id="rank-note"></span>
+          </div>
+          <div class="table-scroll">
+            <table class="data-table" id="rank-table">
+              <thead></thead><tbody></tbody>
+            </table>
+          </div>
+          <div id="rank-empty" class="empty-state" hidden>Not computed for this selection.</div>
+        </div>
+        <div class="footnote-sci">
+          <b>How to read this.</b> Rank uses <b>robust RMS log2 fold-change</b> — the root-mean-square of winsorized log2FC across all tested genes for a condition, so ranking is not biased by how many genes passed expression filtering. A <b>replicate reliability</b> badge shows the cosine agreement of the two replicate plates for that cell line × drug × dose, when both were measured. High response magnitude means the cells' transcriptome moved a lot; it does not tell you whether the cells died.
+        </div>
+      </div>
+    </div>
+  </main>
+  <div id="app-footer"></div>
+</body>
+</html>

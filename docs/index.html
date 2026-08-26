@@ -115,12 +115,43 @@
         <div><strong>$0</strong><span>application server required</span></div>
       </section>
 
+      <section class="section" id="real-tools" aria-label="Real query tools">
+        <div class="section-heading compact-heading">
+          <div>
+            <span class="section-kicker">Real analysis · live data</span>
+            <h2>Three research tools on the real Tahoe-100M data</h2>
+            <p>These run on the actual pseudobulk differential-expression tables (65,000+ conditions across 50 cell lines, 379 drugs, and three doses). Results are real transcriptional-response measures — not demo numbers, and not drug efficacy.</p>
+          </div>
+          <aside class="resource-status" aria-label="Data status"><span></span><div><strong>Real data</strong><small>is_demo: false · versioned</small></div></aside>
+        </div>
+        <div class="resource-grid">
+          <article class="resource-card resource-data">
+            <div class="resource-card-top"><span class="resource-icon" aria-hidden="true">1</span><small>Module 1</small></div>
+            <h3>Response ranking</h3>
+            <p>Rank cell lines by transcriptional response to a drug and dose, or rank drugs within a cell line.</p>
+            <a href="explore.html">Open Explore <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="resource-card resource-anndata">
+            <div class="resource-card-top"><span class="resource-icon" aria-hidden="true">2</span><small>Module 2</small></div>
+            <h3>Compare conditions</h3>
+            <p>Compare two conditions: shared and opposite genes, top-K signature cosine, response-magnitude difference.</p>
+            <a href="compare.html">Open Compare <span aria-hidden="true">→</span></a>
+          </article>
+          <article class="resource-card resource-code">
+            <div class="resource-card-top"><span class="resource-icon" aria-hidden="true">3</span><small>Module 3</small></div>
+            <h3>Signature search</h3>
+            <p>Paste up/down genes to find conditions with similar — or reversed — transcriptional signatures.</p>
+            <a href="signature.html">Open Signature Search <span aria-hidden="true">→</span></a>
+          </article>
+        </div>
+      </section>
+
       <section class="section explorer-section" id="explorer">
         <div class="section-heading">
           <div>
             <span class="section-kicker">Interactive prototype</span>
             <h2>Build a perturbation query</h2>
-            <p>Change the condition, choose an analysis view, and run the demo to update every result panel.</p>
+            <p>Change the condition, choose an analysis view, and run the demo to update every result panel. This illustrative widget is a UI preview; the buttons above open the real-data tools.</p>
           </div>
           <div class="demo-notice"><span>Demo mode</span> Illustrative values only</div>
         </div>
@@ -342,8 +373,8 @@
             <h3>Derived data and project artifacts</h3>
             <ul class="download-list">
               <li><a href="atlas/downloads.html"><span><strong>Validated derived tables</strong><small>Parquet/CSV · versioned checksums and methods</small></span><b aria-hidden="true">→</b></a></li>
-              <li><a href="data/catalog.json" download><span><strong>Demo query catalog</strong><small>JSON · selector and metadata contract</small></span><b aria-hidden="true">↓</b></a></li>
-              <li><a href="data/results/a549-trametinib-1-mapk-population.json" download><span><strong>Example result</strong><small>JSON · illustrative standardized response</small></span><b aria-hidden="true">↓</b></a></li>
+              <li><a href="data/demo/catalog.json" download><span><strong>Demo query catalog</strong><small>JSON · selector and metadata contract</small></span><b aria-hidden="true">↓</b></a></li>
+              <li><a href="data/demo/results/a549-trametinib-1-mapk-population.json" download><span><strong>Example result</strong><small>JSON · illustrative standardized response</small></span><b aria-hidden="true">↓</b></a></li>
               <li><a href="group6-workflow.svg" download><span><strong>System workflow</strong><small>SVG · scalable architecture diagram</small></span><b aria-hidden="true">↓</b></a></li>
               <li><a href="group6-workflow.png" download><span><strong>Presentation workflow</strong><small>PNG · slide-ready export</small></span><b aria-hidden="true">↓</b></a></li>
               <li><a href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics/archive/refs/heads/main.zip"><span><strong>Project source</strong><small>ZIP · current main branch</small></span><b aria-hidden="true">↓</b></a></li>

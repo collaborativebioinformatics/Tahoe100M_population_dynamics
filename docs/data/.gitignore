@@ -1,0 +1,7 @@
+# Large derived data is hosted externally (Hugging Face) — see UPLOAD_DERIVED_DATA.md.
+# Only small real fixtures (meta.json, catalog.json) and the demo/ set are tracked.
+conditions.json
+explore/
+profiles/
+sig/
+*.zst

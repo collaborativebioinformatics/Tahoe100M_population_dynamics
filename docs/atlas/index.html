@@ -18,14 +18,21 @@
 </header>
 <main>
   <section class="atlas-hero">
-    <div class="hero-kicker">Explore real perturbation responses</div>
-    <h1>Follow the signal. Compare the context. Find the reversal.</h1>
-    <p class="sub">Explore pseudobulk differential-expression signatures across all 14 plates, with held-out replicate validation and transparent scientific limits.</p>
-    <p class="release-line"><span class="chip">REAL DATA</span> <span data-release>Loading version…</span></p>
-    <div class="hero-actions">
-      <a class="hero-action primary" href="ranking.html">Start with rankings <span aria-hidden="true">→</span></a>
-      <a class="hero-action" href="compare.html">Compare two conditions</a>
-      <a class="hero-action" href="search.html">Search a gene signature</a>
+    <div class="hero-copy">
+      <div class="hero-kicker">Explore real perturbation responses</div>
+      <h1>Follow the signal. Compare the context. Find the reversal.</h1>
+      <p class="sub">Explore pseudobulk differential-expression signatures across all 14 plates, with held-out replicate validation and transparent scientific limits.</p>
+      <p class="release-line"><span class="chip">REAL DATA</span> <span data-release>Loading version…</span></p>
+      <div class="hero-actions">
+        <a class="hero-action primary" href="ranking.html">Start with rankings <span aria-hidden="true">→</span></a>
+        <a class="hero-action" href="compare.html">Compare two conditions</a>
+        <a class="hero-action" href="search.html">Search a gene signature</a>
+      </div>
+    </div>
+    <div class="hero-viz" aria-label="Top drugs by mean response magnitude">
+      <div class="viz-eyebrow"><span>Global response leaders</span><span>mean magnitude</span></div>
+      <div id="heroBars" class="hero-bars"><span class="hero-loading">Loading real responses…</span></div>
+      <div id="heroVizDetail" class="hero-viz-detail">Across all 50 cell lines</div>
     </div>
   </section>
 
@@ -33,12 +40,24 @@
 
   <div class="note" id="method"></div>
 
-  <div class="split">
-    <div class="panel"><h2 style="margin-top:0">Strongest-response drugs</h2><ol id="topdrugs" class="muted"></ol>
-      <p class="muted" style="font-size:12px">Mean response magnitude across cell lines.</p></div>
-    <div class="panel"><h2 style="margin-top:0">Most-recurrent pathways</h2><ol id="toppw" class="muted"></ol>
-      <p class="muted" style="font-size:12px">Hallmark ORA, by number of enriched conditions.</p></div>
-  </div>
+  <section class="response-playground" aria-labelledby="playTitle">
+    <div class="playground-head">
+      <div><div class="section-kicker">Interactive response lens</div><h2 id="playTitle">Pick a cell line. Watch its drug landscape change.</h2></div>
+      <div class="playground-controls">
+        <label for="cellExplorer">Cell line</label>
+        <select id="cellExplorer" aria-label="Choose a cell line"></select>
+        <button id="randomCell" class="ghost" type="button">Surprise me ✦</button>
+      </div>
+    </div>
+    <div class="playground-grid">
+      <div id="responseBars" class="response-bars" aria-live="polite"><span class="muted">Loading response landscape…</span></div>
+      <aside class="response-inspector">
+        <div class="inspector-label">FOCUS</div>
+        <div id="responseDetail" class="response-detail">Hover or focus a drug to inspect its response.</div>
+        <a href="ranking.html">Open the complete 50 × 379 map <span aria-hidden="true">→</span></a>
+      </aside>
+    </div>
+  </section>
 
   <div class="action-grid" aria-label="Atlas tools">
     <a class="action-card" href="ranking.html"><span class="icon" aria-hidden="true">↗</span><b>Rank responses</b><span>Find the strongest transcriptional shifts by cell line or drug.</span></a>
@@ -52,26 +71,6 @@
 </main>
 <footer><a href="../">Project home</a> · <a href="https://doi.org/10.1101/2025.02.20.639398">Original paper</a> · <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M">Original data</a> · <a href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics">GitHub</a> · <span data-release>Loading version…</span></footer>
 <script src="assets/common.js"></script>
-<script>
-(async ()=>{
-  const s = await loadJSON('site_stats.json');
-  const cards=[['conditions','Conditions'],['cell_lines','Cell lines'],['drugs','Drugs'],
-    ['genes_indexed','Genes indexed'],['pathways','Pathways'],['n_trajectories_3dose','3-dose trajectories']];
-  const box=document.getElementById('stats');
-  cards.forEach(([k,l])=>{
-    const value=el('div',{class:'k'},['0']);
-    box.appendChild(el('div',{class:'card'},[value,el('div',{class:'l'},[l])]));
-    animateNumber(value,s[k]);
-  });
-  const method=document.getElementById('method'); method.textContent='';
-  method.append('Held-out plate-14 replicate concordance: ');
-  method.appendChild(el('b',{},[`median cosine ${s.heldout_median_cosine}`]));
-  method.append('. Response magnitude reproduces the prior run to ');
-  method.appendChild(el('b',{},[`r = ${Number(s.reproducibility_r).toFixed(6)}`]));
-  method.append('. Uncentered truncated-SVD response geometry, seed 42.');
-  const od=document.getElementById('topdrugs'); s.top_drugs.forEach(d=> od.appendChild(el('li',{},[d])));
-  const op=document.getElementById('toppw'); s.top_pathways.forEach(p=> op.appendChild(el('li',{},[p])));
-})().catch(e=>document.getElementById('method').textContent=e.message);
-</script>
+<script src="assets/overview.js"></script>
 <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
 </body></html>

@@ -45,6 +45,15 @@ tmp/
 work/
 data/raw/
 
+# --- Logs / SGE job output (qsub scripts use -cwd with no -o, so a job
+#     submitted from the repo would drop <JobName>.o<jobid> here) ---
+*.log
+logs/
+*.o[0-9]*
+*.e[0-9]*
+*.po[0-9]*
+*.pe[0-9]*
+
 # --- Secrets / tokens (never expose HF / GitHub / DNAnexus credentials) ---
 *.env
 .env*

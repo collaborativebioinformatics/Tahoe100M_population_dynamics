@@ -11,6 +11,11 @@ Sokolova's response-completeness workstream.
 - `response_completeness.py`: baseline condition-level estimators for robust
   response magnitude, DMSO-calibrated residual fraction/coverage, Wilson
   intervals, and dispersion change.
+- `run_response_completeness.py`: batch CLI for CSV/Parquet tables containing a
+  frozen per-cell response score. It emits aggregate condition-level results
+  and embeds the required DMSO-versus-DMSO negative control.
+- `tests/`: deterministic software tests for metric and batch behavior.
+- `requirements.txt`: runtime dependencies for inventory and batch analysis.
 - `../docs/RESPONSE_COMPLETENESS.md`: scientific specification, validation
   design, terminology, assumptions, and limitations.
 
@@ -50,6 +55,36 @@ print(result.to_dict())
 
 The held-out DMSO vector should also be passed as the "treated" vector in a
 negative-control run to quantify DMSO-versus-DMSO behavior.
+
+
+## Batch usage
+
+The input must contain a prespecified per-cell response score plus condition and
+sample metadata. The following column names are defaults and can be overridden:
+
+```bash
+python analysis/run_response_completeness.py scores.parquet \
+  --output plate6_results.json \
+  --plate plate6 \
+  --calibration-sample DMSO_SAMPLE_A \
+  --matched-control-sample DMSO_SAMPLE_B \
+  --group-columns cell_line_id drug dose \
+  --score-column response_score \
+  --min-cells 30 \
+  --warnings-output plate6_warnings.json
+```
+
+Run plate 14 only after the response-score definition and all parameters have
+been frozen from plate 6. Input score tables should not be committed when they
+contain cell-level identifiers or large data.
+
+## Software checks
+
+```bash
+python -m pip install -r analysis/requirements.txt pytest
+python -m compileall -q analysis
+python -m pytest -q analysis/tests
+```
 
 ## Next steps after real-data inventory
 

@@ -92,12 +92,13 @@ Team-facing files are documented in the [`docs/data` integration guide](docs/dat
 ## Group 6
 
 | Team member | Current focus |
-|---|---|
+| :--- | :--- |
 | **Don Baldwin** — Lead | Sequence-data access and project coordination |
 | Abolaji Shiwoku | Statistical models for population dynamics |
+| Anna Sokolova | Response-completeness scoring, DMSO calibration, QC checks, and plate 6/14 validation |
 | Cecilia Mathó | PCA tool |
 | Tuneer R. Mallick | Trajectory tool |
-| Xia (Candice) Wu | Interface and website design |
+| Xia (Candice) Wu | Dataset user interface |
 | Gerald McCollum | Writing and documentation |
 
 ## Run locally

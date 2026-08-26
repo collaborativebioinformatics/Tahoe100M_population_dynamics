@@ -1,0 +1,7 @@
+# Keep the 386 MB uncompressed HPC export out of Git. Production tracks
+# individually compressed *.json.gz shards and the compact signature binaries.
+conditions.json
+explore/**/*.json
+profiles/**/*.json
+sig/*.json
+*.zst

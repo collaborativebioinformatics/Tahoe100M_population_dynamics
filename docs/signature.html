@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Paste up/down gene signatures and find Tahoe-100M conditions with similar or reversed transcriptional responses.">
+  <title>Signature Search · Tahoe-100M</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/tools.css">
+  <script src="assets/config.js"></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/layout.js" defer></script>
+  <script src="assets/signature.js" defer></script>
+</head>
+<body>
+  <div id="app-header"></div>
+  <main id="main-content" class="tool-main">
+    <section class="tool-hero">
+      <div class="eyebrow"><span class="status-dot"></span> Module 3 · Signature Search</div>
+      <h1>Gene signature &amp; reversal search</h1>
+      <p>Paste a set of up- and down-regulated genes. The tool returns Tahoe-100M conditions whose transcriptional signature is most <b>similar</b> (top matches) and most <b>reversed</b> (top reversers). Scores are an exploratory similarity measure — no p-value is claimed.</p>
+    </section>
+
+    <div class="data-banner">
+      <span class="real-chip">real data</span>
+      <span>Data version <b data-meta-version>…</b> · <b data-meta-nconditions>…</b> conditions indexed</span>
+      <span>IDF-weighted top-K signed cosine · reversal = negative score</span>
+    </div>
+
+    <div class="tool-grid with-side">
+      <aside class="panel" aria-label="Query">
+        <h2>Query signature</h2>
+        <div class="field">
+          <label for="up-genes">Up genes</label>
+          <textarea id="up-genes" placeholder="e.g. HSPA6, HSPA1A, DDIT3&#10;one per line or comma/space separated"></textarea>
+        </div>
+        <div class="field">
+          <label for="down-genes">Down genes</label>
+          <textarea id="down-genes" placeholder="e.g. MYC, CCND1, MKI67"></textarea>
+        </div>
+        <div class="filters-row" style="margin-bottom:12px;">
+          <div class="field"><label for="f-cell">Cell line</label><select id="f-cell"><option value="">Any</option></select></div>
+          <div class="field"><label for="f-drug">Drug</label><select id="f-drug"><option value="">Any</option></select></div>
+        </div>
+        <div class="filters-row" style="margin-bottom:12px;">
+          <div class="field"><label for="f-dose">Dose</label><select id="f-dose"><option value="">Any</option></select></div>
+          <div class="field"><label for="f-organ">Tissue / organ</label><select id="f-organ"><option value="">Any</option></select></div>
+        </div>
+        <div class="field">
+          <label for="f-rep">Min replicate reliability (Spearman ρ)</label>
+          <input type="text" id="f-rep" inputmode="decimal" placeholder="e.g. 0.5 (optional)">
+        </div>
+        <div style="display:flex; gap:8px; flex-wrap:wrap;">
+          <button class="btn" id="search-btn" type="button">Search</button>
+          <button class="btn secondary" id="example-btn" type="button">Load example</button>
+          <button class="btn secondary" id="share-btn" type="button">Share</button>
+        </div>
+        <p class="hint" id="coverage-note" style="margin-top:12px;"></p>
+      </aside>
+
+      <div id="results">
+        <div class="empty-state">Paste at least 3 recognized genes and press <b>Search</b>.</div>
+      </div>
+    </div>
+    <div class="footnote-sci">
+      <b>Method &amp; limits.</b> Each condition is represented by its top-K up/down DE genes, weighted by winsorized log2FC × inverse document frequency (so ubiquitous stress/cell-cycle genes don't dominate), and L2-normalized. Query up genes count +1, down genes −1; the match score is their signed dot product with each condition. Positive = similar signature; negative = candidate reversal. This is an <b>exploratory similarity score</b>, not a calibrated statistic — there is no validated null model, so no p-values are shown. Results with only 1–2 overlapping genes are de-ranked and flagged.
+    </div>
+  </main>
+  <div id="app-footer"></div>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body>
+</html>

@@ -182,8 +182,8 @@ function applyCatalog(payload) {
 async function loadDataSources() {
   try {
     const [catalogPayload, indexPayload] = await Promise.all([
-      fetchJson("data/catalog.json"),
-      fetchJson("data/result-index.json")
+      fetchJson("data/demo/catalog.json"),
+      fetchJson("data/demo/result-index.json")
     ]);
     applyCatalog(catalogPayload);
     resultIndex = new Map((indexPayload.entries || []).map((entry) => [entry.key, entry]));

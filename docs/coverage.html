@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Coverage and quality control for the Tahoe-100M real query tools: conditions, doses, plates, replicate reliability, and signature-search validation.">
+  <title>Coverage &amp; QC · Tahoe-100M</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/tools.css">
+  <script src="assets/config.js"></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/layout.js" defer></script>
+  <script src="assets/coverage.js" defer></script>
+</head>
+<body>
+  <div id="app-header"></div>
+  <main id="main-content" class="tool-main">
+    <section class="tool-hero">
+      <div class="eyebrow"><span class="status-dot"></span> Coverage &amp; QC</div>
+      <h1>What is covered — and how reliable it is</h1>
+      <p>This dataset is built from the real Tahoe-100M pseudobulk differential-expression tables. Below is exactly what is represented, and the quality-control evidence behind the three query tools.</p>
+    </section>
+
+    <div class="data-banner">
+      <span class="real-chip">real data</span>
+      <span>Data version <b data-meta-version>…</b> · generated <b data-meta-date>…</b></span>
+    </div>
+
+    <div class="metric-row" id="top-metrics"></div>
+
+    <div class="tool-grid" style="margin-top:8px">
+      <div class="panel">
+        <h2>Signature-search validation</h2>
+        <p class="muted">Self-recall: for a sample of high-quality conditions, half of each signature's top genes were used as a query to see whether the tool ranks the original condition highly. Reversal recall checks that the sign-flipped query recovers it as a top reverser. Seed 42.</p>
+        <div class="metric-row" id="val-metrics"></div>
+        <p class="muted" id="rep-note"></p>
+      </div>
+
+      <div class="panel">
+        <h2>Conditions by dose</h2>
+        <div class="table-scroll"><table class="data-table" id="dose-table"><thead></thead><tbody></tbody></table></div>
+      </div>
+
+      <div class="panel">
+        <h2>Top cell lines &amp; drugs by coverage</h2>
+        <div class="gene-cols two">
+          <div><h3>Cell lines</h3><div class="table-scroll"><table class="data-table" id="cell-table"><thead></thead><tbody></tbody></table></div></div>
+          <div><h3>Drugs</h3><div class="table-scroll"><table class="data-table" id="drug-table"><thead></thead><tbody></tbody></table></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="footnote-sci">
+      <b>Scientific limitations.</b> Response strength is a transcriptional-signature magnitude, not viability, killing, or clinical efficacy. Each condition tests the full gene universe, but low-expression genes are independent-filtered by DESeq2, so the finite gene set differs per condition — ranking therefore uses a mean-based robust RMS to stay comparable. The web signature index keeps only the top-K up/down genes per condition, so overlaps and cosines are <b>top-K</b> measures, not full-transcriptome correlations. Similarity scores are exploratory (no calibrated null model / p-value).
+    </div>
+  </main>
+  <div id="app-footer"></div>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body>
+</html>

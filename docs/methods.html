@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Methods and deployment for the Tahoe-100M real query tools.">
+  <title>Methods · Tahoe-100M query tools</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/tools.css">
+  <script src="assets/config.js"></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/layout.js" defer></script>
+</head>
+<body>
+  <div id="app-header"></div>
+  <main id="main-content" class="tool-main">
+    <section class="tool-hero">
+      <div class="eyebrow"><span class="status-dot"></span> Methods</div>
+      <h1>How the real query tools are built</h1>
+      <p>Every number in Explore, Compare, and Signature Search is derived from the Tahoe-100M pseudobulk differential-expression tables (1,026 shards, ~4.1 billion gene×condition rows). No demo or random values are used (<code>is_demo: false</code>).</p>
+    </section>
+
+    <div class="data-banner">
+      <span class="real-chip">real data</span>
+      <span>Version <b data-meta-version>…</b> · generated <b data-meta-date>…</b> · <b data-meta-nconditions>…</b> conditions</span>
+    </div>
+
+    <div class="panel"><h2>1 · Input &amp; direction</h2>
+      <p>Each condition is a <b>(cell line × drug × concentration × plate)</b> tuple. The differential-expression contrast is <b>treated − matched DMSO</b> (DESeq2), so a positive log2 fold-change means the gene is up-regulated by the drug. Direction was confirmed biologically — e.g. Bortezomib (a proteasome inhibitor) shows the expected heat-shock induction (HSPA6, HSPA1A/B) as its strongest up genes. The full gene universe (62,710 genes) is tested per condition; low-expression genes are independent-filtered by DESeq2 and appear as null log2FC, so the finite gene set differs slightly between conditions.</p>
+    </div>
+
+    <div class="panel"><h2>2 · Response magnitude</h2>
+      <p>Transcriptional <b>response strength</b> = robust RMS of the winsorized log2 fold-changes across a condition's tested genes: <code>rms = sqrt(mean(clip(log2FC, ±cap)²))</code>. The winsor cap is the global 99.5th percentile of |log2FC| (seed 42 subsample of shards) so a few extreme genes cannot dominate. RMS is mean-based, so conditions with different numbers of filtered genes remain comparable — a raw L2 norm (also stored as <code>response_magnitude_l2</code>) is not comparable across conditions and is not used for ranking. <b>This is not drug sensitivity, viability, killing, or clinical efficacy.</b></p>
+    </div>
+
+    <div class="panel"><h2>3 · Signatures &amp; search</h2>
+      <p>For every condition we keep its top up- and top down-regulated genes (top-200 for profiles; the browser search index uses top-K per direction, recorded in <code>meta.json</code>). Each gene's signed weight is its winsorized log2FC × inverse-document-frequency (IDF), where IDF down-weights genes that appear in many conditions' signatures (common stress / cell-cycle programs). Weights are L2-normalized per condition. A query scores each condition as the signed dot product of query genes (+1 up, −1 down) with the condition's signature: <b>positive = similar, negative = candidate reversal</b>. Because the index is truncated to top-K, all overlaps and cosines are labelled <b>top-K signature</b> measures, never full-transcriptome correlations. Scores are exploratory — there is no validated null model, so no p-values are reported.</p>
+    </div>
+
+    <div class="panel"><h2>4 · Replicate reliability</h2>
+      <p>When the same cell line × drug × dose was measured on two plates, we report the agreement of their signatures (top-K cosine and Spearman over shared genes) as a separate QC badge. It is never folded into the response-strength ranking. See <a href="coverage.html">Coverage &amp; QC</a> for the validation numbers.</p>
+    </div>
+
+    <div class="panel"><h2>5 · Static, free deployment</h2>
+      <p>The site is fully static (GitHub Pages). All three tools run in the browser with no server, database, or paid API: selector metadata and per-drug/per-cell rankings are small JSON; per-condition profiles are sharded JSON loaded on demand; the signature search uses a compact binary sparse inverted index (Int32 condition ids + Float32 weights) that scores all conditions client-side in well under a second. Large derived files are hosted separately (e.g. Hugging Face) and are <b>not</b> committed to Git. The data base URL is configurable in <code>assets/config.js</code>, via <code>?data=</code>, or <code>localStorage</code>.</p>
+      <p class="muted">Reproducibility: analysis ran on the University of Iowa Argon SGE cluster (qsub). See <code>METHODS.md</code>, <code>DATA_DICTIONARY.md</code>, <code>LIMITATIONS.md</code>, and <code>DEPLOYMENT.md</code> in the repository.</p>
+    </div>
+
+    <div class="footnote-sci">
+      <b>Credit.</b> Interface &amp; website design: Xia (Candice) Wu. Analysis pipeline and dataset assembled by Group 6 during the 8th Pan-Structural Variation Hackathon in the Cloud, using the Tahoe-100M atlas (Zhang et&nbsp;al., bioRxiv 2025, doi:10.1101/2025.02.20.639398).
+    </div>
+  </main>
+  <div id="app-footer"></div>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body>
+</html>

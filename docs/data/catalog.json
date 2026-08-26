@@ -1,23 +1,2700 @@
 {
-  "schema_version": "1.0.0",
-  "data_status": "illustrative_demo",
-  "cell_lines": [
-    { "id": "A549", "label": "A549 · lung", "tissue": "lung", "cellosaurus": "CVCL_0023" },
-    { "id": "MCF7", "label": "MCF7 · breast", "tissue": "breast", "cellosaurus": "CVCL_0031" },
-    { "id": "PC3", "label": "PC3 · prostate", "tissue": "prostate", "cellosaurus": "CVCL_0035" },
-    { "id": "HT29", "label": "HT29 · colorectal", "tissue": "colorectal", "cellosaurus": "CVCL_0320" }
-  ],
-  "drugs": [
-    { "id": "Trametinib", "label": "Trametinib", "target": "MEK1/2" },
-    { "id": "Bortezomib", "label": "Bortezomib", "target": "proteasome" },
-    { "id": "Vorinostat", "label": "Vorinostat", "target": "HDAC" },
-    { "id": "Selumetinib", "label": "Selumetinib", "target": "MEK1/2" }
-  ],
-  "doses_um": [0, 0.1, 1, 10],
-  "features": ["MAPK signaling", "DUSP6", "JUN", "MYC targets", "Apoptosis"],
-  "analyses": [
-    { "id": "population", "label": "Population statistics" },
-    { "id": "pca", "label": "PCA analysis" },
-    { "id": "trajectory", "label": "Dose trajectory" }
-  ]
+"cell_lines": [
+{
+"id": "A-172",
+"organ": "CNS/Brain",
+"depmap": "ACH-000558",
+"cellosaurus": "CVCL_0131",
+"drivers": "ABL1,CDKN2A,CDKN2B,PTEN,RB1",
+"n": 1302
+},
+{
+"id": "A-427",
+"organ": "Lung",
+"depmap": "ACH-000757",
+"cellosaurus": "CVCL_1055",
+"drivers": "CDKN2A,CDKN2B,CTNNB1,KRAS,POLE,SMARCA4",
+"n": 1304
+},
+{
+"id": "A498",
+"organ": "Kidney",
+"depmap": "ACH-000555",
+"cellosaurus": "CVCL_1056",
+"drivers": "APC,CDKN2A,CDKN2B,PIK3CB,SMARCA4,VHL",
+"n": 1304
+},
+{
+"id": "A549",
+"organ": "Lung",
+"depmap": "ACH-000681",
+"cellosaurus": "CVCL_0023",
+"drivers": "CDKN2A,CDKN2B,KRAS,SMARCA4,STK11,ZFHX3",
+"n": 1306
+},
+{
+"id": "AN3 CA",
+"organ": "Uterus",
+"depmap": "ACH-000940",
+"cellosaurus": "CVCL_0028",
+"drivers": "ARID1A,FBXW7,FGFR2,HRAS,KMT2D,MAPK3,MET,PIK3R1,POLE,PTEN,SETD1B,SMARCA4,TERT,TP53,WNK2,ZFHX3",
+"n": 1303
+},
+{
+"id": "AsPC-1",
+"organ": "Pancreas",
+"depmap": "ACH-000222",
+"cellosaurus": "CVCL_0152",
+"drivers": "CDKN2A,FBXW7,KRAS,RNF43,SMAD4,TP53",
+"n": 1305
+},
+{
+"id": "BT-474",
+"organ": "Breast",
+"depmap": "ACH-000927",
+"cellosaurus": "CVCL_0179",
+"drivers": "ACVR2A,ATM,BRCA2,ERBB2,HNF1A,KMT2D,LASP1,MAPK1,PIK3CA,TGFBR2,TP53,WNK2",
+"n": 1302
+},
+{
+"id": "C-33 A",
+"organ": "Cervix",
+"depmap": "ACH-001333",
+"cellosaurus": "CVCL_1094",
+"drivers": "ARID1A,BRCA2,HNF1A,KMT2D,PIK3CA,PTEN,RB1,SETD1B,SMARCA4,TP53,WNK2,ZFHX3",
+"n": 1306
+},
+{
+"id": "C32",
+"organ": "Skin",
+"depmap": "ACH-000580",
+"cellosaurus": "CVCL_1097",
+"drivers": "BRAF,CDKN2A,PTEN,TERT",
+"n": 1305
+},
+{
+"id": "CFPAC-1",
+"organ": "Pancreas",
+"depmap": "ACH-000138",
+"cellosaurus": "CVCL_1119",
+"drivers": "KRAS,SMAD4,TP53",
+"n": 1305
+},
+{
+"id": "CHP-212",
+"organ": "Peripheral Nervous System",
+"depmap": "ACH-000120",
+"cellosaurus": "CVCL_1125",
+"drivers": "NRAS",
+"n": 1304
+},
+{
+"id": "COLO 205",
+"organ": "Bowel",
+"depmap": "ACH-001039",
+"cellosaurus": "CVCL_0218",
+"drivers": "APC,BRAF,CTNNB1,GNAS,MTOR,PMS2,TP53",
+"n": 1307
+},
+{
+"id": "H4",
+"organ": "CNS/Brain",
+"depmap": "ACH-000389",
+"cellosaurus": "CVCL_1239",
+"drivers": "CDKN2A,CDKN2B,PTEN,TERT",
+"n": 1307
+},
+{
+"id": "HCT15",
+"organ": "Bowel",
+"depmap": "ACH-000997",
+"cellosaurus": "CVCL_0292",
+"drivers": "ACVR2A,APC,ARID1A,ATM,B2M,BRCA2,CHEK2,EP300,ERBB3,GNAS,KMT2D,KRAS,MSH6,NF1,PIK3CA,PIK3R1,POLE,PRDM2,RNF43,SETD1B,SMARCA4,TGFBR2,TP53,WNK2,ZFHX3",
+"n": 1307
+},
+{
+"id": "HEC-1-A",
+"organ": "Uterus",
+"depmap": "ACH-000954",
+"cellosaurus": "CVCL_0293",
+"drivers": "ACVR2A,ARID1A,ATM,BRAF,EP300,ERBB2,KMT2D,KRAS,MET,MSH6,MTOR,NF1,PIK3CA,PMS2,PRDM2,RNF43,SETD1B,SMAD4,SMARCA4,TP53,ZFHX3",
+"n": 1306
+},
+{
+"id": "HOP62",
+"organ": "Lung",
+"depmap": "ACH-000861",
+"cellosaurus": "CVCL_1285",
+"drivers": "B2M,KRAS,MSH6,POLE,RAF1,TERT,TP53",
+"n": 1307
+},
+{
+"id": "HS-578T",
+"organ": "Breast",
+"depmap": "ACH-000148",
+"cellosaurus": "CVCL_0332",
+"drivers": "CDKN2A,HNF1A,HRAS,NF1,PIK3R1,TP53",
+"n": 1306
+},
+{
+"id": "HT-29",
+"organ": "Bowel",
+"depmap": "ACH-000552",
+"cellosaurus": "CVCL_0320",
+"drivers": "APC,BRAF,MYC,PIK3CA,SMAD4,TP53,ZFHX3",
+"n": 1306
+},
+{
+"id": "HepG2/C3A",
+"organ": "Liver",
+"depmap": "ACH-001021",
+"cellosaurus": "CVCL_1098",
+"drivers": "ATM,EGFR,ERBB3,NRAS,TERT",
+"n": 1306
+},
+{
+"id": "Hs 766T",
+"organ": "Pancreas",
+"depmap": "ACH-000178",
+"cellosaurus": "CVCL_0334",
+"drivers": "ARID1A,CDKN2A,KRAS,SMAD4",
+"n": 1304
+},
+{
+"id": "J82",
+"organ": "Bladder/Urinary Tract",
+"depmap": "ACH-000396",
+"cellosaurus": "CVCL_0359",
+"drivers": "APC,ERBB2,FGFR3,PIK3CA,PTEN,RB1,TERT,TP53",
+"n": 1306
+},
+{
+"id": "KATO III",
+"organ": "Esophagus/Stomach",
+"depmap": "ACH-000793",
+"cellosaurus": "CVCL_0371",
+"drivers": "ATM,BRCA2,CTNNB1,FGFR2,KMT2D,TP53",
+"n": 1304
+},
+{
+"id": "LOX-IMVI",
+"organ": "Skin",
+"depmap": "ACH-000750",
+"cellosaurus": "CVCL_1381",
+"drivers": "ARID1A,BRAF,CDKN2A,NF1,TERT",
+"n": 1306
+},
+{
+"id": "LS 180",
+"organ": "Bowel",
+"depmap": "ACH-000957",
+"cellosaurus": "CVCL_0397",
+"drivers": "ACVR2A,APC,ARID1A,BRAF,BRCA2,CTNNB1,EP300,HNF1A,JAK1,KRAS,PIK3CA,PRDM2,PTEN,RNF43,SETD1B,STK11,TGFBR2,WNK2,ZFHX3",
+"n": 1306
+},
+{
+"id": "LoVo",
+"organ": "Bowel",
+"depmap": "ACH-000950",
+"cellosaurus": "CVCL_0399",
+"drivers": "ACVR2A,APC,ARID1A,B2M,CHEK2,FBXW7,FGFR3,HNF1A,KMT2D,KRAS,NF1,PIK3CB,PRDM2,RAF1,SETD1B,SMAD2,TGFBR2,WNK2",
+"n": 1307
+},
+{
+"id": "MIA PaCa-2",
+"organ": "Pancreas",
+"depmap": "ACH-000601",
+"cellosaurus": "CVCL_0428",
+"drivers": "ARID1A,CDKN2A,CDKN2B,KRAS,TP53",
+"n": 1301
+},
+{
+"id": "NCI-H1573",
+"organ": "Lung",
+"depmap": "ACH-000916",
+"cellosaurus": "CVCL_1478",
+"drivers": "CDKN2A,EGFR,ERBB3,FBXW7,KMT2D,KRAS,MET,NRAS,PIK3R1,PTPN11,RNF43,SMARCA4,STK11,TP53",
+"n": 1305
+},
+{
+"id": "NCI-H1792",
+"organ": "Lung",
+"depmap": "ACH-000496",
+"cellosaurus": "CVCL_1495",
+"drivers": "CDKN2A,KRAS,MYC,SOS1,TP53",
+"n": 1302
+},
+{
+"id": "NCI-H2030",
+"organ": "Lung",
+"depmap": "ACH-000521",
+"cellosaurus": "CVCL_1517",
+"drivers": "KRAS,POLE,STK11,TP53",
+"n": 1308
+},
+{
+"id": "NCI-H2122",
+"organ": "Lung",
+"depmap": "ACH-000311",
+"cellosaurus": "CVCL_1531",
+"drivers": "CDKN2A,CDKN2B,KRAS,MYC,STK11,TP53",
+"n": 1295
+},
+{
+"id": "NCI-H23",
+"organ": "Lung",
+"depmap": "ACH-000900",
+"cellosaurus": "CVCL_1547",
+"drivers": "ATM,KMT2D,KRAS,MYC,PMS2,SMARCA4,STK11,TP53",
+"n": 1304
+},
+{
+"id": "NCI-H2347",
+"organ": "Lung",
+"depmap": "ACH-000875",
+"cellosaurus": "CVCL_1550",
+"drivers": "B2M,EP300,KRAS,NF1,NRAS,TP53",
+"n": 1302
+},
+{
+"id": "NCI-H460",
+"organ": "Lung",
+"depmap": "ACH-000463",
+"cellosaurus": "CVCL_0459",
+"drivers": "ARID1A,CDKN2A,CDKN2B,KRAS,MAP2K1,MYC,PIK3CA,STK11,ZFHX3",
+"n": 1308
+},
+{
+"id": "NCI-H596",
+"organ": "Lung",
+"depmap": "ACH-000628",
+"cellosaurus": "CVCL_1571",
+"drivers": "KMT2D,PIK3CA,RB1,TGFBR2,TP53",
+"n": 1295
+},
+{
+"id": "NCI-H661",
+"organ": "Lung",
+"depmap": "ACH-000853",
+"cellosaurus": "CVCL_1577",
+"drivers": "BRCA2,CDKN2A,LASP1,PTPN11,SMARCA4,TP53,WNK2,ZFHX3",
+"n": 1297
+},
+{
+"id": "PANC-1",
+"organ": "Pancreas",
+"depmap": "ACH-000164",
+"cellosaurus": "CVCL_0480",
+"drivers": "AKT2,CDKN2A,CDKN2B,KRAS,TP53",
+"n": 1302
+},
+{
+"id": "Panc 03.27",
+"organ": "Pancreas",
+"depmap": "ACH-000139",
+"cellosaurus": "CVCL_1635",
+"drivers": "ATM,CDKN2A,CDKN2B,KRAS,TP53,ZFHX3",
+"n": 1305
+},
+{
+"id": "RKO",
+"organ": "Bowel",
+"depmap": "ACH-000943",
+"cellosaurus": "CVCL_0504",
+"drivers": "ACVR2A,ARID1A,B2M,BRAF,BRCA2,EP300,HNF1A,KMT2D,MSH6,NF1,NF2,PIK3CA,POLE,PRDM2,RNF43,SETD1B,SMAD3,TGFBR2,ZFHX3",
+"n": 1308
+},
+{
+"id": "RPMI-7951",
+"organ": "Skin",
+"depmap": "ACH-000348",
+"cellosaurus": "CVCL_1666",
+"drivers": "BRAF,CDKN2A,PTEN,TERT,TP53",
+"n": 1305
+},
+{
+"id": "SHP-77",
+"organ": "Lung",
+"depmap": "ACH-000790",
+"cellosaurus": "CVCL_1693",
+"drivers": "ABL1,ACVR2A,ARID1A,EGFR,KMT2D,KRAS,RAC1,SETD1B,TP53",
+"n": 1306
+},
+{
+"id": "SK-MEL-2",
+"organ": "Skin",
+"depmap": "ACH-001190",
+"cellosaurus": "CVCL_0069",
+"drivers": "CCND1,EP300,NRAS,POLE,SETD1B,TERT,TP53,ZFHX3",
+"n": 1303
+},
+{
+"id": "SNU-1",
+"organ": "Esophagus/Stomach",
+"depmap": "ACH-000932",
+"cellosaurus": "CVCL_0099",
+"drivers": "ARID1A,ATM,BRCA2,JAK1,KMT2D,KRAS,PRDM2,SETD1B,SMAD3,SMAD4,TGFBR2,WNK2",
+"n": 1304
+},
+{
+"id": "SNU-423",
+"organ": "Liver",
+"depmap": "ACH-000493",
+"cellosaurus": "CVCL_0366",
+"drivers": "ARID1A,RNF43,TERT,TP53",
+"n": 1308
+},
+{
+"id": "SW 1088",
+"organ": "CNS/Brain",
+"depmap": "ACH-000437",
+"cellosaurus": "CVCL_1715",
+"drivers": "CDKN2A,CDKN2B,NRAS,POLE,PTEN,TP53",
+"n": 1304
+},
+{
+"id": "SW 1271",
+"organ": "Lung",
+"depmap": "ACH-000890",
+"cellosaurus": "CVCL_1716",
+"drivers": "CDKN2A,CDKN2B,NRAS,PMS2,SMARCA4,TP53",
+"n": 1297
+},
+{
+"id": "SW 900",
+"organ": "Lung",
+"depmap": "ACH-000669",
+"cellosaurus": "CVCL_1731",
+"drivers": "CDKN2A,CDKN2B,KMT2D,KRAS,SMAD3,TP53",
+"n": 1306
+},
+{
+"id": "SW1417",
+"organ": "Bowel",
+"depmap": "ACH-000236",
+"cellosaurus": "CVCL_1717",
+"drivers": "APC,BRAF,PIK3R1,TP53",
+"n": 1304
+},
+{
+"id": "SW48",
+"organ": "Bowel",
+"depmap": "ACH-000958",
+"cellosaurus": "CVCL_1724",
+"drivers": "ACVR2A,APC,ARID1A,B2M,BRCA2,CTNNB1,EGFR,EP300,FBXW7,KMT2D,MAP2K1,PIK3CA,RNF43,SETD1B,SMARCA4,TGFBR2,ZFHX3",
+"n": 1303
+},
+{
+"id": "SW480",
+"organ": "Bowel",
+"depmap": "ACH-000842",
+"cellosaurus": "CVCL_0546",
+"drivers": "APC,ATM,KRAS,MYC,TP53",
+"n": 1307
+},
+{
+"id": "hTERT-HPNE",
+"organ": null,
+"depmap": "NA",
+"cellosaurus": "CVCL_C466",
+"drivers": null,
+"n": 1308
+}
+],
+"drugs": [
+{
+"id": "(R)-Verapamil (hydrochloride)",
+"target": "ABCB1",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "(S)-Crizotinib",
+"target": "NUDT1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "18\u03b2-Glycyrrhetinic acid",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "4EGI-1",
+"target": "EIF4E",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "5-Azacytidine",
+"target": "DNMT1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "5-Fluorouracil",
+"target": "TYMS",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "8-Hydroxyquinoline",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "9-ING-41",
+"target": "GSK3B",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "APTO-253",
+"target": "MYC, KLF4",
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "AT7519",
+"target": "CDK2, CDK4, CDK5, CDK6, CDK9, CDK1, CDK7, GSK3B",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "AZD-7648",
+"target": "PRKDC",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "AZD-8055",
+"target": "MTOR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "AZD1390",
+"target": "ATM",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "AZD2858",
+"target": "GSK3B, GSK3A",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Abemaciclib",
+"target": "CDK4, CDK6",
+"moa": "inhibitor/antagonist",
+"n": 173
+},
+{
+"id": "Abiraterone acetate",
+"target": "CYP17A1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Acetazolamide",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Acetohexamide",
+"target": null,
+"moa": "activator/agonist",
+"n": 200
+},
+{
+"id": "Adagrasib",
+"target": "KRAS",
+"moa": "inhibitor/antagonist",
+"n": 800
+},
+{
+"id": "Adenine",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Adenosine",
+"target": "ADORA1, ADORA2A, ADORA2B, ADORA3",
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Afatinib",
+"target": "EGFR, ERBB2",
+"moa": "inhibitor/antagonist",
+"n": 450
+},
+{
+"id": "Aliskiren",
+"target": "REN",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Allantoin",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Allopurinol",
+"target": "XDH",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Almonertinib (hydrochloride)",
+"target": "EGFR",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Almonertinib (mesylate)",
+"target": "EGFR",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Alpelisib",
+"target": "PIK3CA",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Altretamine",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Amsacrine",
+"target": "TOP2A",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Anastrozole",
+"target": "CYP19A1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Anethole trithione",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Apalutamide",
+"target": "AR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Aprepitant",
+"target": "TACR1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Arbutin",
+"target": "MYC, KLF4",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Artemether",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Artesunate",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Asciminib",
+"target": "ABL1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Aspirin",
+"target": "PTGS1, PTGS2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Ataluren",
+"target": "CFTR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Atazanavir (sulfate)",
+"target": "CYP3A4",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Auranofin",
+"target": "TXNRD1, TXNRD2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Azithromycin (hydrate)",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "BAY1125976",
+"target": "AKT1, AKT2, AKT3",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "BI-3406",
+"target": "KRAS, SOS1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "BI-78D3",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Baicalin",
+"target": null,
+"moa": "activator/agonist",
+"n": 200
+},
+{
+"id": "Balsalazide (sodium hydrate)",
+"target": "IL6, STAT3",
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Belinostat",
+"target": "HDAC6",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Belumosudil",
+"target": "ROCK2, ROCK1",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Belumosudil (mesylate)",
+"target": "ROCK2, ROCK1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Belzutifan",
+"target": "EPAS1",
+"moa": "inhibitor/antagonist",
+"n": 148
+},
+{
+"id": "Bendamustine",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Benproperine (phosphate)",
+"target": "ARPC2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Bentamapimod",
+"target": "MAPK8, MAPK9, MAPK10",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Benztropine (mesylate)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Berbamine",
+"target": "CACNA1C",
+"moa": "inhibitor/antagonist",
+"n": 250
+},
+{
+"id": "Berbamine (dihydrochloride)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Berberine (chloride hydrate)",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Bergenin",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Bestatin",
+"target": "ANPEP",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Bestatin (hydrochloride)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Betamethasone dipropionate",
+"target": "NR3C1",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Bexarotene",
+"target": "RXRA, RXRB, RXRG",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Bicalutamide",
+"target": "AR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Bimatoprost",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Bimiralisib",
+"target": "PIK3CA, PIK3CB, MTOR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Binimetinib",
+"target": "MAP2K1, MAP2K2",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Bisoprolol (hemifumarate)",
+"target": "ADRB1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Bortezomib",
+"target": "PSMB5",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Bosentan (hydrate)",
+"target": "EDNRA, EDNRB",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Brimonidine",
+"target": "ADRA2A, ADRA2B, ADRA2C",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Brivudine",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Budesonide",
+"target": "NR3C1",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Busulfan",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "CP21R7",
+"target": "GSK3B, PRKCA",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Cabozantinib (S-malate)",
+"target": "MET, KDR, AXL",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Canagliflozin",
+"target": "SLC5A2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Canagliflozin (hemihydrate)",
+"target": "SLC5A2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Capivasertib",
+"target": "AKT1, AKT2, AKT3, RPS6KB1, PRKACA, ROCK2, ROCK1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Capmatinib",
+"target": "MET",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Captopril",
+"target": "ACE",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Carbamazepine",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Carbidopa (monohydrate)",
+"target": "AHR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Celecoxib",
+"target": "PTGS2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Cepharanthine",
+"target": "CYP3A4, CYP2E1, CYP2C9",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Chlorhexidine (diacetate)",
+"target": null,
+"moa": "unclear",
+"n": 250
+},
+{
+"id": "Ciclopirox",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Cilostazol",
+"target": "PDE3A",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Cinacalcet",
+"target": "CASR",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Citalopram (hydrobromide)",
+"target": "SLC6A4",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Clobetasol propionate",
+"target": "CYP3A5,CYP3A4",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Clofarabine",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Clonidine (hydrochloride)",
+"target": "ADRA2A, ADRA2B, ADRA2C",
+"moa": "activator/agonist",
+"n": 200
+},
+{
+"id": "Clopidogrel",
+"target": "P2RY12",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Clotrimazole",
+"target": "CYP2A6, CYP51A1",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Cloxacillin (sodium)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Cobimetinib",
+"target": "MAP2K1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Crizotinib (hydrochloride)",
+"target": "ALK, MET, ROS1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Cyclosporin A",
+"target": "PPP3CA, PPP3CB, PPP3CC",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Cysteamine (hydrochloride)",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Cytarabine",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Cytarabine (hydrochloride)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "DT-061",
+"target": null,
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "DTP3",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 181
+},
+{
+"id": "Dabrafenib",
+"target": "BRAF, RAF1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Daidzin",
+"target": "ALDH2",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Dapagliflozin",
+"target": "SLC5A2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Dapagliflozin ((2S)-1,2-propanediol, hydrate)",
+"target": "SLC5A2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Daptomycin",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Darinaparsin",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Darolutamide",
+"target": "AR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Decitabine",
+"target": "DNMT1, DNMT3A, DNMT3B",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Delamanid",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Demeclocycline",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Dexamethasone",
+"target": "NR3C1",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Dexmedetomidine",
+"target": "ADRA2A, ADRA2B, ADRA2C",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Diammonium Glycyrrhizinate",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Digitoxin",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Dihydroartemisinin",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Dimethyl fumarate",
+"target": "NFE2L2",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Dinaciclib",
+"target": "CDK1, CDK2, CDK5, CDK9",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Diphenhydramine",
+"target": "HRH1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Docetaxel",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Docetaxel (Trihydrate)",
+"target": "TUBB1, TUBB3, TUBB4B, TUBB4A, TUBB2A, TUBB2B",
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Dorzolamide (hydrochloride)",
+"target": "CA2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Doxorubicin (hydrochloride)",
+"target": "TOP2A, TOP2B, TOP1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Doxycycline (monohydrate)",
+"target": "MMP7, MMP8, MMP9, MMP13, MMP14",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Drospirenone",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "ERK5-IN-2",
+"target": "MAPK7",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "ETC-206",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "EX229",
+"target": "PRKAA1",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Econazole",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Edoxaban (tosylate monohydrate)",
+"target": "F10",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Elagolix sodium",
+"target": "GNRHR",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Elimusertib hydrochloride",
+"target": "ATR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Encorafenib",
+"target": "BRAF",
+"moa": "inhibitor/antagonist",
+"n": 136
+},
+{
+"id": "Entecavir (monohydrate)",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Entrectinib",
+"target": "NTRK1, NTRK2, NTRK3, ROS1, ALK",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Epirubicin (hydrochloride)",
+"target": "TOP2A",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Eplerenone",
+"target": "NR3C2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Erdafitinib ",
+"target": null,
+"moa": null,
+"n": 146
+},
+{
+"id": "Erlotinib",
+"target": "EGFR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Erythromycin",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Esmolol (hydrochloride)",
+"target": "ADRB1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Estrone sulfate (potassium)",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Everolimus",
+"target": "MTOR, FKBP1A",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Fedratinib (hydrochloride hydrate)",
+"target": "JAK2, FLT3, RET",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Fenofibrate",
+"target": "CYP2C19, CYP2B6, CYP2C9, CYP2C8, CYP3A4, PPARA",
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Ferulic acid",
+"target": "FGFR1, FGFR2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Filgotinib",
+"target": "JAK1, JAK2, TYK2, JAK3",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Finasteride",
+"target": "SRD5A2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Fingolimod (hydrochloride)",
+"target": "PAK1",
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Flumatinib (mesylate)",
+"target": "ABL1",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Flutamide",
+"target": "AR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Fluvoxamine",
+"target": "SLC6A4",
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Fluvoxamine (maleate)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Folic acid",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Fostamatinib (disodium hexahydrate)",
+"target": "SYK, FLT3, LYN, LCK",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Fulvestrant",
+"target": "ESR1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Fumaric acid",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Furosemide",
+"target": "SLC12A1, SLC12A2",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Fusidic acid",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Futibatinib",
+"target": "FGFR1, FGFR2, FGFR3, FGFR4",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "GSK1059615",
+"target": "PIK3CA, PIK3CB, PIK3CD, PIK3CG, MTOR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Gallic acid",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Gallic acid (hydrate)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Gefitinib",
+"target": "EGFR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Gemcitabine",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Gemfibrozil",
+"target": "PPARA, CYP2C9, CYP2C19, CYP2C8, CYP1A2",
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Glasdegib",
+"target": "SMO",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Glycyrrhizic acid",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Goserelin (acetate)",
+"target": "GNRHR",
+"moa": "activator/agonist",
+"n": 200
+},
+{
+"id": "HI-TOPK-032",
+"target": "PBK",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Harringtonine",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Hesperidin",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Hexylresorcinol",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Homoharringtonine",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Hydroxyfasudil",
+"target": "ROCK1, ROCK2, PRKACA",
+"moa": "inhibitor/antagonist",
+"n": 197
+},
+{
+"id": "Hydroxyurea",
+"target": "RRM2, RRM1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "IQ 1",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Idarubicin (hydrochloride)",
+"target": "TOP2A",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Idoxuridine",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Imiquimod (hydrochloride)",
+"target": "TLR7",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Imiquimod (maleate)",
+"target": "TLR7",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Indacaterol (maleate)",
+"target": "ADRB2",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Infigratinib",
+"target": "FGFR1, FGFR2, FGFR3, FGFR4",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Ipatasertib",
+"target": "AKT1, AKT2, AKT3",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Irinotecan",
+"target": "TOP1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Irinotecan (hydrochloride)",
+"target": "TOP1",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Isocorydine",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Ivabradine (hydrochloride)",
+"target": "HCN4",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Ivermectin",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Ixazomib",
+"target": "PSMB5",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Ixazomib citrate",
+"target": "PSMB1, PSMB2, PSMB5",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "L-Eflornithine (monohydrochloride)",
+"target": "ODC1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "L-Thyroxine (sodium salt pentahydrate)",
+"target": null,
+"moa": "unclear",
+"n": 196
+},
+{
+"id": "LB-100",
+"target": "PPP2CA, PPP2CB",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "LJI308",
+"target": "RPS6KA1, RPS6KA3, RPS6KA2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "LY-2584702 (tosylate salt)",
+"target": "RPS6KB1",
+"moa": "inhibitor/antagonist",
+"n": 149
+},
+{
+"id": "LY2090314",
+"target": "GSK3B, GSK3A",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Lactate (calcium)",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Lapatinib ditosylate",
+"target": "EGFR, ERBB2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Larotrectinib",
+"target": "NTRK1, NTRK2, NTRK3",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Larotrectinib sulfate",
+"target": "NTRK1, NTRK2, NTRK3",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Lenalidomide (hemihydrate)",
+"target": "CRBN, IKZF1, IKZF3",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Levobupivacaine (hydrochloride)",
+"target": "SCN5A",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Lidocaine (hydrochloride)",
+"target": "MAP2K1, MAPK1, NFKB1",
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Ligustrazine",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Lipoic acid",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Lonafarnib",
+"target": "HRAS, KRAS, NRAS",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Loperamide (hydrochloride)",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Lopinavir",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Lucanthone",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Lumateperone (tosylate)",
+"target": "HTR2A, DRD2",
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "MK-3903",
+"target": "PRKAA1",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "MK-8353",
+"target": "MAPK3, MAPK1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "ML264",
+"target": "KLF5",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Macitentan",
+"target": "EDNRA, EDNRB",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Malotilate",
+"target": "ALOX5",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Mebendazole",
+"target": "TUBA1A, TUBA1B, TUBA1C, TUBB, TUBB1, TUBB2A, TUBB3, TUBB4A, TUBB4B, TUBB6",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Medroxyprogesterone acetate",
+"target": "PGR",
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Megestrol",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Meloxicam",
+"target": "PTGS1, PTGS2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Menadione",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Methotrexate",
+"target": "DHFR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Methyl aminolevulinate (hydrochloride)",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Methylprednisolone succinate",
+"target": "NR3C1",
+"moa": "unclear",
+"n": 178
+},
+{
+"id": "Methylthiouracil",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Mifepristone",
+"target": "NR3C1, PGR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Minodronic acid",
+"target": "P2RX2, P2RX3",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Mitoxantrone (dihydrochloride)",
+"target": "TOP2A, TOP2B, PRKCA",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Monocrotaline",
+"target": "SLC22A1, SLC22A2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Mozavaptan",
+"target": "AVPR2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "NG25",
+"target": "MAP4K2, MAP3K7, LYN, ABL1, ABL2, FER, SRC, EPHA2, EPHB2, EPHB4, ZAK, ZKSCAN1, RAF1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "NVP-BHG712",
+"target": "EPHB4",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Nafamostat (mesylate)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Naproxen",
+"target": "PTGS1, PTGS2",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Neratinib",
+"target": "EGFR, ERBB2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Neratinib (maleate)",
+"target": "EGFR, ERBB2",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Nevirapine",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Niclosamide (olamine)",
+"target": "STAT3",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Nimesulide",
+"target": "PTGS2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Norepinephrine (hydrochloride)",
+"target": "ADRA1A, ADRA1B, ADRA1D, ADRA2A, ADRA2B, ADRA2C, ADRB1",
+"moa": "activator/agonist",
+"n": 200
+},
+{
+"id": "OTS514",
+"target": "MAP3K8",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Olanzapine",
+"target": "HTR2A, HTR2C, DRD2, DRD4, ADRA1A, ADRA1B, ADRA1D, HTR6, CHRM1, CHRM2, CHRM3, CHRM4, CHRM5",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Oleic acid",
+"target": null,
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Omeprazole",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Omeprazole (sodium)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Orlistat",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Ornidazole",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Osimertinib (mesylate)",
+"target": "EGFR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Ouabain (Octahydrate)",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Oxaliplatin",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Oxaprozin",
+"target": "PTGS1, PTGS2, NFKB1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "PF-06260933",
+"target": "MAP4K4",
+"moa": "inhibitor/antagonist",
+"n": 181
+},
+{
+"id": "PH-797804",
+"target": "MAPK14",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Paclitaxel",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Palmatine (chloride)",
+"target": "IDO1, WNV NS2B-NS3",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Panobinostat",
+"target": "HDAC1, HDAC2, HDAC3, HDAC6, HDAC8, HDAC10, HDAC11",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Pasireotide (acetate)",
+"target": "SSTR1, SSTR2, SSTR3, SSTR5",
+"moa": "activator/agonist",
+"n": 200
+},
+{
+"id": "Pemetrexed",
+"target": "TYMS, DHFR, GART",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Pemigatinib",
+"target": "FGFR1, FGFR2, FGFR3, FGFR4",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Penfluridol",
+"target": "DRD2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Pentagastrin",
+"target": "CCKBR",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Pentamidine (isethionate)",
+"target": "PRLR",
+"moa": "inhibitor/antagonist",
+"n": 250
+},
+{
+"id": "Pentoxifylline",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Peretinoin",
+"target": "RXRA, RXRB, RXRG",
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Perindopril (erbumine)",
+"target": "STAT3, ACE",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Pexidartinib (hydrochloride)",
+"target": "CSF1R, KIT, FLT3",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Phenylephrine (hydrochloride)",
+"target": "ADRA1A, ADRA1B, ADRA1D",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Phenytoin (sodium)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Pimitespib",
+"target": "HSP90AA1, HSP90AB1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Pimozide",
+"target": "DRD2, DRD3",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Pioglitazone",
+"target": "PPARG",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Piroxicam",
+"target": "PTGS1, PTGS2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Pitavastatin (Calcium)",
+"target": "HMGCR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Plicamycin",
+"target": "SP1, GSTM2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Ponatinib",
+"target": "ABL1, PDGFRA, KDR, FGFR1, SRC, KIT",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Posaconazole",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Pralsetinib",
+"target": "RET",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Pravastatin (sodium)",
+"target": "HMGCR",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Procainamide (hydrochloride)",
+"target": "DNMT1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Proglumide",
+"target": "CCKBR, CCKAR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Pyridoxine",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Pyridoxine (hydrochloride)",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Quinestrol",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Quinidine (15% dihydroquinidine)",
+"target": "KCNH2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "RMC-6236",
+"target": "KRAS",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Radotinib",
+"target": "ABL1",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Ralimetinib dimesylate",
+"target": "MAPKAPK2, MAPK14, MAPK11",
+"moa": "inhibitor/antagonist",
+"n": 172
+},
+{
+"id": "Raltitrexed",
+"target": "TYMS",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Ranolazine",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Rapamycin",
+"target": "MTOR, FKBP1A",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Regorafenib",
+"target": "BRAF, FLT1, FLT4, KDR, KIT, PDGFRB, RAF1, RET, TEK",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Relugolix",
+"target": "GNRHR",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Resveratrol",
+"target": "SIRT1",
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Retinoic acid",
+"target": "RARB, RARG, RARA, PPARD",
+"moa": "activator/agonist",
+"n": 200
+},
+{
+"id": "Ribociclib",
+"target": "CDK4, CDK6",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Rifaximin",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Riluzole hydrochloride",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Rimonabant",
+"target": "CNR1",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Rimonabant (Hydrochloride)",
+"target": "CNR1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Ritonavir",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Ropivacaine (hydrochloride monohydrate)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Rosiglitazone",
+"target": "PPARG, TRPC5, TRPM3",
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Roxadustat",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Rucaparib (phosphate)",
+"target": "PARP1, PARP2, PARP3",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Rutin (trihydrate)",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "S-Adenosyl-L-methionine (disulfate tosylate)",
+"target": null,
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "SBI-0640756",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 148
+},
+{
+"id": "Sacubitril/Valsartan",
+"target": "AGTR1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Salicylic acid",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Sapanisertib",
+"target": "MTOR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Saquinavir",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Selinexor ",
+"target": null,
+"moa": null,
+"n": 200
+},
+{
+"id": "Sildenafil",
+"target": "PDE5A",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Silodosin",
+"target": "ADRA1A, ADRA1B, ADRA1D",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Simotinib",
+"target": "EGFR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Sinomenine",
+"target": "OPRM1",
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Sivelestat (sodium tetrahydrate)",
+"target": "ELANE",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Sodium Salicylate",
+"target": "PTGS2",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Sonidegib",
+"target": "SMO",
+"moa": "inhibitor/antagonist",
+"n": 199
+},
+{
+"id": "Sulfatinib",
+"target": "FLT1, KDR, FLT4, FGFR1, CSF1R",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Sulfisoxazole",
+"target": "EDNRA, EDNRB",
+"moa": "inhibitor/antagonist",
+"n": 250
+},
+{
+"id": "Sunitinib",
+"target": "KDR, PDGFRB",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "TAK-733",
+"target": "MAP2K1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "TAK-901",
+"target": "AURKB",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Tadalafil",
+"target": "PDE5A",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Talc",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Tazarotene",
+"target": "RARA, RARB, RARG",
+"moa": "activator/agonist",
+"n": 150
+},
+{
+"id": "Temsirolimus",
+"target": "MTOR",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Temuterkib",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Terfenadine",
+"target": "HRH1",
+"moa": "inhibitor/antagonist",
+"n": 250
+},
+{
+"id": "Tetracycline (hydrochloride)",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Thymol",
+"target": "TRPA1",
+"moa": "activator/agonist",
+"n": 200
+},
+{
+"id": "Thymopentin",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Tirabrutinib",
+"target": "BTK",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Tirabrutinib (hydrochloride)",
+"target": "BTK",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Tofacitinib",
+"target": "JAK1, JAK2, JAK3",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Tofacitinib (citrate)",
+"target": "JAK1, JAK2, JAK3",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Tolcapone",
+"target": "COMT",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Tolmetin",
+"target": "PTGS1, PTGS2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Tomivosertib",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Topotecan (hydrochloride)",
+"target": "TOP1",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Torkinib",
+"target": "MTOR, PDGFRA, PRKDC, PIK3CD, PIK3CG, PIK3CA, PIK3CB, HCK, SRC, KDR, ABL1, EPHB4, EGFR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Trametinib",
+"target": "MAP2K1, MAP2K2",
+"moa": "inhibitor/antagonist",
+"n": 300
+},
+{
+"id": "Trametinib (DMSO_TF solvate)",
+"target": "MAP2K1, MAP2K2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Tranilast",
+"target": "PLA2G2A, EGR1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Triamcinolone",
+"target": "NR3C1",
+"moa": "unclear",
+"n": 200
+},
+{
+"id": "Triclosan",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Trifluridine",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Trimetrexate",
+"target": "DHFR",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Tubulin inhibitor 6",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Tucatinib",
+"target": "ERBB2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Tucidinostat",
+"target": "HDAC1, HDAC2, HDAC3, HDAC10, HDAC8, HDAC11",
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "ULK-101",
+"target": "ULK1, ULK2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Uridine",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Valdecoxib",
+"target": "PTGS2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Vandetanib",
+"target": "EGFR, KDR",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Vemurafenib",
+"target": "BRAF",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Verapamil",
+"target": "CYP3A4, ABCB1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Verteporfin",
+"target": "YAP1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Vilanterol",
+"target": "ADRB2",
+"moa": "activator/agonist",
+"n": 200
+},
+{
+"id": "Vinblastine (sulfate)",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 200
+},
+{
+"id": "Vismodegib",
+"target": "SMO, ABCB1, ABCG2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Vitamin K4",
+"target": null,
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "Volasertib",
+"target": "PLK1, PLK2, PLK3",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Voriconazole",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Vortioxetine",
+"target": "SLC6A4, HTR3A, HTR7",
+"moa": "unclear",
+"n": 150
+},
+{
+"id": "XRK3F2",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "Zileuton",
+"target": "ALOX5",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "c-Kit-IN-1",
+"target": "KIT, MET, KDR, PDGFRA, PDGFRB",
+"moa": "inhibitor/antagonist",
+"n": 174
+},
+{
+"id": "crizotinib",
+"target": "ALK, MET, ROS1",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "olaparib",
+"target": "PARP1, PARP2",
+"moa": "unclear",
+"n": 190
+},
+{
+"id": "palbociclib",
+"target": "CDK4, CDK6",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "venetoclax",
+"target": "BCL2",
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "vincristine",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+},
+{
+"id": "\u03b3-Oryzanol",
+"target": null,
+"moa": "inhibitor/antagonist",
+"n": 150
+}
+],
+"doses_uM": [
+0.05000000074505806,
+0.5,
+5.0
+],
+"organs": [
+"Bladder/Urinary Tract",
+"Bowel",
+"Breast",
+"CNS/Brain",
+"Cervix",
+"Esophagus/Stomach",
+"Kidney",
+"Liver",
+"Lung",
+"Pancreas",
+"Peripheral Nervous System",
+"Skin",
+"Uterus"
+]
 }

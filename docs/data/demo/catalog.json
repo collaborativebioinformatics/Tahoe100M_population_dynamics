@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0.0",
+  "data_status": "illustrative_demo",
+  "cell_lines": [
+    { "id": "A549", "label": "A549 · lung", "tissue": "lung", "cellosaurus": "CVCL_0023" },
+    { "id": "MCF7", "label": "MCF7 · breast", "tissue": "breast", "cellosaurus": "CVCL_0031" },
+    { "id": "PC3", "label": "PC3 · prostate", "tissue": "prostate", "cellosaurus": "CVCL_0035" },
+    { "id": "HT29", "label": "HT29 · colorectal", "tissue": "colorectal", "cellosaurus": "CVCL_0320" }
+  ],
+  "drugs": [
+    { "id": "Trametinib", "label": "Trametinib", "target": "MEK1/2" },
+    { "id": "Bortezomib", "label": "Bortezomib", "target": "proteasome" },
+    { "id": "Vorinostat", "label": "Vorinostat", "target": "HDAC" },
+    { "id": "Selumetinib", "label": "Selumetinib", "target": "MEK1/2" }
+  ],
+  "doses_um": [0, 0.1, 1, 10],
+  "features": ["MAPK signaling", "DUSP6", "JUN", "MYC targets", "Apoptosis"],
+  "analyses": [
+    { "id": "population", "label": "Population statistics" },
+    { "id": "pca", "label": "PCA analysis" },
+    { "id": "trajectory", "label": "Dose trajectory" }
+  ]
+}

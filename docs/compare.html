@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Compare two Tahoe-100M conditions (cell line × drug × dose): shared and opposite genes, top-K signature cosine, response-magnitude difference.">
+  <title>Compare · Tahoe-100M conditions</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="stylesheet" href="assets/tools.css">
+  <script src="assets/config.js"></script>
+  <script src="assets/data.js" defer></script>
+  <script src="assets/layout.js" defer></script>
+  <script src="assets/compare.js" defer></script>
+</head>
+<body>
+  <div id="app-header"></div>
+  <main id="main-content" class="tool-main">
+    <section class="tool-hero">
+      <div class="eyebrow"><span class="status-dot"></span> Module 2 · Compare</div>
+      <h1>Compare two conditions</h1>
+      <p>Choose two real conditions — a <b>cell line × drug × dose</b> each — to compare their transcriptional responses: shared and opposite genes, top-K signature similarity, and response-magnitude difference. Same drug across cell lines, same cell line across drugs, dose vs dose, or replicate plate vs plate.</p>
+    </section>
+
+    <div class="data-banner">
+      <span class="real-chip">real data</span>
+      <span>Data version <b data-meta-version>…</b> · generated <b data-meta-date>…</b></span>
+      <span>Similarity uses a <b>top-K signature cosine</b> (not full-transcriptome correlation).</span>
+    </div>
+
+    <div class="compare-cards two" style="margin-bottom:18px;">
+      <div class="panel" id="selA"></div>
+      <div class="panel" id="selB"></div>
+    </div>
+    <div style="display:flex; gap:8px; flex-wrap:wrap; margin-bottom:20px;">
+      <button class="btn secondary" id="swap-btn" type="button">⇄ Swap A / B</button>
+      <button class="btn secondary" id="share-btn" type="button">Share link</button>
+      <button class="btn secondary" id="csv-btn" type="button">Download comparison</button>
+    </div>
+
+    <div id="result-area">
+      <div class="empty-state">Select condition A and condition B to compare.</div>
+    </div>
+  </main>
+  <div id="app-footer"></div>
+  <script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body>
+</html>

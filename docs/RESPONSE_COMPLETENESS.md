@@ -44,7 +44,7 @@ Let treated scores be $S_T$ and plate-matched control scores be $S_C$.
 ### Robust response magnitude
 
 $$
-M = \frac{\mathrm{median}(S_T)-\mathrm{median}(S_C)}{1.4826\,\mathrm{MAD}(S_C)}.
+M = \frac{\mathrm{median}(S_T)-\mathrm{median}(S_C)}{1.4826\ × \mathrm{MAD}(S_C)}.
 $$
 
 The sign gives direction. The absolute value gives standardized magnitude. If control dispersion is zero, the result is undefined and must be flagged.

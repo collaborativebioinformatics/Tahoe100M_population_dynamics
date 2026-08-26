@@ -6,10 +6,10 @@
 
 <p>
   <a href="https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/">
-    <img alt="Launch live prototype" src="https://img.shields.io/badge/LAUNCH-LIVE%20PROTOTYPE-2563EB?style=for-the-badge&logo=githubpages&logoColor=white">
+    <img alt="Launch live site" src="https://img.shields.io/badge/LAUNCH-LIVE%20SITE-2563EB?style=for-the-badge&logo=githubpages&logoColor=white">
   </a>
   <img alt="Tahoe-100M" src="https://img.shields.io/badge/DATA-TAHOE--100M-0F766E?style=for-the-badge">
-  <img alt="Prototype status" src="https://img.shields.io/badge/STATUS-INTERFACE%20PROTOTYPE-D97706?style=for-the-badge">
+  <img alt="Atlas status" src="https://img.shields.io/badge/ATLAS-REAL%20DERIVED%20DATA-15803D?style=for-the-badge">
 </p>
 
 <p>Explore by drug or cell line, refine by dose and feature, launch a team analysis module, and inspect returned plots, tables, and linked metadata.</p>
@@ -17,7 +17,7 @@
 </div>
 
 > [!IMPORTANT]
-> The public website currently uses deterministic **illustrative demo data**. It demonstrates the interface and integration contract; it does not present completed Tahoe-100M scientific results.
+> The polished homepage retains an explicitly labeled **illustrative interface demo**. Its linked [Real Atlas](https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/atlas/) uses 65,218 real pseudobulk conditions from all 14 public plates. It does **not** claim cell-level heterogeneity or responder fractions because the required complete single-cell input is not public.
 
 ## Live interface
 
@@ -25,18 +25,18 @@
   <a href="https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/">
     <img src="docs/assets/dashboard-preview.png" alt="Tahoe-100M Perturbation Explorer dashboard preview" width="100%">
   </a>
-  <p><a href="https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/"><strong>Open the interactive prototype →</strong></a></p>
+  <p><a href="https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/atlas/"><strong>Launch the real-data Atlas →</strong></a> · <a href="https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/">View the interface demo</a></p>
   <p><strong>Interface and website design by Xia (Candice) Wu.</strong></p>
 </div>
 
-The prototype is a static GitHub Pages site, so it needs no AWS account, paid hosting, or custom domain. The browser receives compact, precomputed result objects rather than the 100-million-cell expression matrix.
+The site is static GitHub Pages, so it needs no AWS account, paid hosting, custom domain, database, or application server. The browser receives compact, precomputed and compressed result objects rather than the 100-million-cell expression matrix.
 
 ## What the interface supports
 
 | Explore | Analyze | Interpret | Share |
 |---|---|---|---|
 | Browse by **drug** or **cell line** | Send the selected condition to an available analysis module | Compare dose-aware response patterns | View interactive plots and result tables |
-| Filter by **dose**, **gene**, or **pathway** | Connect population statistics, PCA, and trajectory services | Inspect candidate residual non-responder populations | Follow linked drug, cell-line, and sample metadata |
+| Filter by **dose**, **gene**, or **pathway** | Connect population statistics, PCA, and trajectory services | Inspect DE genes, pathways, response geometry, and stated limits | Follow linked drug, cell-line, and sample metadata |
 
 ## System workflow
 
@@ -73,7 +73,7 @@ The UI is intentionally separated from heavy computation. Each team analysis can
 }
 ```
 
-This lets the interface switch from demo responses to HPC-generated JSON/Parquet summaries without redesigning the website.
+This lets the interface use HPC-generated JSON/Parquet summaries without shipping the full expression matrix or running heavy analysis in a visitor's browser.
 
 Team-facing files are documented in the [`docs/data` integration guide](docs/data/README.md), with versioned [catalog](docs/schemas/catalog.schema.json) and [result](docs/schemas/result.schema.json) JSON schemas.
 
@@ -85,9 +85,11 @@ Team-facing files are documented in the [`docs/data` integration guide](docs/dat
 - [x] Shareable query URLs and standardized JSON/CSV/SVG downloads
 - [x] File-backed catalog and precomputed-result loading with demo fallback
 - [x] Editable architecture diagram and presentation export
-- [ ] Connect precomputed Tahoe-100M result artifacts
+- [x] Connect versioned Tahoe-100M response rankings, condition comparison, pathways, and signature search
+- [x] Publish compact real-data downloads with SHA-256 checksums, methods, and limitations
+- [x] Add privacy-friendly traffic analytics and release metadata
 - [ ] Connect production PCA, trajectory, and population-statistics outputs
-- [ ] Validate all displayed results against the final analysis pipeline
+- [ ] Add cell-level responder/non-responder analysis when adequate public expression and controls are available
 
 ## Sources, citation, and downloads
 
@@ -98,9 +100,10 @@ Team-facing files are documented in the [`docs/data` integration guide](docs/dat
 | Official h5ad / AnnData access | [Arc Virtual Cell Atlas](https://github.com/ArcInstitute/arc-virtual-cell-atlas/tree/main/tahoe-100M) |
 | DNAnexus dataset and notebook guide | [DNAnexus Academy](https://academy.dnanexus.com/public-datasets-on-the-dnanexus-platform/single-cell/tahoe-100m) |
 | Downloadable citation | [`docs/tahoe100m-citations.bib`](docs/tahoe100m-citations.bib) |
+| Real derived tables | [Atlas data, methods, and checksums](https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/atlas/downloads.html) |
 | Demo integration artifacts | [Catalog](docs/data/catalog.json) · [Example result](docs/data/results/a549-trametinib-1-mapk-population.json) · [Workflow SVG](docs/group6-workflow.svg) |
 
-The Tahoe-100M data are distributed under [**CC0 1.0**](https://creativecommons.org/publicdomain/zero/1.0/); this repository's code is under the [**MIT License**](LICENSE). Please cite the original Tahoe-100M paper when using the dataset. Current website downloads are demo/integration artifacts, not validated scientific findings.
+The Tahoe-100M data are distributed under [**CC0 1.0**](https://creativecommons.org/publicdomain/zero/1.0/); this repository's code is under the [**MIT License**](LICENSE). Please cite the original Tahoe-100M paper when using the dataset. Derived outputs are research artifacts with explicit methods and limitations, not clinical evidence.
 
 ## Acknowledgements
 
@@ -128,11 +131,11 @@ No build step is required.
 python3 -m http.server 8000 --directory docs
 ```
 
-Then open `http://localhost:8000`. The site is plain HTML, CSS, and JavaScript so it can be reviewed quickly and deployed anywhere.
+Then open `http://localhost:8000`; the real-data tools are under `http://localhost:8000/atlas/`. The site is plain HTML, CSS, and JavaScript so it can be reviewed quickly and deployed anywhere.
 
 ## Research focus
 
-> Can we identify residual cell subpopulations that may be non-responders to a perturbation?
+> Future question: can adequate cell-level expression and matched controls identify residual subpopulations that may be non-responders? The current public pseudobulk Atlas does not estimate them.
 
 ## License
 

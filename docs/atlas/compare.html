@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Compare two real Tahoe-100M perturbation conditions by differential-expression overlap, pathways, and SVD response geometry.">
+<title>Compare — Tahoe-100M Atlas</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/app.css">
+</head><body>
+<header class="top">
+  <a class="brand" href="../">Tahoe-100M Atlas</a>
+  <nav>
+    <a href="../">Project Home</a>
+    <a href="index.html">Overview</a>
+    <a href="ranking.html">Response Ranking</a>
+    <a href="compare.html">Compare</a>
+    <a href="search.html">Signature Search</a>
+    <a href="downloads.html">Data</a>
+  </nav>
+</header>
+<main>
+  <h1>Compare two conditions</h1>
+  <p class="sub">Each condition is a specific cell line × drug × dose × plate response. Overlap and distance are computed from truncated top-N DE and the 20-D response embedding.</p>
+
+  <div class="split">
+    <div class="panel"><b>Condition A</b>
+      <div class="controls" style="margin-top:8px">
+        <div class="field"><label>Cell line</label><select id="aCell"></select></div>
+        <div class="field"><label>Drug</label><select id="aDrug"></select></div>
+        <div class="field"><label>Dose (µM)</label><select id="aDose"></select></div>
+        <div class="field"><label>Plate</label><select id="aPlate"></select></div>
+      </div></div>
+    <div class="panel"><b>Condition B</b>
+      <div class="controls" style="margin-top:8px">
+        <div class="field"><label>Cell line</label><select id="bCell"></select></div>
+        <div class="field"><label>Drug</label><select id="bDrug"></select></div>
+        <div class="field"><label>Dose (µM)</label><select id="bDose"></select></div>
+        <div class="field"><label>Plate</label><select id="bPlate"></select></div>
+      </div></div>
+  </div>
+  <div style="margin:12px 0"><button id="go">Compare</button> <span class="muted" id="status"></span></div>
+
+  <div id="result" style="display:none">
+    <div class="grid cards" id="summary"></div>
+    <div class="split">
+      <div class="panel"><h2 style="margin-top:0">Shared up-regulated genes <span class="chip" id="upJac"></span></h2><div id="upGenes" class="scroll"></div></div>
+      <div class="panel"><h2 style="margin-top:0">Shared down-regulated genes <span class="chip" id="downJac"></span></h2><div id="downGenes" class="scroll"></div></div>
+    </div>
+    <div class="panel"><h2 style="margin-top:0">Shared enriched pathways (Hallmark)</h2><div id="pw" class="scroll"></div></div>
+  </div>
+  <div class="note"><b>Interpret carefully.</b> Cosine and Euclidean distance are over the 20-D uncentered truncated-SVD embedding; its first 20 components explain about 9.6% of the sparse matrix energy. Gene overlap uses each condition's stored top-N DE, so absence means “not retained,” not “unchanged.”</div>
+</main>
+<footer><a href="../">Project home</a> · <a href="https://doi.org/10.1101/2025.02.20.639398">Original paper</a> · <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M">Original data</a> · <span data-release>Loading version…</span></footer>
+<script src="assets/common.js"></script>
+<script src="assets/compare.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body></html>

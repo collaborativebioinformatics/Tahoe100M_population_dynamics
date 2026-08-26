@@ -3,12 +3,12 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A public, dose-aware interface prototype for exploring Tahoe-100M single-cell perturbation responses.">
+    <meta name="description" content="Explore 65,218 real Tahoe-100M perturbation conditions with response rankings, comparison, signature search, pathways, and versioned downloads.">
     <meta name="theme-color" content="#07111f">
     <meta name="robots" content="index, follow">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Tahoe-100M Perturbation Explorer">
-    <meta property="og:description" content="A public, dose-aware interface prototype for population-level single-cell perturbation modeling.">
+    <meta property="og:description" content="A public perturbation atlas with real pseudobulk response rankings, comparison, signature search, pathways, and versioned downloads.">
     <meta property="og:url" content="https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/">
     <meta property="og:image" content="https://collaborativebioinformatics.github.io/Tahoe100M_population_dynamics/assets/dashboard-preview.png">
     <meta name="twitter:card" content="summary_large_image">
@@ -33,6 +33,7 @@
       </a>
 
       <nav class="site-nav" aria-label="Primary navigation">
+        <a href="atlas/">Real Atlas</a>
         <a href="#explorer">Explorer</a>
         <a href="#workflow">Workflow</a>
         <a href="#resources">Resources</a>
@@ -44,12 +45,12 @@
     <main id="main-content">
       <section class="hero" id="top">
         <div class="hero-copy">
-          <div class="eyebrow"><span class="status-dot"></span> Public interface prototype · demo data</div>
+          <div class="eyebrow"><span class="status-dot"></span> Real atlas live · 65,218 conditions</div>
           <h1>See how a cell population <em>moves</em> under perturbation.</h1>
-          <p class="hero-lede">Explore response by drug or cell line, follow the dose trajectory, and surface residual subpopulations that may not respond.</p>
+          <p class="hero-lede">Rank drug responses, compare real perturbation signatures, search for matching or reversing gene programs, and download reproducible derived tables.</p>
           <div class="hero-actions">
-            <a class="button button-primary" href="#explorer">Open the explorer <span aria-hidden="true">↓</span></a>
-            <a class="button button-secondary" href="#workflow">How the system works</a>
+            <a class="button button-primary" href="atlas/">Launch the real atlas <span aria-hidden="true">→</span></a>
+            <a class="button button-secondary" href="#explorer">View interface demo</a>
           </div>
           <ul class="hero-points">
             <li><span>01</span> Dose-aware</li>
@@ -108,10 +109,10 @@
       </section>
 
       <section class="stat-strip" aria-label="Project summary">
-        <div><strong>100M</strong><span>single cells at atlas scale</span></div>
-        <div><strong>3</strong><span>modular analysis services</span></div>
-        <div><strong>1</strong><span>shared public interface</span></div>
-        <div><strong>0</strong><span>cloud infrastructure required for this demo</span></div>
+        <div><strong>65,218</strong><span>real perturbation conditions</span></div>
+        <div><strong>50</strong><span>cancer cell lines</span></div>
+        <div><strong>379</strong><span>drugs in response rankings</span></div>
+        <div><strong>$0</strong><span>application server required</span></div>
       </section>
 
       <section class="section explorer-section" id="explorer">
@@ -355,15 +356,16 @@
 
           <article class="download-panel" id="downloads">
             <span class="section-kicker">Download center</span>
-            <h3>Small, reusable project artifacts</h3>
+            <h3>Derived data and project artifacts</h3>
             <ul class="download-list">
+              <li><a href="atlas/downloads.html"><span><strong>Validated derived tables</strong><small>Parquet/CSV · versioned checksums and methods</small></span><b aria-hidden="true">→</b></a></li>
               <li><a href="data/catalog.json" download><span><strong>Demo query catalog</strong><small>JSON · selector and metadata contract</small></span><b aria-hidden="true">↓</b></a></li>
               <li><a href="data/results/a549-trametinib-1-mapk-population.json" download><span><strong>Example result</strong><small>JSON · illustrative standardized response</small></span><b aria-hidden="true">↓</b></a></li>
               <li><a href="group6-workflow.svg" download><span><strong>System workflow</strong><small>SVG · scalable architecture diagram</small></span><b aria-hidden="true">↓</b></a></li>
               <li><a href="group6-workflow.png" download><span><strong>Presentation workflow</strong><small>PNG · slide-ready export</small></span><b aria-hidden="true">↓</b></a></li>
               <li><a href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics/archive/refs/heads/main.zip"><span><strong>Project source</strong><small>ZIP · current main branch</small></span><b aria-hidden="true">↓</b></a></li>
             </ul>
-            <p class="download-note">These are demo and integration artifacts. Validated scientific-result downloads will be added only after the analysis pipeline is complete.</p>
+            <p class="download-note">The real Atlas contains validated derived outputs. The browser prototype above remains explicitly illustrative; the original 100-million-cell matrix stays with the official Tahoe-100M dataset.</p>
           </article>
         </div>
 
@@ -406,8 +408,9 @@
 
     <footer>
       <div class="footer-brand"><span class="brand-mark small" aria-hidden="true"><span></span><span></span><span></span></span><div><strong>Tahoe-100M Perturbation Explorer</strong><small>Group 6 · Hackathon prototype</small></div></div>
-      <p>Demo values are illustrative and are not scientific findings.</p>
+      <p>The interface prototype is illustrative; the linked Atlas is real derived data with explicit methods and limitations. Data release v0.1.0 · August 26, 2026.</p>
       <nav class="footer-links" aria-label="Project resources">
+        <a href="atlas/">Real Atlas →</a>
         <a href="https://doi.org/10.1101/2025.02.20.639398" target="_blank" rel="noreferrer">Paper ↗</a>
         <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M" target="_blank" rel="noreferrer">Data ↗</a>
         <a href="tahoe100m-citations.bib" download>Citation ↓</a>

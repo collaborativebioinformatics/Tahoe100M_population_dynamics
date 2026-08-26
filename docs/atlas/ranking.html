@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore real Tahoe-100M drug-by-cell-line transcriptional response rankings and a response-magnitude heatmap.">
+<title>Response Ranking — Tahoe-100M Atlas</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/app.css">
+</head><body>
+<header class="top">
+  <a class="brand" href="../">Tahoe-100M Atlas</a>
+  <nav>
+    <a href="../">Project Home</a>
+    <a href="index.html">Overview</a>
+    <a href="ranking.html">Response Ranking</a>
+    <a href="compare.html">Compare</a>
+    <a href="search.html">Signature Search</a>
+    <a href="downloads.html">Data</a>
+  </nav>
+</header>
+<main>
+  <h1>Drug × cell-line response ranking</h1>
+  <p class="sub">Response = L2 magnitude of the truncated top-N log2FC signature, taken as the maximum across the three doses for each cell-line × drug pair.</p>
+
+  <div class="controls panel">
+    <div class="field"><label>View</label>
+      <select id="mode">
+        <option value="drug_in_cell">Top drugs in a cell line</option>
+        <option value="cell_for_drug">Top cell lines for a drug</option>
+        <option value="global_drug">Global drug ranking</option>
+        <option value="global_cell">Global cell-line ranking</option>
+      </select></div>
+    <div class="field" id="pickWrap"><label id="pickLabel">Cell line</label><select id="pick"></select></div>
+  </div>
+
+  <div class="scroll"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+
+  <h2>Response heatmap — cell lines (rows) × drugs (columns, ranked by global response)</h2>
+  <p class="muted" style="font-size:12px">Darker = stronger response. Showing the top 60 drugs. Hover a cell for details.</p>
+  <div class="scroll" id="heatmap"></div>
+  <div class="note">Higher response means a larger transcriptional shift versus the plate-matched DMSO control — not necessarily potency or cytotoxicity.</div>
+</main>
+<footer><a href="../">Project home</a> · <a href="https://doi.org/10.1101/2025.02.20.639398">Original paper</a> · <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M">Original data</a> · <span data-release>Loading version…</span></footer>
+<script src="assets/common.js"></script>
+<script src="assets/ranking.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body></html>

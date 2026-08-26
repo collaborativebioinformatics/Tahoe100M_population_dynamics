@@ -1,0 +1,60 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Search real Tahoe-100M perturbation conditions for matches and reversals to an up/down gene signature.">
+<title>Signature Search — Tahoe-100M Atlas</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/app.css">
+</head><body>
+<header class="top">
+  <a class="brand" href="../">Tahoe-100M Atlas</a>
+  <nav>
+    <a href="../">Project Home</a>
+    <a href="index.html">Overview</a>
+    <a href="ranking.html">Response Ranking</a>
+    <a href="compare.html">Compare</a>
+    <a href="search.html">Signature Search</a>
+    <a href="downloads.html">Data</a>
+  </nav>
+</header>
+<main>
+  <h1>Signature search</h1>
+  <p class="sub">Enter at least three genes. Conditions are scored as matches when up genes increase and down genes decrease; reversal results show the opposite pattern.</p>
+
+  <div class="panel">
+    <div class="split">
+      <div class="field"><label>Up-regulated genes (should increase)</label>
+        <textarea id="up" placeholder="e.g. MKI67 TOP2A CCNB1 BIRC5"></textarea></div>
+      <div class="field"><label>Down-regulated genes (should decrease)</label>
+        <textarea id="down" placeholder="e.g. CDKN1A GADD45A"></textarea></div>
+    </div>
+    <div class="controls" style="margin-top:10px">
+      <div class="field"><label>Cell line</label><select id="filterCell"><option>Loading…</option></select></div>
+      <div class="field"><label>Drug</label><select id="filterDrug"><option>Loading…</option></select></div>
+      <div class="field"><label>Dose</label><select id="filterDose"><option>Loading…</option></select></div>
+    </div>
+    <div class="controls" style="margin-top:10px">
+      <button id="go">Search</button>
+      <button class="ghost" id="ex1">Proliferation example</button>
+      <button class="ghost" id="ex2">Stress/p53 example</button>
+      <span class="muted" id="status"></span>
+    </div>
+    <div id="inputNotes" class="note" style="display:none"></div>
+  </div>
+
+  <h2>Matching responses</h2>
+  <div class="scroll"><table id="matchTbl"><thead><tr>
+    <th>#</th><th>Cell line</th><th>Drug</th><th>Dose</th><th>Plate</th>
+    <th class="num">Match score</th><th class="num">Genes hit</th><th class="num">n_sig</th><th class="num">Magnitude</th>
+  </tr></thead><tbody></tbody></table></div>
+  <h2>Reversed responses</h2>
+  <div class="scroll"><table id="reverseTbl"><thead><tr>
+    <th>#</th><th>Cell line</th><th>Drug</th><th>Dose</th><th>Plate</th>
+    <th class="num">Reversal score</th><th class="num">Genes hit</th><th class="num">n_sig</th><th class="num">Magnitude</th>
+  </tr></thead><tbody></tbody></table></div>
+  <div class="note"><b>Exploratory score, not a p-value.</b> Score = mean signed log2FC across all recognized query genes, with absent top-N genes contributing zero. Results require at least 3 observed query genes (up to 10 for larger signatures). Browser/CLI parity was checked, but this is truncated-DE retrieval—not full-transcriptome connectivity mapping or biological validation.</div>
+</main>
+<footer><a href="../">Project home</a> · <a href="https://doi.org/10.1101/2025.02.20.639398">Original paper</a> · <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M">Original data</a> · <span data-release>Loading version…</span></footer>
+<script src="assets/common.js"></script>
+<script src="assets/search.js"></script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body></html>

@@ -9,6 +9,8 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parents[1]
 ATLAS = REPO / "docs" / "atlas"
 DATA = ATLAS / "data"
+QUERY_DATA = REPO / "docs" / "data"
+QUERY_PAGES = ("explore.html", "compare.html", "signature.html", "coverage.html", "methods.html")
 
 
 def read_json(path: Path):
@@ -155,6 +157,59 @@ class AtlasSiteTests(unittest.TestCase):
             "2b60e9d618161fabf84b302a6a7553bdcb0abddac84718231b1fcbd4ff40e207",
         )
         oversized = [path for path in ATLAS.rglob("*") if path.is_file() and path.stat().st_size >= 100_000_000]
+        self.assertEqual(oversized, [])
+
+
+class RealQueryToolTests(unittest.TestCase):
+    def test_compressed_query_data_contract(self):
+        meta = read_json(QUERY_DATA / "meta.json")
+        conditions = read_json(QUERY_DATA / "conditions.json.gz")
+        genes = read_json(QUERY_DATA / "sig" / "genes.json.gz")
+
+        self.assertIs(meta["is_demo"], False)
+        self.assertEqual(meta["n_conditions"], 65_218)
+        self.assertEqual(meta["n_cell_lines"], 50)
+        self.assertEqual(meta["n_drugs"], 379)
+        self.assertEqual(len(conditions["rows"]), meta["n_conditions"])
+        self.assertEqual(genes["n_conditions"], meta["n_conditions"])
+        self.assertEqual(genes["n_genes"], 39_654)
+        self.assertEqual(len(genes["genes"]), genes["n_genes"])
+        self.assertEqual(len(genes["ensembl"]), genes["n_genes"])
+        self.assertEqual((QUERY_DATA / "sig" / "post_cond.bin").stat().st_size, genes["n_postings"] * 2)
+        self.assertEqual((QUERY_DATA / "sig" / "post_w.bin").stat().st_size, genes["n_postings"] * 2)
+        self.assertEqual(len(list((QUERY_DATA / "explore").rglob("*.json.gz"))), 429)
+        self.assertEqual(len(list((QUERY_DATA / "profiles").glob("*.json.gz"))), 129)
+
+    def test_query_data_manifest(self):
+        rows = (QUERY_DATA / "real_query_manifest.sha256").read_text(encoding="utf-8").splitlines()
+        self.assertEqual(len(rows), 562)
+        seen = set()
+        for row in rows:
+            digest, relative = row.split("  ", 1)
+            self.assertNotIn(relative, seen)
+            seen.add(relative)
+            content = (QUERY_DATA / relative).read_bytes()
+            self.assertEqual(hashlib.sha256(content).hexdigest(), digest, relative)
+
+    def test_query_pages_resolve_assets_and_include_analytics(self):
+        for page_name in QUERY_PAGES:
+            page = REPO / "docs" / page_name
+            text = page.read_text(encoding="utf-8")
+            self.assertIn("static.cloudflareinsights.com/beacon.min.js", text)
+            parser = LinkParser()
+            parser.feed(text)
+            for link in parser.links:
+                if not link or link.startswith(("#", "http:", "https:", "mailto:", "data:")):
+                    continue
+                target = (page.parent / link.split("?", 1)[0].split("#", 1)[0]).resolve()
+                self.assertTrue(target.exists(), f"{page.name}: missing {link}")
+
+    def test_query_package_has_no_uncompressed_bulk_export(self):
+        self.assertFalse((QUERY_DATA / "conditions.json").exists())
+        self.assertEqual(list((QUERY_DATA / "explore").rglob("*.json")), [])
+        self.assertEqual(list((QUERY_DATA / "profiles").glob("*.json")), [])
+        self.assertEqual(list((QUERY_DATA / "sig").glob("*.json")), [])
+        oversized = [path for path in QUERY_DATA.rglob("*") if path.is_file() and path.stat().st_size >= 100_000_000]
         self.assertEqual(oversized, [])
 
 

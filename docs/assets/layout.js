@@ -36,11 +36,12 @@
       '<footer>' +
         '<div class="footer-brand"><span class="brand-mark small" aria-hidden="true"><span></span><span></span><span></span></span>' +
           '<div><strong>Tahoe-100M Perturbation Explorer</strong><small>Real query tools · Group 6</small></div></div>' +
-        '<p>Interface &amp; website design: Xia (Candice) Wu. Results are real transcriptional-response measures, not drug efficacy or viability.</p>' +
+        '<p>Interface &amp; website design: Xia (Candice) Wu. Developed by Group 6 for the Baylor–Rice AI in Health Hackathon. Results are real transcriptional-response measures, not drug efficacy or viability.</p>' +
         '<nav class="footer-links" aria-label="Project resources">' +
           '<a href="https://doi.org/10.1101/2025.02.20.639398" target="_blank" rel="noreferrer">Paper ↗</a>' +
           '<a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M" target="_blank" rel="noreferrer">Data ↗</a>' +
           '<a href="methods.html">Methods</a>' +
+          '<a href="index.html#team">Team</a>' +
           '<a href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics/issues" target="_blank" rel="noreferrer">Report issue ↗</a>' +
         '</nav>' +
       '</footer>'

@@ -1,28 +1,25 @@
 # Deployment — Tahoe-100M real query tools
 
 The three query tools (Explore, Compare, Signature Search) are a **fully static**
-site. There is no server, database, or paid API. All computation runs in the
-browser over a versioned static dataset.
+site. There is no application server, database, or paid API. All computation runs
+in the browser over a versioned static dataset.
 
 ## Architecture
 
 ```
-GitHub Pages (docs/)            Derived data (data/)             Hugging Face (optional)
-─────────────────────          ────────────────────             ───────────────────────
-index.html, *.html             meta.json, catalog.json          large files hosted here:
-assets/*.css, *.js       ─────► conditions.json                 - sig/post_cond.i32
-config.js (data base URL)       explore/drug/*.json              - sig/post_w.f32
-                                explore/cell/*.json              - profiles/*.json
-                                profiles/*.json                  - conditions.json
-                                sig/genes.json + *.i32/*.f32
+GitHub Pages (docs/)          Compressed data (docs/data/)              Optional mirror
+─────────────────────        ────────────────────────────              ───────────────
+index.html, *.html           meta.json, catalog.json                   the same paths on
+assets/*.css, *.js     ─────► conditions.json.gz                      Hugging Face or any
+config.js                    explore/**/*.json.gz                     CORS-enabled static
+                              profiles/*.json.gz                       object host
+                              sig/genes.json.gz + two compact .bin files
 ```
 
-- **Small selector JSON** (`meta.json`, `catalog.json`, `explore/…`) can live next
-  to the site under `docs/data/`.
-- **Large derived files** (the signature inverted index `sig/*.i32|*.f32`, the
-  per-condition `profiles/*.json`, and `conditions.json`) are **not** committed to
-  Git. Host them on Hugging Face (or any static host / CDN / object store) and point
-  the site at them.
+- Small provenance and selector JSON remains human-readable.
+- Large JSON is committed only in individually gzipped form and loaded lazily.
+- The two signature arrays are already compact 16-bit binary files.
+- An external mirror remains optional; set `window.TAHOE_DATA_BASE` to use one.
 
 ## Configure the data base URL
 
@@ -33,7 +30,7 @@ Resolution order (see `docs/assets/data.js`):
 3. `window.TAHOE_DATA_BASE` set in `docs/assets/config.js`
 4. `./data/` (co-located)
 
-For production with Hugging Face, edit `docs/assets/config.js`:
+For an optional Hugging Face mirror, edit `docs/assets/config.js`:
 
 ```js
 window.TAHOE_DATA_BASE =
@@ -42,23 +39,23 @@ window.TAHOE_DATA_BASE =
 
 ## GitHub Pages
 
-1. Commit `docs/` on the deployment branch.
-2. In repo Settings → Pages, set source to the branch and `/docs` folder.
-3. Ensure `docs/.nojekyll` is present (it is) so `assets/` is served verbatim.
-4. Upload the derived `data/` to Hugging Face (see `UPLOAD_DERIVED_DATA.md`) and set
-   the base URL, **or** copy a `data/` folder into `docs/data/` for a self-contained
-   deploy (watch the repo size — the index is tens of MB).
+1. Commit `docs/`, including the compressed data shards, on the deployment branch.
+2. The repository's Pages workflow publishes `docs/` from `main`.
+3. Keep `docs/.nojekyll` so binary and compressed assets are served verbatim.
+4. The deployed query dataset is about 154 MB and the full site remains below the
+   GitHub Pages 1 GB published-site limit. A mirror can be configured later.
 
 ## Local testing
 
 ```bash
-# serve the site + a local copy of the data
+# serve the site and its compressed data
 cd docs
 python3 -m http.server 8000
-# open http://localhost:8000/explore.html?data=./data/
+# open http://localhost:8000/explore.html
 ```
 
-Or point at any served data folder with `?data=http://localhost:9000/data/`.
+Or point at an uncompressed HPC export or mirror with `?data=<base-url>`; the
+loader first tries `.json.gz` and falls back to `.json`.
 
 ## Performance targets (met)
 

@@ -1,9 +1,9 @@
-# Uploading the derived data (Hugging Face)
+# Optional derived-data mirror (Hugging Face)
 
-The large derived files are **not** committed to Git. They are produced by the
-Argon pipeline into `web_release/data/` and should be hosted on a static host.
-This guide uses a Hugging Face **dataset** repo. (This document does not upload
-anything and stores no credentials — run the steps yourself when ready.)
+The production GitHub Pages release includes compressed static query data, so a
+separate host is not required. A Hugging Face **dataset** repo can optionally be
+used as a mirror when traffic or future releases outgrow GitHub Pages. This guide
+does not upload anything or store credentials.
 
 ## What to upload
 
@@ -19,8 +19,8 @@ data/
   profiles/*.json           # per-condition top up/down genes (sharded)
   profiles/_index.json
   sig/genes.json            # gene -> [col, df, idf, start, count] + ensembl alias
-  sig/post_cond.i32         # Int32 condition ids (concatenated postings)
-  sig/post_w.f32            # Float32 signed IDF-weighted normalized weights
+  sig/post_cond.bin         # Uint16 condition ids (concatenated postings)
+  sig/post_w.bin            # quantized Int16 signed weights
 ```
 
 ## Steps
@@ -52,8 +52,8 @@ Put that URL in `docs/assets/config.js` (`window.TAHOE_DATA_BASE`).
 
 ## Notes
 
-- Hugging Face static resolve URLs support HTTP range and CORS, so the browser
-  can fetch the binary index and JSON shards directly.
+- The browser loader accepts either the original `.json` export or the compressed
+  `.json.gz` Pages layout.
 - Re-uploading with a new `meta.json → data_version` cleanly versions the dataset;
   keep the site and data versions in step.
 - The raw Tahoe-100M DE tables (63 GB) are **not** part of this upload — only the

@@ -29,11 +29,37 @@
 
   function url(path) { return BASE + path; }
 
+  // Production stores the large JSON tables as individually gzipped files.
+  // This keeps the static site compact while preserving lazy shard loading.
+  function usesGzip(path) {
+    return path === "conditions.json" || path === "sig/genes.json" ||
+      path.indexOf("explore/") === 0 || path.indexOf("profiles/") === 0;
+  }
+
+  async function decodeJSON(response, compressed, path) {
+    if (!compressed || response.headers.get("content-encoding") === "gzip") {
+      return response.json();
+    }
+    if (!("DecompressionStream" in global) || !response.body) {
+      throw new Error("This browser cannot open the compressed Tahoe index: " + path);
+    }
+    var stream = response.body.pipeThrough(new DecompressionStream("gzip"));
+    return new Response(stream).json();
+  }
+
   async function getJSON(path) {
     if (cache[path]) return cache[path];
-    var r = await fetch(url(path), { cache: "force-cache" });
-    if (!r.ok) throw new Error("Fetch failed (" + r.status + "): " + path);
-    var j = await r.json();
+    var compressed = usesGzip(path);
+    var requestPath = compressed ? path + ".gz" : path;
+    var r = await fetch(url(requestPath), { cache: "force-cache" });
+    // Remain compatible with the original uncompressed HPC export and mirrors.
+    if (!r.ok && compressed) {
+      compressed = false;
+      requestPath = path;
+      r = await fetch(url(requestPath), { cache: "force-cache" });
+    }
+    if (!r.ok) throw new Error("Fetch failed (" + r.status + "): " + requestPath);
+    var j = await decodeJSON(r, compressed, requestPath);
     cache[path] = j;
     return j;
   }

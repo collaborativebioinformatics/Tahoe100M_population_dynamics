@@ -1,9 +1,8 @@
 /* Tahoe-100M tools — runtime data configuration.
  *
- * The three real query tools load a versioned static dataset. Large derived
- * files (the signature index and per-condition profiles) are hosted separately
- * (e.g. Hugging Face) so they are NOT committed to Git; small selector JSON can
- * live next to the site.
+ * The three real query tools load a versioned static dataset. The production
+ * GitHub Pages release keeps compressed JSON shards and the compact signature
+ * index next to the site. An external mirror can still be selected below.
  *
  * Resolution order (see assets/data.js):
  *   1. ?data=<url> in the page URL

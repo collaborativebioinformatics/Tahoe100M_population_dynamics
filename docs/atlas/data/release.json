@@ -1,0 +1,10 @@
+{
+  "release": "v0.1.0",
+  "updated": "August 26, 2026",
+  "generated_at": "2026-08-26T14:29:43-05:00",
+  "source_run": "full_atlas_20260826_113218",
+  "site_build": "site_build_20260826_142943",
+  "analysis_git_sha": "95c5a54",
+  "site_archive_sha256": "f709360677d8ffaf1ea88dff347c115a573b17f255aef6edd6b27e5b7f55f264",
+  "is_demo": false
+}

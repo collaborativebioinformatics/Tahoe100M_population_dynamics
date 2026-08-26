@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Download versioned Tahoe-100M derived response tables with methods, limitations, data dictionary, and SHA-256 checksums.">
+<title>Data — Tahoe-100M Atlas</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/app.css">
+</head><body>
+<header class="top">
+  <a class="brand" href="../">Tahoe-100M Atlas</a>
+  <nav>
+    <a href="../">Project Home</a>
+    <a href="index.html">Overview</a>
+    <a href="ranking.html">Response Ranking</a>
+    <a href="compare.html">Compare</a>
+    <a href="search.html">Signature Search</a>
+    <a href="downloads.html">Data</a>
+  </nav>
+</header>
+<main>
+  <h1>Data, methods & downloads</h1>
+  <p class="sub">All tables are the validated outputs of a read-only atlas run; each download carries a SHA-256 checksum. <code>is_demo = false</code> throughout.</p>
+  <div class="note"><b>What is hosted here:</b> compact, reusable derived tables needed for downstream work. The original Tahoe-100M matrices remain at <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M">the official dataset repository</a>; this project does not redistribute the 100-million-cell matrix.</div>
+
+  <h2>Downloads</h2>
+  <div class="scroll"><table id="dl"><thead><tr><th>File</th><th>Description</th><th class="num">Size</th><th>SHA-256</th></tr></thead><tbody></tbody></table></div>
+
+  <h2>Methods</h2>
+  <pre class="panel" id="methods" style="white-space:pre-wrap"></pre>
+  <h2>Limitations</h2>
+  <pre class="panel" id="limits" style="white-space:pre-wrap"></pre>
+  <h2>Data dictionary</h2>
+  <pre class="panel" id="dict" style="white-space:pre-wrap"></pre>
+</main>
+<footer><a href="../">Project home</a> · <a href="https://doi.org/10.1101/2025.02.20.639398">Original paper</a> · <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M">Original data</a> · <span data-release>Loading version…</span></footer>
+<script src="assets/common.js"></script>
+<script>
+function human(b){ const u=['B','KB','MB','GB']; let i=0; while(b>=1024&&i<3){b/=1024;i++;} return b.toFixed(i?1:0)+' '+u[i]; }
+(async ()=>{
+  const m=await loadJSON('downloads_manifest.json'); const tb=document.querySelector('#dl tbody');
+  m.files.forEach(f=>{ const a=el('a',{href:'data/downloads/'+f.file,download:''},[f.file]);
+    tb.appendChild(el('tr',{},[el('td',{},[a]),el('td',{},[f.description||'']),
+      el('td',{class:'num'},[human(f.bytes)]),el('td',{class:'muted',title:f.sha256},[f.sha256.slice(0,16)+'…'])])); });
+  for(const [id,fn] of [['methods','METHODS.md'],['limits','LIMITATIONS.md'],['dict','DATA_DICTIONARY.md']]){
+    try{ const r=await fetch('data/'+fn); document.getElementById(id).textContent=await r.text(); }catch(e){ document.getElementById(id).textContent='(unavailable)'; }
+  }
+})().catch(e=>{
+  const body=document.querySelector('#dl tbody'); body.textContent='';
+  body.appendChild(el('tr',{},[el('td',{colspan:'4'},[e.message])]));
+});
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body></html>

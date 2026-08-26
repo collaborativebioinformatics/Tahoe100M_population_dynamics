@@ -1,0 +1,60 @@
+{
+  "release": "v0.1.0",
+  "is_demo": false,
+  "files": [
+    {
+      "file": "condition_embedding.parquet",
+      "description": "Condition metadata, response magnitude, and 20-component uncentered SVD embedding.",
+      "bytes": 13356093,
+      "sha256": "cbfd3e41985d1f4321f8bdf5cabd8ff284b7bc07949a1da2bf5cf2dfcf6c097a"
+    },
+    {
+      "file": "condition_summary.parquet",
+      "description": "Per-condition pseudobulk response summary across the 14 public plates.",
+      "bytes": 1351994,
+      "sha256": "0fbc2bd53a1e7c1132951cf4ba7ffc1da6e370b2786e38105542749f0bc56a33"
+    },
+    {
+      "file": "dose_paths.parquet",
+      "description": "Descriptive three-dose paths assembled across documented plate triplets, with synthetic DMSO origins.",
+      "bytes": 1811554,
+      "sha256": "e00c79eaf4fe4b921f1c985997c32e3966cf3e59dc71a77e01faf1e0669f5be2"
+    },
+    {
+      "file": "dose_response_summary.parquet",
+      "description": "Dose-trend summaries, including Spearman and isotonic-fit descriptors; no EC50 estimates.",
+      "bytes": 380045,
+      "sha256": "388f9b639d6cec7013e625d3570bcc30c1d58f0db31bc4c2700e75b72115ca64"
+    },
+    {
+      "file": "drug_cellline_ranking.parquet",
+      "description": "Drug-by-cell-line transcriptional response rankings and annotations.",
+      "bytes": 1320747,
+      "sha256": "24e91fa77400dcfeac1f901036700703d5ed5dc053acba2fbffb65072a097b06"
+    },
+    {
+      "file": "explained_variance.csv",
+      "description": "Human-readable explained-variance summary for the 20-component SVD.",
+      "bytes": 1317,
+      "sha256": "cc52a9f9665a9ab1a13951ffa649a02a8e56deaac857294a25c31f8e27d67043"
+    },
+    {
+      "file": "explained_variance.parquet",
+      "description": "Explained-variance summary for the 20-component SVD in Parquet format.",
+      "bytes": 3714,
+      "sha256": "1d7b6901061a20afa18f8923ab936a0309485785e0829c4f2c84d17b47491cd9"
+    },
+    {
+      "file": "pathway_summary.parquet",
+      "description": "Hallmark over-representation results derived from retained top-DE genes; not GSEA.",
+      "bytes": 2868482,
+      "sha256": "d13b61624c9182ce9693ea97ab0d29bd648540f9ac2dc5cca88fb955ab009005"
+    },
+    {
+      "file": "plate_concordance.parquet",
+      "description": "Held-out plate-14 versus plate-6 replicate concordance metrics.",
+      "bytes": 184654,
+      "sha256": "82d242fdc7d4df085c58be1d6881f44dadd91ef01be8fd3394049ffde1f73e54"
+    }
+  ]
+}

@@ -1,0 +1,69 @@
+<!doctype html><html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Explore 65,218 real Tahoe-100M pseudobulk perturbation conditions through response rankings, comparisons, signature search, pathways, and downloads.">
+<title>Tahoe-100M Atlas — Overview</title>
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/app.css">
+</head><body>
+<header class="top">
+  <a class="brand" href="../">Tahoe-100M Atlas</a>
+  <nav>
+    <a href="../">Project Home</a>
+    <a href="index.html">Overview</a>
+    <a href="ranking.html">Response Ranking</a>
+    <a href="compare.html">Compare</a>
+    <a href="search.html">Signature Search</a>
+    <a href="downloads.html">Data</a>
+  </nav>
+</header>
+<main>
+  <h1>Drug response atlas of the Tahoe-100M public subset</h1>
+  <p class="sub">Pseudobulk differential-expression signatures across all 14 plates, with a held-out replicate validation. Every number on this site is computed from real data (<code>is_demo = false</code>).</p>
+  <p class="release-line"><span class="chip">REAL DATA</span> <span data-release>Loading version…</span></p>
+
+  <div class="grid cards" id="stats"></div>
+
+  <div class="note" id="method"></div>
+
+  <div class="split">
+    <div class="panel"><h2 style="margin-top:0">Strongest-response drugs</h2><ol id="topdrugs" class="muted"></ol>
+      <p class="muted" style="font-size:12px">Mean response magnitude across cell lines.</p></div>
+    <div class="panel"><h2 style="margin-top:0">Most-recurrent pathways</h2><ol id="toppw" class="muted"></ol>
+      <p class="muted" style="font-size:12px">Hallmark ORA, by number of enriched conditions.</p></div>
+  </div>
+
+  <div class="panel">
+    <h2 style="margin-top:0">What you can do here</h2>
+    <ul>
+      <li><b><a href="ranking.html">Response Ranking</a></b> — rank drugs within any cell line, cell lines within any drug, and browse the full drug × cell-line response heatmap.</li>
+      <li><b><a href="compare.html">Compare</a></b> — put two conditions side by side: shared up/down genes, shared pathways, and distance in response-signature space.</li>
+      <li><b><a href="search.html">Signature Search</a></b> — enter an up/down gene signature and find the conditions whose measured response matches it.</li>
+      <li><b><a href="downloads.html">Data</a></b> — download the underlying validated tables (Parquet/CSV) with provenance.</li>
+    </ul>
+  </div>
+
+  <div class="note">
+    <b>Scope & limits.</b> Response = L2 magnitude of the <i>truncated</i> top-N log2 fold-change signature (not a full transcriptome). Cell-level expression was <b>not</b> used (only 1 of 3388 shards is public), so single-cell heterogeneity and responder fractions are <b>not</b> provided. Multi-dose curves are assembled across plate triplets; the DMSO origin is synthetic. See <a href="downloads.html">Data</a> for the full methods and limitations.
+  </div>
+</main>
+<footer><a href="../">Project home</a> · <a href="https://doi.org/10.1101/2025.02.20.639398">Original paper</a> · <a href="https://huggingface.co/datasets/tahoebio/Tahoe-100M">Original data</a> · <a href="https://github.com/collaborativebioinformatics/Tahoe100M_population_dynamics">GitHub</a> · <span data-release>Loading version…</span></footer>
+<script src="assets/common.js"></script>
+<script>
+(async ()=>{
+  const s = await loadJSON('site_stats.json');
+  const cards=[['conditions','Conditions'],['cell_lines','Cell lines'],['drugs','Drugs'],
+    ['genes_indexed','Genes indexed'],['pathways','Pathways'],['n_trajectories_3dose','3-dose trajectories']];
+  const box=document.getElementById('stats');
+  cards.forEach(([k,l])=> box.appendChild(el('div',{class:'card'},[el('div',{class:'k'},[s[k].toLocaleString()]),el('div',{class:'l'},[l])])));
+  const method=document.getElementById('method'); method.textContent='';
+  method.append('Held-out plate-14 replicate concordance: ');
+  method.appendChild(el('b',{},[`median cosine ${s.heldout_median_cosine}`]));
+  method.append('. Response magnitude reproduces the prior run to ');
+  method.appendChild(el('b',{},[`r = ${Number(s.reproducibility_r).toFixed(6)}`]));
+  method.append('. Uncentered truncated-SVD response geometry, seed 42.');
+  const od=document.getElementById('topdrugs'); s.top_drugs.forEach(d=> od.appendChild(el('li',{},[d])));
+  const op=document.getElementById('toppw'); s.top_pathways.forEach(p=> op.appendChild(el('li',{},[p])));
+})().catch(e=>document.getElementById('method').textContent=e.message);
+</script>
+<script type="module" src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token":"187c64d5ca284d6984e9aba9882d146e"}'></script>
+</body></html>

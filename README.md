@@ -10,6 +10,9 @@
   </a>
   <img alt="Tahoe-100M" src="https://img.shields.io/badge/DATA-TAHOE--100M-0F766E?style=for-the-badge">
   <img alt="Atlas status" src="https://img.shields.io/badge/ATLAS-REAL%20DERIVED%20DATA-15803D?style=for-the-badge">
+  <a href="https://fritzsedlazeck.github.io/blog/2026/hackathon-2026/">
+    <img alt="Built at the Baylor and Rice SV Hackathon" src="https://img.shields.io/badge/BUILT%20AT-BAYLOR%20%2B%20RICE%20SV%20HACKATHON-154734?style=for-the-badge">
+  </a>
 </p>
 
 <p>Explore by drug or cell line, refine by dose and feature, launch a team analysis module, and inspect returned plots, tables, and linked metadata.</p>
@@ -107,7 +110,7 @@ The Tahoe-100M data are distributed under [**CC0 1.0**](https://creativecommons.
 
 ## Acknowledgements
 
-This Group 6 prototype was developed during the [8th Pan-Structural Variation Hackathon in the Cloud](https://fritzsedlazeck.github.io/blog/2026/hackathon-2026/), held August 25–28, 2026. The event was hosted by Baylor College of Medicine and Rice University in collaboration with the GREGoR and SMAHT consortia.
+This Group 6 project was developed during the [8th Pan-Structural Variation Hackathon in the Cloud](https://fritzsedlazeck.github.io/blog/2026/hackathon-2026/), held August 25–28, 2026. We sincerely thank **Baylor College of Medicine** and **Rice University** for hosting the event, and the hackathon organizers, mentors, and collaborators from the GREGoR and SMAHT consortia, NCBI, and the broader genomics community for creating the collaborative environment and providing the support that made this work possible.
 
 We acknowledge the Tahoe-100M authors and the teams at Tahoe Bio/Tahoe Therapeutics, Parse Biosciences, and Ultima Genomics for generating the atlas; Arc Institute and Hugging Face for public data access; and DNAnexus for public-dataset and notebook resources used by hackathon participants. Organization names identify provenance and do not imply validation or endorsement of this prototype's scientific results.
 

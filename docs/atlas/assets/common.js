@@ -1,5 +1,8 @@
 // Shared helpers — vanilla JS, no framework or application server required.
 const DATA = 'data/';
+let savedTheme=null;
+try{ savedTheme=localStorage.getItem('tahoe-atlas-theme'); }catch(_error){}
+if(savedTheme==='dark'||savedTheme==='light') document.documentElement.dataset.theme=savedTheme;
 async function loadJSON(path){
   const r = await fetch(DATA+path);
   if(!r.ok) throw new Error('fetch failed: '+path+' ('+r.status+')');
@@ -29,10 +32,32 @@ function jaccard(a,b){ const A=new Set(a),B=new Set(b); let i=0; A.forEach(x=>{i
 function cosine(a,b){ let d=0,na=0,nb=0; for(let i=0;i<a.length;i++){d+=a[i]*b[i];na+=a[i]*a[i];nb+=b[i]*b[i];} return (na&&nb)? d/Math.sqrt(na*nb):0; }
 function safe(name){ return String(name).replace(/\//g,'_').replace(/ /g,'_'); }
 function debounce(fn,ms){ let t; return (...a)=>{clearTimeout(t); t=setTimeout(()=>fn(...a),ms);}; }
+function animateNumber(node,value){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){ node.textContent=value.toLocaleString(); return; }
+  const start=performance.now(),duration=780;
+  function frame(now){
+    const p=Math.min(1,(now-start)/duration),eased=1-Math.pow(1-p,3);
+    node.textContent=Math.round(value*eased).toLocaleString();
+    if(p<1) requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+}
 // active nav link
 document.addEventListener('DOMContentLoaded',()=>{
   const p=(location.pathname.split('/').pop()||'index.html');
   document.querySelectorAll('header.top nav a').forEach(a=>{ if(a.getAttribute('href')===p) a.classList.add('active'); });
+  const header=document.querySelector('header.top');
+  if(header){
+    const themeButton=el('button',{class:'theme-toggle',type:'button','aria-label':'Toggle light and dark theme',title:'Toggle theme'},[]);
+    const syncTheme=()=>{ themeButton.textContent=document.documentElement.dataset.theme==='dark'?'☀':'☾'; };
+    themeButton.addEventListener('click',()=>{
+      const next=document.documentElement.dataset.theme==='dark'?'light':'dark';
+      document.documentElement.dataset.theme=next;
+      try{ localStorage.setItem('tahoe-atlas-theme',next); }catch(_error){}
+      syncTheme();
+    });
+    syncTheme(); header.appendChild(themeButton);
+  }
   loadJSON('release.json').then(r=>{
     const stamp=`Data ${r.release} · updated ${r.updated}`;
     document.querySelectorAll('[data-release]').forEach(node=>{ node.textContent=stamp; });

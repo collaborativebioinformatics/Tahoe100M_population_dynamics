@@ -17,9 +17,17 @@
   </nav>
 </header>
 <main>
-  <h1>Drug response atlas of the Tahoe-100M public subset</h1>
-  <p class="sub">Pseudobulk differential-expression signatures across all 14 plates, with a held-out replicate validation. Every number on this site is computed from real data (<code>is_demo = false</code>).</p>
-  <p class="release-line"><span class="chip">REAL DATA</span> <span data-release>Loading version…</span></p>
+  <section class="atlas-hero">
+    <div class="hero-kicker">Explore real perturbation responses</div>
+    <h1>Follow the signal. Compare the context. Find the reversal.</h1>
+    <p class="sub">Explore pseudobulk differential-expression signatures across all 14 plates, with held-out replicate validation and transparent scientific limits.</p>
+    <p class="release-line"><span class="chip">REAL DATA</span> <span data-release>Loading version…</span></p>
+    <div class="hero-actions">
+      <a class="hero-action primary" href="ranking.html">Start with rankings <span aria-hidden="true">→</span></a>
+      <a class="hero-action" href="compare.html">Compare two conditions</a>
+      <a class="hero-action" href="search.html">Search a gene signature</a>
+    </div>
+  </section>
 
   <div class="grid cards" id="stats"></div>
 
@@ -32,14 +40,10 @@
       <p class="muted" style="font-size:12px">Hallmark ORA, by number of enriched conditions.</p></div>
   </div>
 
-  <div class="panel">
-    <h2 style="margin-top:0">What you can do here</h2>
-    <ul>
-      <li><b><a href="ranking.html">Response Ranking</a></b> — rank drugs within any cell line, cell lines within any drug, and browse the full drug × cell-line response heatmap.</li>
-      <li><b><a href="compare.html">Compare</a></b> — put two conditions side by side: shared up/down genes, shared pathways, and distance in response-signature space.</li>
-      <li><b><a href="search.html">Signature Search</a></b> — enter an up/down gene signature and find the conditions whose measured response matches it.</li>
-      <li><b><a href="downloads.html">Data</a></b> — download the underlying validated tables (Parquet/CSV) with provenance.</li>
-    </ul>
+  <div class="action-grid" aria-label="Atlas tools">
+    <a class="action-card" href="ranking.html"><span class="icon" aria-hidden="true">↗</span><b>Rank responses</b><span>Find the strongest transcriptional shifts by cell line or drug.</span></a>
+    <a class="action-card" href="compare.html"><span class="icon" aria-hidden="true">⇄</span><b>Compare conditions</b><span>Inspect shared genes, pathways, and response-geometry distance.</span></a>
+    <a class="action-card" href="search.html"><span class="icon" aria-hidden="true">⌕</span><b>Search signatures</b><span>Discover measured responses that match—or reverse—your gene program.</span></a>
   </div>
 
   <div class="note">
@@ -54,7 +58,11 @@
   const cards=[['conditions','Conditions'],['cell_lines','Cell lines'],['drugs','Drugs'],
     ['genes_indexed','Genes indexed'],['pathways','Pathways'],['n_trajectories_3dose','3-dose trajectories']];
   const box=document.getElementById('stats');
-  cards.forEach(([k,l])=> box.appendChild(el('div',{class:'card'},[el('div',{class:'k'},[s[k].toLocaleString()]),el('div',{class:'l'},[l])])));
+  cards.forEach(([k,l])=>{
+    const value=el('div',{class:'k'},['0']);
+    box.appendChild(el('div',{class:'card'},[value,el('div',{class:'l'},[l])]));
+    animateNumber(value,s[k]);
+  });
   const method=document.getElementById('method'); method.textContent='';
   method.append('Held-out plate-14 replicate concordance: ');
   method.appendChild(el('b',{},[`median cosine ${s.heldout_median_cosine}`]));

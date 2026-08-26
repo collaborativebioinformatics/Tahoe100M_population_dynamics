@@ -51,6 +51,7 @@ pick.addEventListener('change', renderTable);
 
 function heatmap(){
   const box=document.getElementById('heatmap');
+  const detail=document.getElementById('heatmapDetail');
   const cls=R.heatmap.cell_lines, drugs=R.heatmap.drugs.slice(0,60), vals=R.heatmap.values;
   const di=drugs.map(d=> R.heatmap.drugs.indexOf(d));
   let max=0; vals.forEach(row=> di.forEach(j=>{ if(row[j]!=null) max=Math.max(max,row[j]); }));
@@ -58,9 +59,13 @@ function heatmap(){
   drugs.forEach(d=> head.appendChild(el('th',{title:d},[d.length>10?d.slice(0,9)+'…':d]))); t.appendChild(head);
   cls.forEach((cl,i)=>{ const r=document.createElement('tr'); r.appendChild(el('th',{title:cl},[cl]));
     di.forEach((j,k)=>{ const v=vals[i][j]; const td=document.createElement('td');
-      if(v==null){ td.style.background='#f0f0f0'; }
-      else { const a=Math.min(1,v/max); td.style.background=`rgba(62,89,101,${(0.12+0.88*a).toFixed(3)})`;
-        td.title=`${cl} · ${drugs[k]}: ${v}`; }
+      if(v==null){ td.style.background='var(--panel)'; }
+      else { const a=Math.min(1,v/max); td.style.background=`color-mix(in srgb,var(--accent) ${Math.round(12+88*a)}%,var(--surface))`;
+        const label=`${cl} × ${drugs[k]} · response ${fmt(v,2)}`;
+        td.title=label; td.tabIndex=0; td.setAttribute('aria-label',label);
+        const reveal=()=>{ detail.textContent=label; detail.classList.remove('pulse'); };
+        td.addEventListener('mouseenter',reveal); td.addEventListener('focus',reveal); td.addEventListener('click',reveal);
+      }
       r.appendChild(td); }); t.appendChild(r); });
   box.innerHTML=''; box.appendChild(t);
 }

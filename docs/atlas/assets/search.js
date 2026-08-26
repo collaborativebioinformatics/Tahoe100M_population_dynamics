@@ -129,6 +129,10 @@ document.getElementById('ex2').addEventListener('click',()=>{
   document.getElementById('up').value='CDKN1A GADD45A MDM2 BAX';
   document.getElementById('down').value='CCNB1 CCNB2'; run();
 });
+document.getElementById('ex3').addEventListener('click',()=>{
+  document.getElementById('up').value='NFKBIA TNFAIP3 CXCL8 IL6 CCL2';
+  document.getElementById('down').value=''; run();
+});
 
 (async()=>{
   document.getElementById('status').textContent='loading searchable catalog…';

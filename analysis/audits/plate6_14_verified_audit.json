@@ -1,0 +1,83 @@
+{
+  "generated_utc": "2026-08-27",
+  "source": {
+    "dataset": "tahoebio/Tahoe-100M official metadata/sample_metadata.parquet and metadata/obs_metadata.parquet",
+    "sample_metadata_url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M/resolve/main/metadata/sample_metadata.parquet",
+    "obs_metadata_url": "https://huggingface.co/datasets/tahoebio/Tahoe-100M/resolve/main/metadata/obs_metadata.parquet",
+    "dataset_cell_count": 100648790,
+    "dataset_sample_count": 1344
+  },
+  "plate_summary": {
+    "plate6": {
+      "cells": 7545393,
+      "samples": 96,
+      "drugs_including_dmso": 95,
+      "cell_lines": 50,
+      "dmso_samples": [
+        "smp_2069",
+        "smp_2070"
+      ]
+    },
+    "plate14": {
+      "cells": 6518806,
+      "samples": 96,
+      "drugs_including_dmso": 95,
+      "cell_lines": 50,
+      "dmso_samples": [
+        "smp_2837",
+        "smp_2838"
+      ]
+    }
+  },
+  "replicate_structure": {
+    "ordered_sample_drug_and_concentration_match": true,
+    "exact_matched_treated_drug_concentration_cell_line_keys": 4696,
+    "matched_keys_both_n_ge_200": 4155,
+    "plate6_keys_absent_plate14": 4,
+    "absent_key_note": "All four are L-Thyroxine (sodium salt pentahydrate), cell lines CVCL_0428/CVCL_1531/CVCL_1577/CVCL_1716."
+  },
+  "metadata_schema": {
+    "columns": [
+      "plate",
+      "sample",
+      "drug",
+      "drugname_drugconc",
+      "cell_line",
+      "gene_count",
+      "tscp_count",
+      "mread_count",
+      "pcnt_mito",
+      "S_score",
+      "G2M_score",
+      "phase",
+      "pass_filter"
+    ],
+    "dmso_label": "DMSO_TF",
+    "dose_source": "Parse concentration from drugname_drugconc; no standalone dose column in official obs metadata."
+  },
+  "qc_warning": {
+    "message": "Do not assume the two DMSO samples are exchangeable. Their QC distributions differ materially and in opposite ways between plates.",
+    "plate6_median_abs_robust_difference": {
+      "gene_count": 0.689,
+      "tscp_count": 0.741,
+      "mread_count": 0.742,
+      "pcnt_mito": 0.1,
+      "S_score": 0.342,
+      "G2M_score": 0.205
+    },
+    "plate14_median_abs_robust_difference": {
+      "gene_count": 0.079,
+      "tscp_count": 0.056,
+      "mread_count": 0.053,
+      "pcnt_mito": 0.719,
+      "S_score": 0.052,
+      "G2M_score": 0.065
+    },
+    "implication": "Calibration/matched-control roles must be prespecified and analyses need QC sensitivity or within-cell-line balancing; swapping DMSO roles should be a sensitivity analysis."
+  },
+  "limitations": [
+    "Metadata audit only; no cell expression was used here.",
+    "Cell-count adequacy does not establish biological validity.",
+    "Cells within a sample are not independent biological replicates."
+  ]
+}

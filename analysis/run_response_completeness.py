@@ -53,6 +53,7 @@ def _result_record(
     matched_control_sample: str,
     score_column: str,
     alpha: float,
+    confidence_level: float,
 ) -> dict[str, Any]:
     record = dict(zip(group_columns, group_values, strict=True))
     metrics = result.to_dict()
@@ -69,6 +70,7 @@ def _result_record(
             "method": "response_completeness_baseline_v1",
             "is_demo": False,
             "alpha": alpha,
+            "confidence_level": confidence_level,
         }
     )
     return record
@@ -87,7 +89,8 @@ def analyze_table(
     matched_control_sample: str,
     group_columns: list[str],
     alpha: float,
-    min_cells: int,
+    confidence_level: float = 0.95,
+    min_cells: int = 30,
 ) -> tuple[pd.DataFrame, list[str]]:
     required = [
         score_column,
@@ -134,6 +137,7 @@ def analyze_table(
             matched_control_scores=matched.to_numpy(),
             calibration_control_scores=calibration.to_numpy(),
             alpha=alpha,
+            confidence_level=confidence_level,
         )
         records.append(
             _result_record(
@@ -145,6 +149,7 @@ def analyze_table(
                 matched_control_sample=matched_control_sample,
                 score_column=score_column,
                 alpha=alpha,
+                confidence_level=confidence_level,
             )
         )
 
@@ -154,6 +159,7 @@ def analyze_table(
         matched_control_scores=calibration.to_numpy(),
         calibration_control_scores=calibration.to_numpy(),
         alpha=alpha,
+        confidence_level=confidence_level,
     ).to_dict()
     negative = {key: (_json_number(value) if isinstance(value, (int, float)) else value) for key, value in negative.items()}
     for record in records:
@@ -180,6 +186,7 @@ def main() -> None:
         help="Columns defining each treated condition",
     )
     parser.add_argument("--alpha", type=float, default=0.05)
+    parser.add_argument("--confidence-level", type=float, default=0.95)
     parser.add_argument("--min-cells", type=int, default=30)
     parser.add_argument("--warnings-output", type=Path)
     args = parser.parse_args()
@@ -197,6 +204,7 @@ def main() -> None:
         matched_control_sample=args.matched_control_sample,
         group_columns=args.group_columns,
         alpha=args.alpha,
+        confidence_level=args.confidence_level,
         min_cells=args.min_cells,
     )
     args.output.parent.mkdir(parents=True, exist_ok=True)

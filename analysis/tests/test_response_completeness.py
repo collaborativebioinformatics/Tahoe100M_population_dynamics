@@ -15,9 +15,11 @@ from analysis.run_response_completeness import analyze_table
 
 def test_reference_interval_and_wilson_bounds():
     assert dmso_reference_interval([0, 1, 2, 3, 4], alpha=0.2) == pytest.approx((0.4, 3.6))
-    low, high = wilson_interval(0, 10)
+    low, high = wilson_interval(0, 10, confidence_level=0.95)
     assert low == 0.0
     assert 0 < high < 1
+    with pytest.raises(ValueError, match="confidence_level"):
+        wilson_interval(1, 10, confidence_level=1.0)
 
 
 def test_summarize_condition_known_values():

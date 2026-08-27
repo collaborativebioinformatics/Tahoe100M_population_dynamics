@@ -9,6 +9,7 @@ from __future__ import annotations
 
 from dataclasses import asdict, dataclass
 from math import sqrt
+from statistics import NormalDist
 from typing import Iterable
 
 import numpy as np
@@ -56,8 +57,16 @@ def dmso_reference_interval(
     return float(low), float(high)
 
 
-def wilson_interval(successes: int, total: int, z: float = 1.959963984540054) -> tuple[float, float]:
+def wilson_interval(
+    successes: int,
+    total: int,
+    *,
+    confidence_level: float = 0.95,
+) -> tuple[float, float]:
     """Wilson score interval for a binomial proportion."""
+    if not 0 < confidence_level < 1:
+        raise ValueError("confidence_level must lie strictly between 0 and 1")
+    z = NormalDist().inv_cdf(0.5 + confidence_level / 2)
     if total <= 0:
         raise ValueError("total must be positive")
     if not 0 <= successes <= total:
@@ -66,7 +75,7 @@ def wilson_interval(successes: int, total: int, z: float = 1.959963984540054) ->
     denom = 1 + z * z / total
     center = (p + z * z / (2 * total)) / denom
     half = z * sqrt((p * (1 - p) + z * z / (4 * total)) / total) / denom
-    return max(0.0, center - half), min(1.0, center + half)
+    return max(0.0, center - half) if successes else 0.0, min(1.0, center + half)
 
 
 def reference_membership(
@@ -95,6 +104,7 @@ class CompletenessResult:
     dmso_reference_low: float
     dmso_reference_high: float
     alpha: float
+    confidence_level: float
     warning: str | None
 
     def to_dict(self) -> dict:
@@ -106,6 +116,7 @@ def summarize_condition(
     matched_control_scores: Iterable[float],
     calibration_control_scores: Iterable[float],
     alpha: float = 0.05,
+    confidence_level: float = 0.95,
 ) -> CompletenessResult:
     """Compute baseline magnitude, coverage, and dispersion estimands.
 
@@ -120,7 +131,7 @@ def summarize_condition(
     inside = reference_membership(t, ref)
     n_inside = int(inside.sum())
     residual = n_inside / t.size
-    residual_ci = wilson_interval(n_inside, int(t.size))
+    residual_ci = wilson_interval(n_inside, int(t.size), confidence_level=confidence_level)
     coverage = 1.0 - residual
     coverage_ci = (1.0 - residual_ci[1], 1.0 - residual_ci[0])
 
@@ -147,5 +158,6 @@ def summarize_condition(
         dmso_reference_low=ref[0],
         dmso_reference_high=ref[1],
         alpha=float(alpha),
+        confidence_level=float(confidence_level),
         warning=warning,
     )

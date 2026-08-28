@@ -94,3 +94,7 @@ python -m pytest -q analysis/tests
 4. Add sample-aware negative-control and quality-control analyses.
 5. Export aggregate results compatible with `docs/schemas/result.schema.json`.
 6. Apply the frozen configuration to matched plate-14 conditions.
+
+## Real plate-pair H5AD execution
+
+Use [`DNANEXUS_PLATE_PAIR_RUNBOOK.md`](DNANEXUS_PLATE_PAIR_RUNBOOK.md) for the prespecified, memory-conscious plate 6 -> plate 14 run and required DMSO-role sensitivity analysis.

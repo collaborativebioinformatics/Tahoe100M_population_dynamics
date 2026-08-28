@@ -1,0 +1,376 @@
+{
+  "name": "plate6_C32_Homoharringtonine_5uM_top25_each_direction",
+  "selection": "Retrospective hackathon example selected from the published plate-6 pseudobulk Atlas; top 25 mapped genes per direction by absolute plate-6 log2FC. Plate-14 aggregate concordance was already visible before selection, so plate 14 is replication, not blinded validation.",
+  "source_condition": {
+    "plate": "plate6",
+    "sample": "smp_2047",
+    "cell_line": "CVCL_1097",
+    "cell_name": "C32",
+    "drug": "Homoharringtonine",
+    "dose": 5.0,
+    "unit": "uM",
+    "atlas_condition_id": 49291
+  },
+  "up_genes": [
+    "ENSG00000290421",
+    "ENSG00000169896",
+    "ENSG00000105278",
+    "ENSG00000283529",
+    "ENSG00000241458",
+    "ENSG00000284797",
+    "ENSG00000135625",
+    "ENSG00000154016",
+    "ENSG00000176840",
+    "ENSG00000229414",
+    "ENSG00000007908",
+    "ENSG00000120949",
+    "ENSG00000250969",
+    "ENSG00000226792",
+    "ENSG00000183034",
+    "ENSG00000225807",
+    "ENSG00000233755",
+    "ENSG00000196890",
+    "ENSG00000204482",
+    "ENSG00000092051",
+    "ENSG00000230197",
+    "ENSG00000160396",
+    "ENSG00000260173",
+    "ENSG00000277448",
+    "ENSG00000141968"
+  ],
+  "down_genes": [
+    "ENSG00000253633",
+    "ENSG00000225177",
+    "ENSG00000106688",
+    "ENSG00000106624",
+    "ENSG00000204767",
+    "ENSG00000256742",
+    "ENSG00000223396",
+    "ENSG00000197467",
+    "ENSG00000135245",
+    "ENSG00000228863",
+    "ENSG00000119865",
+    "ENSG00000115461",
+    "ENSG00000138080",
+    "ENSG00000256417",
+    "ENSG00000236885",
+    "ENSG00000148735",
+    "ENSG00000164849",
+    "ENSG00000260517",
+    "ENSG00000101955",
+    "ENSG00000169499",
+    "ENSG00000273184",
+    "ENSG00000155254",
+    "ENSG00000175147",
+    "ENSG00000280373",
+    "ENSG00000137441"
+  ],
+  "gene_annotations": {
+    "up": [
+      {
+        "symbol": "ENSG00000290421",
+        "ensembl_id": "ENSG00000290421",
+        "plate6_log2fc": 12.725,
+        "auxiliary_value": 0.061
+      },
+      {
+        "symbol": "ITGAM",
+        "ensembl_id": "ENSG00000169896",
+        "plate6_log2fc": 11.927,
+        "auxiliary_value": 0.0636
+      },
+      {
+        "symbol": "ZFR2",
+        "ensembl_id": "ENSG00000105278",
+        "plate6_log2fc": 11.636,
+        "auxiliary_value": 0.0784
+      },
+      {
+        "symbol": "ENSG00000283529",
+        "ensembl_id": "ENSG00000283529",
+        "plate6_log2fc": 11.574,
+        "auxiliary_value": 0.0708
+      },
+      {
+        "symbol": "RPL7P19",
+        "ensembl_id": "ENSG00000241458",
+        "plate6_log2fc": 11.429,
+        "auxiliary_value": 0.0789
+      },
+      {
+        "symbol": "ENSG00000284797",
+        "ensembl_id": "ENSG00000284797",
+        "plate6_log2fc": 11.006,
+        "auxiliary_value": 0.0605
+      },
+      {
+        "symbol": "EGR4",
+        "ensembl_id": "ENSG00000135625",
+        "plate6_log2fc": 10.928,
+        "auxiliary_value": 0.0582
+      },
+      {
+        "symbol": "GRAP",
+        "ensembl_id": "ENSG00000154016",
+        "plate6_log2fc": 10.905,
+        "auxiliary_value": 0.0792
+      },
+      {
+        "symbol": "MIR7-3HG",
+        "ensembl_id": "ENSG00000176840",
+        "plate6_log2fc": 10.849,
+        "auxiliary_value": 0.0638
+      },
+      {
+        "symbol": "KCNQ1-AS1",
+        "ensembl_id": "ENSG00000229414",
+        "plate6_log2fc": 10.834,
+        "auxiliary_value": 0.0908
+      },
+      {
+        "symbol": "SELE",
+        "ensembl_id": "ENSG00000007908",
+        "plate6_log2fc": 10.648,
+        "auxiliary_value": 0.0688
+      },
+      {
+        "symbol": "TNFRSF8",
+        "ensembl_id": "ENSG00000120949",
+        "plate6_log2fc": 10.647,
+        "auxiliary_value": 0.0774
+      },
+      {
+        "symbol": "ENSG00000250969",
+        "ensembl_id": "ENSG00000250969",
+        "plate6_log2fc": 10.497,
+        "auxiliary_value": 0.0887
+      },
+      {
+        "symbol": "C13orf42",
+        "ensembl_id": "ENSG00000226792",
+        "plate6_log2fc": 10.457,
+        "auxiliary_value": 0.0716
+      },
+      {
+        "symbol": "OTOP2",
+        "ensembl_id": "ENSG00000183034",
+        "plate6_log2fc": 10.212,
+        "auxiliary_value": 0.0858
+      },
+      {
+        "symbol": "ENSG00000225807",
+        "ensembl_id": "ENSG00000225807",
+        "plate6_log2fc": 10.178,
+        "auxiliary_value": 0.093
+      },
+      {
+        "symbol": "ENSG00000233755",
+        "ensembl_id": "ENSG00000233755",
+        "plate6_log2fc": 10.161,
+        "auxiliary_value": 0.0789
+      },
+      {
+        "symbol": "H2BC26",
+        "ensembl_id": "ENSG00000196890",
+        "plate6_log2fc": 10.16,
+        "auxiliary_value": 0.067
+      },
+      {
+        "symbol": "LST1",
+        "ensembl_id": "ENSG00000204482",
+        "plate6_log2fc": 10.11,
+        "auxiliary_value": 0.068
+      },
+      {
+        "symbol": "JPH4",
+        "ensembl_id": "ENSG00000092051",
+        "plate6_log2fc": 9.959,
+        "auxiliary_value": 0.0791
+      },
+      {
+        "symbol": "ENSG00000230197",
+        "ensembl_id": "ENSG00000230197",
+        "plate6_log2fc": 9.944,
+        "auxiliary_value": 0.1017
+      },
+      {
+        "symbol": "HIPK4",
+        "ensembl_id": "ENSG00000160396",
+        "plate6_log2fc": 9.933,
+        "auxiliary_value": 0.0687
+      },
+      {
+        "symbol": "ENSG00000260173",
+        "ensembl_id": "ENSG00000260173",
+        "plate6_log2fc": 9.724,
+        "auxiliary_value": 0.0822
+      },
+      {
+        "symbol": "LINC02338",
+        "ensembl_id": "ENSG00000277448",
+        "plate6_log2fc": 9.712,
+        "auxiliary_value": 0.1176
+      },
+      {
+        "symbol": "VAV1",
+        "ensembl_id": "ENSG00000141968",
+        "plate6_log2fc": 9.667,
+        "auxiliary_value": 0.0666
+      }
+    ],
+    "down": [
+      {
+        "symbol": "LINC03047",
+        "ensembl_id": "ENSG00000253633",
+        "plate6_log2fc": -8.611,
+        "auxiliary_value": -0.0433
+      },
+      {
+        "symbol": "NHSL1-AS1",
+        "ensembl_id": "ENSG00000225177",
+        "plate6_log2fc": -8.56,
+        "auxiliary_value": -0.0605
+      },
+      {
+        "symbol": "SLC1A1",
+        "ensembl_id": "ENSG00000106688",
+        "plate6_log2fc": -8.193,
+        "auxiliary_value": -0.063
+      },
+      {
+        "symbol": "AEBP1",
+        "ensembl_id": "ENSG00000106624",
+        "plate6_log2fc": -8.082,
+        "auxiliary_value": -0.0647
+      },
+      {
+        "symbol": "INSYN2B",
+        "ensembl_id": "ENSG00000204767",
+        "plate6_log2fc": -7.973,
+        "auxiliary_value": -0.0466
+      },
+      {
+        "symbol": "KDM2B-DT",
+        "ensembl_id": "ENSG00000256742",
+        "plate6_log2fc": -7.972,
+        "auxiliary_value": -0.0625
+      },
+      {
+        "symbol": "RPS10P7",
+        "ensembl_id": "ENSG00000223396",
+        "plate6_log2fc": -7.835,
+        "auxiliary_value": -0.0623
+      },
+      {
+        "symbol": "COL13A1",
+        "ensembl_id": "ENSG00000197467",
+        "plate6_log2fc": -7.756,
+        "auxiliary_value": -0.0518
+      },
+      {
+        "symbol": "HILPDA",
+        "ensembl_id": "ENSG00000135245",
+        "plate6_log2fc": -7.749,
+        "auxiliary_value": -0.0353
+      },
+      {
+        "symbol": "ENSG00000228863",
+        "ensembl_id": "ENSG00000228863",
+        "plate6_log2fc": -7.411,
+        "auxiliary_value": -0.072
+      },
+      {
+        "symbol": "CNRIP1",
+        "ensembl_id": "ENSG00000119865",
+        "plate6_log2fc": -7.316,
+        "auxiliary_value": -0.0691
+      },
+      {
+        "symbol": "IGFBP5",
+        "ensembl_id": "ENSG00000115461",
+        "plate6_log2fc": -7.171,
+        "auxiliary_value": -0.0363
+      },
+      {
+        "symbol": "EMILIN1",
+        "ensembl_id": "ENSG00000138080",
+        "plate6_log2fc": -7.115,
+        "auxiliary_value": -0.0675
+      },
+      {
+        "symbol": "ENSG00000256417",
+        "ensembl_id": "ENSG00000256417",
+        "plate6_log2fc": -7.111,
+        "auxiliary_value": -0.0585
+      },
+      {
+        "symbol": "ENSG00000236885",
+        "ensembl_id": "ENSG00000236885",
+        "plate6_log2fc": -7.057,
+        "auxiliary_value": -0.0718
+      },
+      {
+        "symbol": "PLEKHS1",
+        "ensembl_id": "ENSG00000148735",
+        "plate6_log2fc": -6.844,
+        "auxiliary_value": -0.0577
+      },
+      {
+        "symbol": "GPR146",
+        "ensembl_id": "ENSG00000164849",
+        "plate6_log2fc": -6.742,
+        "auxiliary_value": -0.0598
+      },
+      {
+        "symbol": "ENSG00000260517",
+        "ensembl_id": "ENSG00000260517",
+        "plate6_log2fc": -6.74,
+        "auxiliary_value": -0.0603
+      },
+      {
+        "symbol": "SRPX",
+        "ensembl_id": "ENSG00000101955",
+        "plate6_log2fc": -6.671,
+        "auxiliary_value": -0.0637
+      },
+      {
+        "symbol": "PLEKHA2",
+        "ensembl_id": "ENSG00000169499",
+        "plate6_log2fc": -6.642,
+        "auxiliary_value": -0.0643
+      },
+      {
+        "symbol": "ENSG00000273184",
+        "ensembl_id": "ENSG00000273184",
+        "plate6_log2fc": -6.594,
+        "auxiliary_value": -0.05
+      },
+      {
+        "symbol": "MARVELD1",
+        "ensembl_id": "ENSG00000155254",
+        "plate6_log2fc": -6.504,
+        "auxiliary_value": -0.0568
+      },
+      {
+        "symbol": "TMEM51-AS1",
+        "ensembl_id": "ENSG00000175147",
+        "plate6_log2fc": -6.488,
+        "auxiliary_value": -0.0628
+      },
+      {
+        "symbol": "ENSG00000280373",
+        "ensembl_id": "ENSG00000280373",
+        "plate6_log2fc": -6.39,
+        "auxiliary_value": -0.083
+      },
+      {
+        "symbol": "FGFBP2",
+        "ensembl_id": "ENSG00000137441",
+        "plate6_log2fc": -6.311,
+        "auxiliary_value": -0.0811
+      }
+    ]
+  },
+  "plate14_not_used_to_fit_gene_weights": true,
+  "plate14_blinded": false
+}

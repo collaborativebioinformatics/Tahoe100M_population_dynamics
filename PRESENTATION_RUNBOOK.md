@@ -96,6 +96,7 @@ Plate 6: define score + calibration interval → freeze everything → transfer 
 ### Artifact status
 
 The numerical summaries and all Wilson intervals have been independently checked. Before treating the GitHub result files as provenance-complete artifacts, PR #17 should contain the full JSON files produced by `--output`, including the signature hash, frozen parameters, score provenance, accepted `pass_filter` value, and limitations.
+Before merge, PR #17 should align the documented DNAnexus commands with the detectable signature used for this analysis and include the complete JSON files produced by `--output`, including the signature hash, frozen parameters, score provenance, accepted `pass_filter` value and limitations.
 
 ---
 
@@ -113,7 +114,7 @@ DONE
 ✓ First retrospective real-data plate-pair execution
 
 NEXT
-→ Commit provenance-complete result JSONs and merge PR #17
+→ Align the DNAnexus runbook with the detectable signature, commit provenance-complete outputs, and merge PR #17
 → Freeze the revised score-building procedure prospectively
 → Run the 4,155 matched conditions with ≥200 cells on both plates
 → Add QC sensitivity and evidence grades

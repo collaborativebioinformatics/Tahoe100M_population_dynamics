@@ -117,6 +117,7 @@ def summarize_condition(
     calibration_control_scores: Iterable[float],
     alpha: float = 0.05,
     confidence_level: float = 0.95,
+    reference_interval: tuple[float, float] | None = None,
 ) -> CompletenessResult:
     """Compute baseline magnitude, coverage, and dispersion estimands.
 
@@ -126,7 +127,13 @@ def summarize_condition(
     """
     t = _finite_1d(treated_scores, "treated_scores")
     c = _finite_1d(matched_control_scores, "matched_control_scores")
-    ref = dmso_reference_interval(calibration_control_scores, alpha=alpha)
+    ref = (
+        dmso_reference_interval(calibration_control_scores, alpha=alpha)
+        if reference_interval is None
+        else tuple(map(float, reference_interval))
+    )
+    # Validate externally frozen intervals through the same membership helper.
+    reference_membership(np.asarray([ref[0], ref[1]]), ref)
 
     inside = reference_membership(t, ref)
     n_inside = int(inside.sum())

@@ -92,3 +92,16 @@ def test_batch_rejects_missing_columns():
             alpha=0.05,
             min_cells=3,
         )
+
+
+def test_summarize_condition_honors_frozen_reference_interval():
+    result = summarize_condition(
+        treated_scores=[0, 1, 2, 3],
+        matched_control_scores=[0, 1, 2, 3],
+        calibration_control_scores=[100, 101, 102, 103],
+        alpha=0.05,
+        reference_interval=(0.5, 2.5),
+    )
+    assert result.dmso_reference_low == pytest.approx(0.5)
+    assert result.dmso_reference_high == pytest.approx(2.5)
+    assert result.residual_fraction == pytest.approx(0.5)

@@ -1,0 +1,85 @@
+{
+  "output": "results/c32_homoharringtonine_5um_dmso_swap.json",
+  "plate6": {
+    "result": {
+      "n_treated": 1332,
+      "n_control": 2417,
+      "response_magnitude": 5.078559555846106,
+      "residual_fraction": 0.0007507507507507507,
+      "residual_ci_low": 0.00013253823727943804,
+      "residual_ci_high": 0.004240330101341428,
+      "response_coverage": 0.9992492492492493,
+      "coverage_ci_low": 0.9957596698986586,
+      "coverage_ci_high": 0.9998674617627206,
+      "dispersion_ratio": 0.7102089882528636,
+      "dmso_reference_low": -0.89955583324495,
+      "dmso_reference_high": 1.0979453660798248,
+      "alpha": 0.05,
+      "confidence_level": 0.95,
+      "warning": null
+    },
+    "dmso_negative_control": {
+      "n_treated": 2417,
+      "n_control": 3045,
+      "response_magnitude": 0.12032486492455682,
+      "residual_fraction": 0.9263549855192387,
+      "residual_ci_low": 0.915251862335366,
+      "residual_ci_high": 0.9361050047120159,
+      "response_coverage": 0.07364501448076133,
+      "coverage_ci_low": 0.06389499528798415,
+      "coverage_ci_high": 0.08474813766463396,
+      "dispersion_ratio": 1.1242634616800173,
+      "dmso_reference_low": -0.89955583324495,
+      "dmso_reference_high": 1.0979453660798248,
+      "alpha": 0.05,
+      "confidence_level": 0.95,
+      "warning": null
+    },
+    "sample_cell_counts": {
+      "treated": 1332,
+      "calibration": 3045,
+      "matched_control": 2417
+    }
+  },
+  "plate14": {
+    "result": {
+      "n_treated": 1678,
+      "n_control": 1072,
+      "response_magnitude": 5.218217900247965,
+      "residual_fraction": 0.0017878426698450535,
+      "residual_ci_low": 0.0006082100167322402,
+      "residual_ci_high": 0.005243387212649264,
+      "response_coverage": 0.9982121573301549,
+      "coverage_ci_low": 0.9947566127873507,
+      "coverage_ci_high": 0.9993917899832677,
+      "dispersion_ratio": 0.6906887128897847,
+      "dmso_reference_low": -0.89955583324495,
+      "dmso_reference_high": 1.0979453660798248,
+      "alpha": 0.05,
+      "confidence_level": 0.95,
+      "warning": null
+    },
+    "dmso_negative_control": {
+      "n_treated": 1072,
+      "n_control": 1529,
+      "response_magnitude": 0.055906714080641684,
+      "residual_fraction": 0.933768656716418,
+      "residual_ci_low": 0.9172790961526012,
+      "residual_ci_high": 0.947160540724229,
+      "response_coverage": 0.06623134328358204,
+      "coverage_ci_low": 0.05283945927577105,
+      "coverage_ci_high": 0.08272090384739883,
+      "dispersion_ratio": 1.080137214180626,
+      "dmso_reference_low": -0.89955583324495,
+      "dmso_reference_high": 1.0979453660798248,
+      "alpha": 0.05,
+      "confidence_level": 0.95,
+      "warning": null
+    },
+    "sample_cell_counts": {
+      "treated": 1678,
+      "calibration": 1529,
+      "matched_control": 1072
+    }
+  }
+}

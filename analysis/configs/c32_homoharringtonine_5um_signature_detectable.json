@@ -1,0 +1,426 @@
+{
+  "name": "plate6_CVCL_1097_Homoharringtonine_5um_detectable_top25_each_direction",
+  "selection": "Re-derived from the plate-6 single-cell h5ad directly (not the bulk pseudobulk Atlas) for the same prespecified condition. Genes restricted to >= 55% nonzero-count detection in the calibration DMSO cells (required for the downstream per-gene MAD scale to be nonzero), then ranked by log2 fold change (expm1 of mean log1p-normalized expression, treated vs calibration DMSO, scanpy-style). Supersedes the earlier top-25-by-bulk-log2FC version, which selected genes essentially undetected at single-cell resolution (diagnosed via diagnose_signature_variance.py: 25/25 up genes and 23/25 down genes had zero MAD in the calibration group).",
+  "source_condition": {
+    "plate": "plate6",
+    "sample": "smp_2047",
+    "cell_line": "CVCL_1097",
+    "cell_name": "C32",
+    "drug": "Homoharringtonine",
+    "dose": 5.0,
+    "unit": "uM"
+  },
+  "generated_at": "2026-08-28T14:24:52.675228+00:00",
+  "up_genes": [
+    "ZFPM2-AS1",
+    "EXT1",
+    "NAMPT",
+    "VGF",
+    "PABPC1",
+    "HSP90AB1",
+    "AKAP9",
+    "ANKRD12",
+    "GOLGA4",
+    "KMT2E",
+    "TPR",
+    "YWHAG",
+    "NEAT1",
+    "MALAT1",
+    "KTN1",
+    "UBE2H",
+    "IFI16",
+    "ENSG00000258077",
+    "SND1",
+    "MT2A",
+    "BRAF",
+    "FNDC3B",
+    "PTMA",
+    "BACH1",
+    "NEDD4L"
+  ],
+  "down_genes": [
+    "HILPDA",
+    "IGFBP5",
+    "PRELID2",
+    "GPC6",
+    "PITPNC1",
+    "ERO1A",
+    "TANC2",
+    "PARVB",
+    "CTTNBP2",
+    "SNTB1",
+    "HIVEP3",
+    "IGFBP3",
+    "MIR3681HG",
+    "PLA2G4A",
+    "MAGI2",
+    "RFX7",
+    "SCD",
+    "LEF1",
+    "LINC03009-1",
+    "NPAS2",
+    "PTK2",
+    "ASPH",
+    "ZMYND8",
+    "TBC1D22A",
+    "CABIN1"
+  ],
+  "gene_annotations": {
+    "up": [
+      {
+        "symbol": "ZFPM2-AS1",
+        "log2fc": 1.8774,
+        "calibration_detection_frac": 0.5676,
+        "calibration_mean_lognorm": 1.3335,
+        "treated_mean_lognorm": 2.4219
+      },
+      {
+        "symbol": "EXT1",
+        "log2fc": 1.472,
+        "calibration_detection_frac": 0.5883,
+        "calibration_mean_lognorm": 1.3548,
+        "treated_mean_lognorm": 2.1948
+      },
+      {
+        "symbol": "NAMPT",
+        "log2fc": 1.294,
+        "calibration_detection_frac": 0.6744,
+        "calibration_mean_lognorm": 1.6785,
+        "treated_mean_lognorm": 2.4582
+      },
+      {
+        "symbol": "VGF",
+        "log2fc": 1.2522,
+        "calibration_detection_frac": 0.7617,
+        "calibration_mean_lognorm": 2.3531,
+        "treated_mean_lognorm": 3.1644
+      },
+      {
+        "symbol": "PABPC1",
+        "log2fc": 1.0722,
+        "calibration_detection_frac": 0.76,
+        "calibration_mean_lognorm": 1.9075,
+        "treated_mean_lognorm": 2.5696
+      },
+      {
+        "symbol": "HSP90AB1",
+        "log2fc": 1.0184,
+        "calibration_detection_frac": 0.626,
+        "calibration_mean_lognorm": 1.5041,
+        "treated_mean_lognorm": 2.0906
+      },
+      {
+        "symbol": "AKAP9",
+        "log2fc": 0.9717,
+        "calibration_detection_frac": 0.6781,
+        "calibration_mean_lognorm": 1.6063,
+        "treated_mean_lognorm": 2.1764
+      },
+      {
+        "symbol": "ANKRD12",
+        "log2fc": 0.9706,
+        "calibration_detection_frac": 0.6227,
+        "calibration_mean_lognorm": 1.4556,
+        "treated_mean_lognorm": 2.0071
+      },
+      {
+        "symbol": "GOLGA4",
+        "log2fc": 0.8007,
+        "calibration_detection_frac": 0.621,
+        "calibration_mean_lognorm": 1.4697,
+        "treated_mean_lognorm": 1.9216
+      },
+      {
+        "symbol": "KMT2E",
+        "log2fc": 0.7592,
+        "calibration_detection_frac": 0.7513,
+        "calibration_mean_lognorm": 1.9281,
+        "treated_mean_lognorm": 2.3931
+      },
+      {
+        "symbol": "TPR",
+        "log2fc": 0.7559,
+        "calibration_detection_frac": 0.6554,
+        "calibration_mean_lognorm": 1.5428,
+        "treated_mean_lognorm": 1.9755
+      },
+      {
+        "symbol": "YWHAG",
+        "log2fc": 0.5987,
+        "calibration_detection_frac": 0.5561,
+        "calibration_mean_lognorm": 1.2482,
+        "treated_mean_lognorm": 1.5606
+      },
+      {
+        "symbol": "NEAT1",
+        "log2fc": 0.5076,
+        "calibration_detection_frac": 0.9661,
+        "calibration_mean_lognorm": 3.5776,
+        "treated_mean_lognorm": 3.9211
+      },
+      {
+        "symbol": "MALAT1",
+        "log2fc": 0.4864,
+        "calibration_detection_frac": 1.0,
+        "calibration_mean_lognorm": 5.7408,
+        "treated_mean_lognorm": 6.077
+      },
+      {
+        "symbol": "KTN1",
+        "log2fc": 0.4701,
+        "calibration_detection_frac": 0.6549,
+        "calibration_mean_lognorm": 1.5337,
+        "treated_mean_lognorm": 1.7977
+      },
+      {
+        "symbol": "UBE2H",
+        "log2fc": 0.4129,
+        "calibration_detection_frac": 0.6971,
+        "calibration_mean_lognorm": 1.7132,
+        "treated_mean_lognorm": 1.9535
+      },
+      {
+        "symbol": "IFI16",
+        "log2fc": 0.4128,
+        "calibration_detection_frac": 0.8155,
+        "calibration_mean_lognorm": 2.2386,
+        "treated_mean_lognorm": 2.4979
+      },
+      {
+        "symbol": "ENSG00000258077",
+        "log2fc": 0.2971,
+        "calibration_detection_frac": 0.7671,
+        "calibration_mean_lognorm": 2.1137,
+        "treated_mean_lognorm": 2.2969
+      },
+      {
+        "symbol": "SND1",
+        "log2fc": 0.1859,
+        "calibration_detection_frac": 0.6897,
+        "calibration_mean_lognorm": 1.6773,
+        "treated_mean_lognorm": 1.7833
+      },
+      {
+        "symbol": "MT2A",
+        "log2fc": 0.1732,
+        "calibration_detection_frac": 0.5561,
+        "calibration_mean_lognorm": 1.3446,
+        "treated_mean_lognorm": 1.4347
+      },
+      {
+        "symbol": "BRAF",
+        "log2fc": 0.1509,
+        "calibration_detection_frac": 0.5776,
+        "calibration_mean_lognorm": 1.3062,
+        "treated_mean_lognorm": 1.3835
+      },
+      {
+        "symbol": "FNDC3B",
+        "log2fc": 0.1436,
+        "calibration_detection_frac": 0.7447,
+        "calibration_mean_lognorm": 1.8863,
+        "treated_mean_lognorm": 1.9714
+      },
+      {
+        "symbol": "PTMA",
+        "log2fc": 0.1369,
+        "calibration_detection_frac": 0.5908,
+        "calibration_mean_lognorm": 1.353,
+        "treated_mean_lognorm": 1.4242
+      },
+      {
+        "symbol": "BACH1",
+        "log2fc": 0.0872,
+        "calibration_detection_frac": 0.669,
+        "calibration_mean_lognorm": 1.6468,
+        "treated_mean_lognorm": 1.6959
+      },
+      {
+        "symbol": "NEDD4L",
+        "log2fc": 0.0146,
+        "calibration_detection_frac": 0.7125,
+        "calibration_mean_lognorm": 1.7412,
+        "treated_mean_lognorm": 1.7495
+      }
+    ],
+    "down": [
+      {
+        "symbol": "HILPDA",
+        "log2fc": -7.7507,
+        "calibration_detection_frac": 0.5846,
+        "calibration_mean_lognorm": 1.4498,
+        "treated_mean_lognorm": 0.015
+      },
+      {
+        "symbol": "IGFBP5",
+        "log2fc": -7.0299,
+        "calibration_detection_frac": 0.7116,
+        "calibration_mean_lognorm": 2.2098,
+        "treated_mean_lognorm": 0.0602
+      },
+      {
+        "symbol": "PRELID2",
+        "log2fc": -6.2738,
+        "calibration_detection_frac": 0.7662,
+        "calibration_mean_lognorm": 2.0656,
+        "treated_mean_lognorm": 0.0853
+      },
+      {
+        "symbol": "GPC6",
+        "log2fc": -5.9613,
+        "calibration_detection_frac": 0.9715,
+        "calibration_mean_lognorm": 3.6921,
+        "treated_mean_lognorm": 0.4874
+      },
+      {
+        "symbol": "PITPNC1",
+        "log2fc": -5.9153,
+        "calibration_detection_frac": 0.8295,
+        "calibration_mean_lognorm": 2.462,
+        "treated_mean_lognorm": 0.1636
+      },
+      {
+        "symbol": "ERO1A",
+        "log2fc": -5.7522,
+        "calibration_detection_frac": 0.7704,
+        "calibration_mean_lognorm": 2.0409,
+        "treated_mean_lognorm": 0.1171
+      },
+      {
+        "symbol": "TANC2",
+        "log2fc": -5.639,
+        "calibration_detection_frac": 0.7613,
+        "calibration_mean_lognorm": 2.0494,
+        "treated_mean_lognorm": 0.1273
+      },
+      {
+        "symbol": "PARVB",
+        "log2fc": -5.6032,
+        "calibration_detection_frac": 0.5863,
+        "calibration_mean_lognorm": 1.3711,
+        "treated_mean_lognorm": 0.0587
+      },
+      {
+        "symbol": "CTTNBP2",
+        "log2fc": -5.4946,
+        "calibration_detection_frac": 0.7307,
+        "calibration_mean_lognorm": 1.8733,
+        "treated_mean_lognorm": 0.1153
+      },
+      {
+        "symbol": "SNTB1",
+        "log2fc": -5.2981,
+        "calibration_detection_frac": 0.5511,
+        "calibration_mean_lognorm": 1.2699,
+        "treated_mean_lognorm": 0.063
+      },
+      {
+        "symbol": "HIVEP3",
+        "log2fc": -5.2441,
+        "calibration_detection_frac": 0.8614,
+        "calibration_mean_lognorm": 2.5803,
+        "treated_mean_lognorm": 0.2791
+      },
+      {
+        "symbol": "IGFBP3",
+        "log2fc": -5.2282,
+        "calibration_detection_frac": 0.6909,
+        "calibration_mean_lognorm": 2.035,
+        "treated_mean_lognorm": 0.1634
+      },
+      {
+        "symbol": "MIR3681HG",
+        "log2fc": -5.2171,
+        "calibration_detection_frac": 0.5631,
+        "calibration_mean_lognorm": 1.3525,
+        "treated_mean_lognorm": 0.0743
+      },
+      {
+        "symbol": "PLA2G4A",
+        "log2fc": -5.0175,
+        "calibration_detection_frac": 0.5904,
+        "calibration_mean_lognorm": 1.3736,
+        "treated_mean_lognorm": 0.0872
+      },
+      {
+        "symbol": "MAGI2",
+        "log2fc": -5.0014,
+        "calibration_detection_frac": 0.9652,
+        "calibration_mean_lognorm": 3.5009,
+        "treated_mean_lognorm": 0.6949
+      },
+      {
+        "symbol": "RFX7",
+        "log2fc": -4.9541,
+        "calibration_detection_frac": 0.5676,
+        "calibration_mean_lognorm": 1.2926,
+        "treated_mean_lognorm": 0.0818
+      },
+      {
+        "symbol": "SCD",
+        "log2fc": -4.9299,
+        "calibration_detection_frac": 0.7145,
+        "calibration_mean_lognorm": 1.8079,
+        "treated_mean_lognorm": 0.1546
+      },
+      {
+        "symbol": "LEF1",
+        "log2fc": -4.6916,
+        "calibration_detection_frac": 0.6417,
+        "calibration_mean_lognorm": 1.5531,
+        "treated_mean_lognorm": 0.1347
+      },
+      {
+        "symbol": "LINC03009-1",
+        "log2fc": -4.6679,
+        "calibration_detection_frac": 0.8597,
+        "calibration_mean_lognorm": 2.4946,
+        "treated_mean_lognorm": 0.3628
+      },
+      {
+        "symbol": "NPAS2",
+        "log2fc": -4.5395,
+        "calibration_detection_frac": 0.7832,
+        "calibration_mean_lognorm": 2.1232,
+        "treated_mean_lognorm": 0.2749
+      },
+      {
+        "symbol": "PTK2",
+        "log2fc": -4.4687,
+        "calibration_detection_frac": 0.8043,
+        "calibration_mean_lognorm": 2.1907,
+        "treated_mean_lognorm": 0.3065
+      },
+      {
+        "symbol": "ASPH",
+        "log2fc": -4.4168,
+        "calibration_detection_frac": 0.8713,
+        "calibration_mean_lognorm": 2.5878,
+        "treated_mean_lognorm": 0.4548
+      },
+      {
+        "symbol": "ZMYND8",
+        "log2fc": -4.4159,
+        "calibration_detection_frac": 0.6694,
+        "calibration_mean_lognorm": 1.6084,
+        "treated_mean_lognorm": 0.1716
+      },
+      {
+        "symbol": "TBC1D22A",
+        "log2fc": -4.3597,
+        "calibration_detection_frac": 0.6177,
+        "calibration_mean_lognorm": 1.4651,
+        "treated_mean_lognorm": 0.1502
+      },
+      {
+        "symbol": "CABIN1",
+        "log2fc": -4.3529,
+        "calibration_detection_frac": 0.559,
+        "calibration_mean_lognorm": 1.2707,
+        "treated_mean_lognorm": 0.1182
+      }
+    ]
+  },
+  "plate14_not_used_to_fit_gene_weights": true,
+  "plate14_blinded": false
+}

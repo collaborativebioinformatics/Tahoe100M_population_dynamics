@@ -12,8 +12,17 @@ of calibration cells have a nonzero count) for this condition.
 This script re-derives up/down gene lists directly from the plate-6 h5ad for the same
 (cell_line, drug, dose) condition, restricted to genes detectable in >= min-detection-frac
 of the calibration DMSO cells -- the same statistic run_plate_pair_h5ad.py's MAD
-filter implicitly requires -- then ranks the survivors by a scanpy-style log2 fold change
-between the treated and calibration groups.
+filter implicitly requires -- then ranks the survivors by log2_meanlog_ratio, defined below.
+
+log2_meanlog_ratio is NOT a pseudobulk log2FC. A pseudobulk log2FC aggregates in linear
+space first: log2(mean(x_treated) / mean(x_calibration)). This ranks by
+log2(expm1(mean(log1p(x_treated))) / expm1(mean(log1p(x_calibration)))) instead -- the
+mean is taken in log space, then back-transformed (scanpy's rank_genes_groups convention
+for logfoldchanges). By Jensen's inequality, expm1(mean(log1p(x))) <= mean(x) for any
+non-constant x, so this is a systematically deflated estimate of the group mean, more so
+for genes with higher single-cell variance. Values are not directly comparable in
+magnitude to the bulk Atlas's plate6_log2fc field in the superseded signature, even for
+the same gene.
 
 Stays entirely within the same cell_line/samples/drug/dose already prespecified in the
 runbook; it does not choose a new condition or peek at plate 14.
@@ -98,26 +107,28 @@ def main():
     mean_log_cal = np.asarray(cal.mean(axis=0)).ravel()
     mean_log_treated = np.asarray(treated.mean(axis=0)).ravel()
     eps = 1e-9
-    logfc = np.log2(np.expm1(mean_log_treated) + eps) - np.log2(np.expm1(mean_log_cal) + eps)
+    # log2 ratio of back-transformed mean log1p-normalized expression -- see module
+    # docstring for why this is NOT a pseudobulk log2FC.
+    log2_meanlog_ratio = np.log2(np.expm1(mean_log_treated) + eps) - np.log2(np.expm1(mean_log_cal) + eps)
 
     idx = np.where(detectable)[0]
-    idx_sorted_desc = idx[np.argsort(-logfc[idx])]
-    idx_sorted_asc = idx[np.argsort(logfc[idx])]
+    idx_sorted_desc = idx[np.argsort(-log2_meanlog_ratio[idx])]
+    idx_sorted_asc = idx[np.argsort(log2_meanlog_ratio[idx])]
 
-    up_idx = [i for i in idx_sorted_desc if logfc[i] > 0][: args.top_n]
-    down_idx = [i for i in idx_sorted_asc if logfc[i] < 0][: args.top_n]
+    up_idx = [i for i in idx_sorted_desc if log2_meanlog_ratio[i] > 0][: args.top_n]
+    down_idx = [i for i in idx_sorted_asc if log2_meanlog_ratio[i] < 0][: args.top_n]
 
     if len(up_idx) < args.top_n:
-        print(f"WARNING: only found {len(up_idx)} up genes with positive logFC "
+        print(f"WARNING: only found {len(up_idx)} up genes with positive log2_meanlog_ratio "
               f"clearing the detection threshold (requested {args.top_n})")
     if len(down_idx) < args.top_n:
-        print(f"WARNING: only found {len(down_idx)} down genes with negative logFC "
+        print(f"WARNING: only found {len(down_idx)} down genes with negative log2_meanlog_ratio "
               f"clearing the detection threshold (requested {args.top_n})")
 
     def _entry(i):
         return {
             "symbol": names[i],
-            "log2fc": round(float(logfc[i]), 4),
+            "log2_meanlog_ratio": round(float(log2_meanlog_ratio[i]), 4),
             "calibration_detection_frac": round(float(detection_frac[i]), 4),
             "calibration_mean_lognorm": round(float(mean_log_cal[i]), 4),
             "treated_mean_lognorm": round(float(mean_log_treated[i]), 4),
@@ -134,12 +145,32 @@ def main():
             "Atlas) for the same prespecified condition. Genes restricted to "
             f">= {args.min_detection_frac:.0%} nonzero-count detection in the calibration "
             "DMSO cells (required for the downstream per-gene MAD scale to be nonzero), then "
-            "ranked by log2 fold change (expm1 of mean log1p-normalized expression, treated "
-            "vs calibration DMSO, scanpy-style). Supersedes the earlier top-25-by-bulk-log2FC "
+            "ranked by log2_meanlog_ratio (see ranking_metric below for the exact estimand -- "
+            "it is not a pseudobulk log2FC). Supersedes the earlier top-25-by-bulk-log2FC "
             "version, which selected genes essentially undetected at single-cell resolution "
             "(diagnosed via diagnose_signature_variance.py: 25/25 up genes and 23/25 down "
             "genes had zero MAD in the calibration group)."
         ),
+        "ranking_metric": {
+            "name": "log2_meanlog_ratio",
+            "formula": "log2(expm1(mean_i[log1p(x_i)]_treated) + eps) - log2(expm1(mean_i[log1p(x_i)]_calibration) + eps)",
+            "definition": (
+                "Log2 ratio of the back-transformed arithmetic mean of log1p-normalized "
+                "per-cell expression, treated vs calibration DMSO. This is scanpy's "
+                "rank_genes_groups convention for logfoldchanges (mean taken in log space, "
+                "then expm1 back-transformed) -- it is NOT the arithmetic-mean pseudobulk "
+                "log2FC used to build the original Atlas signature this supersedes."
+            ),
+            "caveat": (
+                "By Jensen's inequality (log is concave), expm1(mean(log1p(x))) <= mean(x) "
+                "for any non-constant x, so this estimand systematically underestimates the "
+                "true group mean, more so for genes with higher single-cell variance. Values "
+                "here are not directly comparable in magnitude to the bulk Atlas's "
+                "plate6_log2fc field (see the superseded signature's gene_annotations), even "
+                "for the same gene."
+            ),
+            "eps": eps,
+        },
         "source_condition": {
             "plate": "plate6",
             "sample": args.p6_treated,

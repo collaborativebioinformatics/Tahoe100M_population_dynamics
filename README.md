@@ -121,7 +121,7 @@ We acknowledge the Tahoe-100M authors and the teams at Tahoe Bio/Tahoe Therapeut
 | **Don Baldwin** — Lead | Sequence-data access and project coordination |
 | Abolaji Shiwoku | Statistical models for population dynamics |
 | Anna Sokolova | Response-completeness scoring, DMSO calibration, QC checks, and plate 6/14 validation |
-| Cecilia Mathó | PCA tool |
+| Cecilia Mathó | PCA tool | PanDrugs bulk cell lines analysis
 | Tuneer R. Mallick | Trajectory tool |
 | Xia (Candice) Wu | Interface and website design |
 | Gerald McCollum | Writing and documentation |

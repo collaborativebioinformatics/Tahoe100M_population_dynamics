@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Diagnose why signature genes get filtered out of the plate-6 calibration MAD step.
 
-Reuses the loading/normalization logic from run_plate_pair_h5ad_PATCHED.py so results
+Reuses the loading/normalization logic from run_plate_pair_h5ad.py so results
 match exactly what the real run does, and prints per-gene MAD values instead of just
 raising when a whole direction is empty.
 """
@@ -12,7 +12,7 @@ from pathlib import Path
 
 import numpy as np
 
-from run_plate_pair_h5ad_PATCHED import _subset, _load_signature, _lognorm_selected
+from run_plate_pair_h5ad import _subset, _load_signature, _lognorm_selected
 
 
 def main():

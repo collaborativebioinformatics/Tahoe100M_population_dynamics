@@ -11,7 +11,7 @@ of calibration cells have a nonzero count) for this condition.
 
 This script re-derives up/down gene lists directly from the plate-6 h5ad for the same
 (cell_line, drug, dose) condition, restricted to genes detectable in >= min-detection-frac
-of the calibration DMSO cells -- the same statistic run_plate_pair_h5ad_PATCHED.py's MAD
+of the calibration DMSO cells -- the same statistic run_plate_pair_h5ad.py's MAD
 filter implicitly requires -- then ranks the survivors by a scanpy-style log2 fold change
 between the treated and calibration groups.
 
@@ -28,7 +28,7 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 
-from run_plate_pair_h5ad_PATCHED import _subset
+from run_plate_pair_h5ad import _subset
 
 
 def main():

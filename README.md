@@ -136,6 +136,13 @@ python3 -m http.server 8000 --directory docs
 
 Then open `http://localhost:8000`; the real-data tools are under `http://localhost:8000/atlas/`. The site is plain HTML, CSS, and JavaScript so it can be reviewed quickly and deployed anywhere.
 
+### Streamlit app & Argon pipeline
+
+A companion **Streamlit** app serves per-condition differential-expression
+summaries from compact precomputed tables, with an Argon (SGE) pipeline that
+builds them from the full Tahoe-100M DE data. See **[STREAMLIT.md](STREAMLIT.md)**
+for local run, deployment, and preprocessing instructions.
+
 ## Research focus
 
 > Future question: can adequate cell-level expression and matched controls identify residual subpopulations that may be non-responders? The current public pseudobulk Atlas does not estimate them.

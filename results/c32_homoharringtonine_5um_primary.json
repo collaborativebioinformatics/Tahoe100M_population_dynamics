@@ -1,4 +1,5 @@
 {
+  "_provenance_note": "This file is the abbreviated console (stdout) summary printed by run_plate_pair_h5ad.py, not the complete file written to --output on the original DNAnexus run. It contains only the output path and the plate6/plate14 result blocks. The original --output file also written by that run -- which additionally has schema_version, generated_at, condition, signature (full gene lists + hash), score_provenance, parameters (including pass_filter_accepted_values and the frozen plate6 reference interval), and limitations -- was not preserved and is not available to commit here. Do not treat this file as a provenance-complete result artifact. It should be replaced with a real --output file from a rerun of the (now-fixed) DNAnexus runbook, which as of this note points at c32_homoharringtonine_5um_signature_detectable.json.",
   "output": "results/c32_homoharringtonine_5um_primary.json",
   "plate6": {
     "result": {

@@ -28,6 +28,10 @@ except ImportError:
     from response_completeness import summarize_condition
 
 REQUIRED_OBS = {"sample", "drug", "cell_line", "plate", "pass_filter"}
+# This h5ad's pass_filter is categorical ("full"/"minimal"), not boolean — the file
+# is already filtered upstream, so these are two tiers within what already passed.
+# Strict reading: only "full" counts as passing.
+PASS_FILTER_ACCEPTED = {"full"}
 
 
 def _load_signature(path: Path) -> dict:
@@ -59,8 +63,10 @@ def _qc_mask(obs: pd.DataFrame, *, cell_line: str, samples: set[str]) -> np.ndar
     if missing:
         raise ValueError(f"Missing H5AD obs columns: {sorted(missing)}")
     pf = obs["pass_filter"]
-    if pf.dtype != bool:
-        pf = pf.astype(str).str.lower().isin({"true", "1", "yes"})
+    if pf.dtype == bool:
+        pf = pf.astype(bool)
+    else:
+        pf = pf.astype(str).str.lower().isin(PASS_FILTER_ACCEPTED)
     return (
         (obs["cell_line"].astype(str) == cell_line)
         & obs["sample"].astype(str).isin(samples)
@@ -208,6 +214,7 @@ def main():
         "score_provenance": score_prov,
         "parameters": {"alpha": args.alpha, "confidence_level": args.confidence_level,
                        "scale_factor": args.scale_factor, "min_gene_scale": args.min_gene_scale,
+                       "pass_filter_accepted_values": sorted(PASS_FILTER_ACCEPTED),
                        "frozen_plate6_reference_interval": list(map(float, reference_interval))},
         "plate6": _plate_result(a6, s6, treated_sample=args.p6_treated,
             calibration_sample=args.p6_calibration, matched_sample=args.p6_matched,

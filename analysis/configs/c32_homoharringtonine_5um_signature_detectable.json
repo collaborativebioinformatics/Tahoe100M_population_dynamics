@@ -1,0 +1,433 @@
+{
+  "name": "plate6_CVCL_1097_Homoharringtonine_5um_detectable_top25_each_direction",
+  "selection": "Re-derived from the plate-6 single-cell h5ad directly (not the bulk pseudobulk Atlas) for the same prespecified condition. Genes restricted to >= 55% nonzero-count detection in the calibration DMSO cells (required for the downstream per-gene MAD scale to be nonzero), then ranked by log2_meanlog_ratio (see ranking_metric below for the exact estimand -- it is not a pseudobulk log2FC). Supersedes the earlier top-25-by-bulk-log2FC version, which selected genes essentially undetected at single-cell resolution (diagnosed via diagnose_signature_variance.py: 25/25 up genes and 23/25 down genes had zero MAD in the calibration group).",
+  "ranking_metric": {
+    "name": "log2_meanlog_ratio",
+    "formula": "log2(expm1(mean_i[log1p(x_i)]_treated) + eps) - log2(expm1(mean_i[log1p(x_i)]_calibration) + eps)",
+    "definition": "Log2 ratio of the back-transformed arithmetic mean of log1p-normalized per-cell expression, treated vs calibration DMSO. This is scanpy's rank_genes_groups convention for logfoldchanges (mean taken in log space, then expm1 back-transformed) -- it is NOT the arithmetic-mean pseudobulk log2FC used to build the original Atlas signature this supersedes.",
+    "caveat": "By Jensen's inequality (log is concave), expm1(mean(log1p(x))) <= mean(x) for any non-constant x, so this estimand systematically underestimates the true group mean, more so for genes with higher single-cell variance. Values here are not directly comparable in magnitude to the bulk Atlas's plate6_log2fc field (see the superseded signature's gene_annotations), even for the same gene.",
+    "eps": 1e-09
+  },
+  "source_condition": {
+    "plate": "plate6",
+    "sample": "smp_2047",
+    "cell_line": "CVCL_1097",
+    "cell_name": "C32",
+    "drug": "Homoharringtonine",
+    "dose": 5.0,
+    "unit": "uM"
+  },
+  "generated_at": "2026-08-28T14:24:52.675228+00:00",
+  "up_genes": [
+    "ZFPM2-AS1",
+    "EXT1",
+    "NAMPT",
+    "VGF",
+    "PABPC1",
+    "HSP90AB1",
+    "AKAP9",
+    "ANKRD12",
+    "GOLGA4",
+    "KMT2E",
+    "TPR",
+    "YWHAG",
+    "NEAT1",
+    "MALAT1",
+    "KTN1",
+    "UBE2H",
+    "IFI16",
+    "ENSG00000258077",
+    "SND1",
+    "MT2A",
+    "BRAF",
+    "FNDC3B",
+    "PTMA",
+    "BACH1",
+    "NEDD4L"
+  ],
+  "down_genes": [
+    "HILPDA",
+    "IGFBP5",
+    "PRELID2",
+    "GPC6",
+    "PITPNC1",
+    "ERO1A",
+    "TANC2",
+    "PARVB",
+    "CTTNBP2",
+    "SNTB1",
+    "HIVEP3",
+    "IGFBP3",
+    "MIR3681HG",
+    "PLA2G4A",
+    "MAGI2",
+    "RFX7",
+    "SCD",
+    "LEF1",
+    "LINC03009-1",
+    "NPAS2",
+    "PTK2",
+    "ASPH",
+    "ZMYND8",
+    "TBC1D22A",
+    "CABIN1"
+  ],
+  "gene_annotations": {
+    "up": [
+      {
+        "symbol": "ZFPM2-AS1",
+        "calibration_detection_frac": 0.5676,
+        "calibration_mean_lognorm": 1.3335,
+        "treated_mean_lognorm": 2.4219,
+        "log2_meanlog_ratio": 1.8774
+      },
+      {
+        "symbol": "EXT1",
+        "calibration_detection_frac": 0.5883,
+        "calibration_mean_lognorm": 1.3548,
+        "treated_mean_lognorm": 2.1948,
+        "log2_meanlog_ratio": 1.472
+      },
+      {
+        "symbol": "NAMPT",
+        "calibration_detection_frac": 0.6744,
+        "calibration_mean_lognorm": 1.6785,
+        "treated_mean_lognorm": 2.4582,
+        "log2_meanlog_ratio": 1.294
+      },
+      {
+        "symbol": "VGF",
+        "calibration_detection_frac": 0.7617,
+        "calibration_mean_lognorm": 2.3531,
+        "treated_mean_lognorm": 3.1644,
+        "log2_meanlog_ratio": 1.2522
+      },
+      {
+        "symbol": "PABPC1",
+        "calibration_detection_frac": 0.76,
+        "calibration_mean_lognorm": 1.9075,
+        "treated_mean_lognorm": 2.5696,
+        "log2_meanlog_ratio": 1.0722
+      },
+      {
+        "symbol": "HSP90AB1",
+        "calibration_detection_frac": 0.626,
+        "calibration_mean_lognorm": 1.5041,
+        "treated_mean_lognorm": 2.0906,
+        "log2_meanlog_ratio": 1.0184
+      },
+      {
+        "symbol": "AKAP9",
+        "calibration_detection_frac": 0.6781,
+        "calibration_mean_lognorm": 1.6063,
+        "treated_mean_lognorm": 2.1764,
+        "log2_meanlog_ratio": 0.9717
+      },
+      {
+        "symbol": "ANKRD12",
+        "calibration_detection_frac": 0.6227,
+        "calibration_mean_lognorm": 1.4556,
+        "treated_mean_lognorm": 2.0071,
+        "log2_meanlog_ratio": 0.9706
+      },
+      {
+        "symbol": "GOLGA4",
+        "calibration_detection_frac": 0.621,
+        "calibration_mean_lognorm": 1.4697,
+        "treated_mean_lognorm": 1.9216,
+        "log2_meanlog_ratio": 0.8007
+      },
+      {
+        "symbol": "KMT2E",
+        "calibration_detection_frac": 0.7513,
+        "calibration_mean_lognorm": 1.9281,
+        "treated_mean_lognorm": 2.3931,
+        "log2_meanlog_ratio": 0.7592
+      },
+      {
+        "symbol": "TPR",
+        "calibration_detection_frac": 0.6554,
+        "calibration_mean_lognorm": 1.5428,
+        "treated_mean_lognorm": 1.9755,
+        "log2_meanlog_ratio": 0.7559
+      },
+      {
+        "symbol": "YWHAG",
+        "calibration_detection_frac": 0.5561,
+        "calibration_mean_lognorm": 1.2482,
+        "treated_mean_lognorm": 1.5606,
+        "log2_meanlog_ratio": 0.5987
+      },
+      {
+        "symbol": "NEAT1",
+        "calibration_detection_frac": 0.9661,
+        "calibration_mean_lognorm": 3.5776,
+        "treated_mean_lognorm": 3.9211,
+        "log2_meanlog_ratio": 0.5076
+      },
+      {
+        "symbol": "MALAT1",
+        "calibration_detection_frac": 1.0,
+        "calibration_mean_lognorm": 5.7408,
+        "treated_mean_lognorm": 6.077,
+        "log2_meanlog_ratio": 0.4864
+      },
+      {
+        "symbol": "KTN1",
+        "calibration_detection_frac": 0.6549,
+        "calibration_mean_lognorm": 1.5337,
+        "treated_mean_lognorm": 1.7977,
+        "log2_meanlog_ratio": 0.4701
+      },
+      {
+        "symbol": "UBE2H",
+        "calibration_detection_frac": 0.6971,
+        "calibration_mean_lognorm": 1.7132,
+        "treated_mean_lognorm": 1.9535,
+        "log2_meanlog_ratio": 0.4129
+      },
+      {
+        "symbol": "IFI16",
+        "calibration_detection_frac": 0.8155,
+        "calibration_mean_lognorm": 2.2386,
+        "treated_mean_lognorm": 2.4979,
+        "log2_meanlog_ratio": 0.4128
+      },
+      {
+        "symbol": "ENSG00000258077",
+        "calibration_detection_frac": 0.7671,
+        "calibration_mean_lognorm": 2.1137,
+        "treated_mean_lognorm": 2.2969,
+        "log2_meanlog_ratio": 0.2971
+      },
+      {
+        "symbol": "SND1",
+        "calibration_detection_frac": 0.6897,
+        "calibration_mean_lognorm": 1.6773,
+        "treated_mean_lognorm": 1.7833,
+        "log2_meanlog_ratio": 0.1859
+      },
+      {
+        "symbol": "MT2A",
+        "calibration_detection_frac": 0.5561,
+        "calibration_mean_lognorm": 1.3446,
+        "treated_mean_lognorm": 1.4347,
+        "log2_meanlog_ratio": 0.1732
+      },
+      {
+        "symbol": "BRAF",
+        "calibration_detection_frac": 0.5776,
+        "calibration_mean_lognorm": 1.3062,
+        "treated_mean_lognorm": 1.3835,
+        "log2_meanlog_ratio": 0.1509
+      },
+      {
+        "symbol": "FNDC3B",
+        "calibration_detection_frac": 0.7447,
+        "calibration_mean_lognorm": 1.8863,
+        "treated_mean_lognorm": 1.9714,
+        "log2_meanlog_ratio": 0.1436
+      },
+      {
+        "symbol": "PTMA",
+        "calibration_detection_frac": 0.5908,
+        "calibration_mean_lognorm": 1.353,
+        "treated_mean_lognorm": 1.4242,
+        "log2_meanlog_ratio": 0.1369
+      },
+      {
+        "symbol": "BACH1",
+        "calibration_detection_frac": 0.669,
+        "calibration_mean_lognorm": 1.6468,
+        "treated_mean_lognorm": 1.6959,
+        "log2_meanlog_ratio": 0.0872
+      },
+      {
+        "symbol": "NEDD4L",
+        "calibration_detection_frac": 0.7125,
+        "calibration_mean_lognorm": 1.7412,
+        "treated_mean_lognorm": 1.7495,
+        "log2_meanlog_ratio": 0.0146
+      }
+    ],
+    "down": [
+      {
+        "symbol": "HILPDA",
+        "calibration_detection_frac": 0.5846,
+        "calibration_mean_lognorm": 1.4498,
+        "treated_mean_lognorm": 0.015,
+        "log2_meanlog_ratio": -7.7507
+      },
+      {
+        "symbol": "IGFBP5",
+        "calibration_detection_frac": 0.7116,
+        "calibration_mean_lognorm": 2.2098,
+        "treated_mean_lognorm": 0.0602,
+        "log2_meanlog_ratio": -7.0299
+      },
+      {
+        "symbol": "PRELID2",
+        "calibration_detection_frac": 0.7662,
+        "calibration_mean_lognorm": 2.0656,
+        "treated_mean_lognorm": 0.0853,
+        "log2_meanlog_ratio": -6.2738
+      },
+      {
+        "symbol": "GPC6",
+        "calibration_detection_frac": 0.9715,
+        "calibration_mean_lognorm": 3.6921,
+        "treated_mean_lognorm": 0.4874,
+        "log2_meanlog_ratio": -5.9613
+      },
+      {
+        "symbol": "PITPNC1",
+        "calibration_detection_frac": 0.8295,
+        "calibration_mean_lognorm": 2.462,
+        "treated_mean_lognorm": 0.1636,
+        "log2_meanlog_ratio": -5.9153
+      },
+      {
+        "symbol": "ERO1A",
+        "calibration_detection_frac": 0.7704,
+        "calibration_mean_lognorm": 2.0409,
+        "treated_mean_lognorm": 0.1171,
+        "log2_meanlog_ratio": -5.7522
+      },
+      {
+        "symbol": "TANC2",
+        "calibration_detection_frac": 0.7613,
+        "calibration_mean_lognorm": 2.0494,
+        "treated_mean_lognorm": 0.1273,
+        "log2_meanlog_ratio": -5.639
+      },
+      {
+        "symbol": "PARVB",
+        "calibration_detection_frac": 0.5863,
+        "calibration_mean_lognorm": 1.3711,
+        "treated_mean_lognorm": 0.0587,
+        "log2_meanlog_ratio": -5.6032
+      },
+      {
+        "symbol": "CTTNBP2",
+        "calibration_detection_frac": 0.7307,
+        "calibration_mean_lognorm": 1.8733,
+        "treated_mean_lognorm": 0.1153,
+        "log2_meanlog_ratio": -5.4946
+      },
+      {
+        "symbol": "SNTB1",
+        "calibration_detection_frac": 0.5511,
+        "calibration_mean_lognorm": 1.2699,
+        "treated_mean_lognorm": 0.063,
+        "log2_meanlog_ratio": -5.2981
+      },
+      {
+        "symbol": "HIVEP3",
+        "calibration_detection_frac": 0.8614,
+        "calibration_mean_lognorm": 2.5803,
+        "treated_mean_lognorm": 0.2791,
+        "log2_meanlog_ratio": -5.2441
+      },
+      {
+        "symbol": "IGFBP3",
+        "calibration_detection_frac": 0.6909,
+        "calibration_mean_lognorm": 2.035,
+        "treated_mean_lognorm": 0.1634,
+        "log2_meanlog_ratio": -5.2282
+      },
+      {
+        "symbol": "MIR3681HG",
+        "calibration_detection_frac": 0.5631,
+        "calibration_mean_lognorm": 1.3525,
+        "treated_mean_lognorm": 0.0743,
+        "log2_meanlog_ratio": -5.2171
+      },
+      {
+        "symbol": "PLA2G4A",
+        "calibration_detection_frac": 0.5904,
+        "calibration_mean_lognorm": 1.3736,
+        "treated_mean_lognorm": 0.0872,
+        "log2_meanlog_ratio": -5.0175
+      },
+      {
+        "symbol": "MAGI2",
+        "calibration_detection_frac": 0.9652,
+        "calibration_mean_lognorm": 3.5009,
+        "treated_mean_lognorm": 0.6949,
+        "log2_meanlog_ratio": -5.0014
+      },
+      {
+        "symbol": "RFX7",
+        "calibration_detection_frac": 0.5676,
+        "calibration_mean_lognorm": 1.2926,
+        "treated_mean_lognorm": 0.0818,
+        "log2_meanlog_ratio": -4.9541
+      },
+      {
+        "symbol": "SCD",
+        "calibration_detection_frac": 0.7145,
+        "calibration_mean_lognorm": 1.8079,
+        "treated_mean_lognorm": 0.1546,
+        "log2_meanlog_ratio": -4.9299
+      },
+      {
+        "symbol": "LEF1",
+        "calibration_detection_frac": 0.6417,
+        "calibration_mean_lognorm": 1.5531,
+        "treated_mean_lognorm": 0.1347,
+        "log2_meanlog_ratio": -4.6916
+      },
+      {
+        "symbol": "LINC03009-1",
+        "calibration_detection_frac": 0.8597,
+        "calibration_mean_lognorm": 2.4946,
+        "treated_mean_lognorm": 0.3628,
+        "log2_meanlog_ratio": -4.6679
+      },
+      {
+        "symbol": "NPAS2",
+        "calibration_detection_frac": 0.7832,
+        "calibration_mean_lognorm": 2.1232,
+        "treated_mean_lognorm": 0.2749,
+        "log2_meanlog_ratio": -4.5395
+      },
+      {
+        "symbol": "PTK2",
+        "calibration_detection_frac": 0.8043,
+        "calibration_mean_lognorm": 2.1907,
+        "treated_mean_lognorm": 0.3065,
+        "log2_meanlog_ratio": -4.4687
+      },
+      {
+        "symbol": "ASPH",
+        "calibration_detection_frac": 0.8713,
+        "calibration_mean_lognorm": 2.5878,
+        "treated_mean_lognorm": 0.4548,
+        "log2_meanlog_ratio": -4.4168
+      },
+      {
+        "symbol": "ZMYND8",
+        "calibration_detection_frac": 0.6694,
+        "calibration_mean_lognorm": 1.6084,
+        "treated_mean_lognorm": 0.1716,
+        "log2_meanlog_ratio": -4.4159
+      },
+      {
+        "symbol": "TBC1D22A",
+        "calibration_detection_frac": 0.6177,
+        "calibration_mean_lognorm": 1.4651,
+        "treated_mean_lognorm": 0.1502,
+        "log2_meanlog_ratio": -4.3597
+      },
+      {
+        "symbol": "CABIN1",
+        "calibration_detection_frac": 0.559,
+        "calibration_mean_lognorm": 1.2707,
+        "treated_mean_lognorm": 0.1182,
+        "log2_meanlog_ratio": -4.3529
+      }
+    ]
+  },
+  "plate14_not_used_to_fit_gene_weights": true,
+  "plate14_blinded": false
+}
